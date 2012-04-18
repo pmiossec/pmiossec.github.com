@@ -5,9 +5,9 @@ auto: true
 permalink: /:title
 pygments: true
 lsi: true
-markdown: rdiscount
-rdiscount
-  extensions: [smart]
+#markdown: rdiscount
+#rdiscount
+#  extensions: [smart]
 
 #
 # Site configuration
