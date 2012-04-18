@@ -1,0 +1,100 @@
+﻿---
+layout: post
+title: "Utilisation de git avec un serveur tfs"
+description: "Utilisation de git avec un serveur tfs"
+categories: .Net
+tags:
+- Jenkins
+- Integration Conitnue
+published: false
+---
+
+h1. Cloner la branche principale du dépôt tfs
+
+h2. En récupérant l'historique commplet du dépot
+git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
+
+h2. En ne récupérerant que le dernier commit du dépot
+git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
+
+A l'ouverture de la solution Visual Studio => choix de la déconnexion temporaire (sinon il modifie plein de fichier)
+
+h1. Synchronisation avec le dépot tfs
+h2. Récupération des commits
+git tfs fetch
+
+h2. Commiter sur le dépot tfs
+git tfs ct
+
+
+! Toujours faire une fetch & rebase (ou merge) avant de commiter (sinon risque d'écrasement de fichier communs modifiés)
+
+h1. Gestion d'une branche
+
+h2. Récupération de la branche
+
+A l'heure actuelle, il n'y a pas de solution simple et évidente :(
+Toutefois, ce n'est pas impossible...
+
+Pour cela :
+	1. Modifiez le fichier "config" dans le répertoire ".git" pour ajouter les lignes (Attention! : pas de '.' dans le nom de la branche distante) :
+[tfs-remote "maBrancheTfs"]
+url = http://myTfsServer:8080/tfs/DepotTfs
+repository = $/MonProjet/NomDeLaBranche
+fetch = refs/remotes/default/maBrancheTfs
+
+	2. Trouver le numéro de commit tfs 
+    Find the tfs commit number of the first branch commit (found in the properties of the branch in tfs or with the command line "tf branches $/MonProjet/NomDeLaBranche"). Then, with that number, the sha1 of the previous commit (the last common commit from the trunc and the branch) in git.
+
+    Checkout this revision and create a local branch to this commit ( "TFS_LOCAL_BRANCH" is the name of the local branch mirror of the tfs remote branch) :
+    git checkout -b TFS_LOCAL_BRANCH [SHA1_PREVIOUSLY_FOUND]
+
+    Manualy create the remote branch file :( otherwise my futur branch won't be connected to the trunc in the git repository :(
+    "tfsBranch" is the name of the remote tfs branch defined in step 1.
+    git rev-parse TFS_LOCAL_BRANCH >> ./.git/refs/remotes/tfs/tfsBranch
+
+    Fetch commit history of the tfs branch!!! Command to do each time you want to synchronize with the tfs server, in fact....
+    git tfs fetch -i tfsBranch
+
+git checkout [SHA_COMMIT_SOUHAITE] #(trouvé dans les propriétés de la branche --ou "tf branches $/MyTfsProject/TheTfsBranch"-- -1 pour avoir le précédent commit commun)
+git checkout -b maBrancheTfs
+Creation du ref manuel ( sinon les 2 branches sont déconnectées!)
+git rev-parse maBrancheTfs >> ./.git/refs/remotes/tfs/maBrancheTfs
+git tfs fetch -i maBrancheTfs
+
+h2. Récupération des commits de la branche
+git tfs fetch -i maBrancheTfs
+
+h2. Commiter sur la branche
+git tfs ct -i maBrancheTfs
+
+Faire "Propriétés..." sur la branche pour connaitre le n° du 1er commit pour le faire au bon endroit....
+http://www.drrandom.org/post/2011/11/16/Grappling-with-multiple-remotes-in-git-tfs.aspx
+http://stackoverflow.com/questions/8559814/merge-two-tfs-branches-with-git-tfs
+modifier le fichier de config pour ajouter nouveau tfs-remote 
+
+
+Report des changeset d'un depot git vers tfs:
+https://groups.google.com/group/git-tfs-dev/browse_thread/thread/929d005ff9cdcc23
+http://www.tigraine.at/2010/09/01/using-git-from-powershell-just-got-easier-posh-git/
+
+https://github.com/git-tfs/git-tfs/issues/171
+https://github.com/git-tfs/git-tfs/issues/172
+https://github.com/spdr870/gitextensions/issues/869
+
+=======================================================
+Exclusion  des fichiers App.config modifiés localement:
+
+git update-index --assume-unchanged <file>
+
+et pour les tracker de nouveau:
+
+git update-index --no-assume-unchanged <file>
+
+La liste de fichier ignorés :
+
+git ls-files -v | grep ^[a-z]
+http://gitready.com/intermediate/2009/02/18/temporarily-ignoring-files.html
+
+
+
