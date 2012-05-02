@@ -55,13 +55,13 @@ Quelques astuces :
 h2. Installation et configuration de Jenkins
 
 h3. Installation de Jenkins
-L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war à l’adresse suivante <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a> et copier le fichier dans le répertoire où vous voulez installer Jenkins.
+L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war à l’adresse suivante "http://jenkins-ci.org/":http://jenkins-ci.org/  et copier le fichier dans le répertoire où vous voulez installer Jenkins.
 Pour lancer jenkins, vous devez avoir une version de la JVM (Java Virtual Machine) installée (nous ne détaillerons pas le procédure d'installation ici).
 Lancez jenkins depuis la ligne de commande (depuis le répertoire de jenkins) :
 @java.exe -jar jenkins.war@
 Attendre le lancement et dans le navigateur chargez la page "http://localhost:8080/":http://localhost:8080/
 
-[caption id="attachment_5292" align="alignnone" width="776" caption="- Ecran principal de Jenkins avec 2 projets configurés -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_01_ecran_principal.png"><img class="size-full wp-image-5292" title="Jenkins_01_ecran_principal" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_01_ecran_principal.png" alt="Ecran principal de Jenkins avec 2 projets configurés" width="776" height="277" /></a>[/caption]
+[caption id="attachment_5292" align="alignnone" width="776" caption="- Ecran principal de Jenkins avec 2 projets configurés -"]"<img class="size-full wp-image-5292" title="Jenkins_01_ecran_principal" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_01_ecran_principal.png" alt="Ecran principal de Jenkins avec 2 projets configurés" width="776" height="277" />":http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_01_ecran_principal.png [/caption]
 
 Il est fortement conseillé d’installer jenkins en tant que service windows sinon la procédure de lancement en ligne de commande décrite ci-dessus devra être reproduite systématiquement.
 Pour cela, dans l’écran principal, cliquez sur "Administrer Jenkins":http://localhost:8080/manage puis sur “Installer en tant que service Windows”.
@@ -86,7 +86,7 @@ Toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur "
 Verifiez que l’executable de Git est bien détecté. Si ce n’est pas le cas, rajoutez Git dans le PATH de votre système (solution conseillée) ou renseignez dans le champ proposé, le chemin complet de l’exécutable.
 Dans le paragraphe “MSBuild”, ajoutez une configuration de MSBuild en lui donnant un nom et le chemin vers l’exécutable
 (ex : “MSBuild .Net 4” et “C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe”
-cf <a href="https://wiki.jenkins-ci.org/display/JENKINS/MSBuild+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/MSBuild+Plugin</a> )
+cf "https://wiki.jenkins-ci.org/display/JENKINS/MSBuild+Plugin":https://wiki.jenkins-ci.org/display/JENKINS/MSBuild+Plugin  )
 Cliquez sur “Enregistrer” pour valider la configuration.
 
 2.2.2.2 Creation du job d'intégration
@@ -111,7 +111,7 @@ Il peut cependant être nécessaire de reconstruire entièrement le projet (dans
 A ce stade, vous pouvez lancer un build et vérifier que votre projet est bien rapatrié du dépôt Git et compile. Pour cela, n’oubliez pas de sauver la configuration puis cliquez sur "Lancer un build":http://localhost:8080/job/JenkinsTest/build?delay=0sec .
 Si le build ne marche pas ou que le résultat attendu n’est pas le bon, vous pouvez maintenant et tout au long de la configuration des différentes  étapes voir les logs de déroulement de chaque build en affichant la page “Sortie Console” du build souhaité.
 
-[caption id="attachment_5331" align="alignnone" width="733" caption="- Ecran de résultat d&#39;un build avec l&#39;ensemble des métriques disponibles -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_07_resultat_compilation.png"><img class="size-full wp-image-5331" title="Jenkins_07_resultat_compilation" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_07_resultat_compilation.png" alt="Ecran de résultat d'un build avec l'ensemble des métriques disponibles" width="733" height="776" /></a>[/caption]
+[caption id="attachment_5331" align="alignnone" width="733" caption="- Ecran de résultat d&#39;un build avec l&#39;ensemble des métriques disponibles -"]"<img class="size-full wp-image-5331" title="Jenkins_07_resultat_compilation" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_07_resultat_compilation.png" alt="Ecran de résultat d'un build avec l'ensemble des métriques disponibles" width="733" height="776" />":http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_07_resultat_compilation.png [/caption]
 
 2.2.2.6 Configuration d'une tache de tests unitaires
 Nous allons maintenant configurer l’intégration continue pour executer les tests unitaires MSTest.
@@ -141,11 +141,11 @@ A ce stade, vous pouvez lancer un build et vérifier que les tests sont bien exe
 
 L’execution de 2 builds avec des résultats fait ainsi apparaitre un graphe représentant l’évolution du nombre de tests en échec sur le projet.
 
-[caption id="attachment_5294" align="alignnone" width="600" caption="- Résultats des tests untaires des différents builds -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_08_resultat_tests.png"><img class="size-full wp-image-5294" title="Jenkins_08_resultat_tests" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_08_resultat_tests.png" alt="legende : Résultats des tests untaires des différents builds" width="600" height="287" /></a>[/caption]
+[caption id="attachment_5294" align="alignnone" width="600" caption="- Résultats des tests untaires des différents builds -"]"<img class="size-full wp-image-5294" title="Jenkins_08_resultat_tests" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_08_resultat_tests.png" alt="legende : Résultats des tests untaires des différents builds" width="600" height="287" />":http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_08_resultat_tests.png [/caption]
 
 2.2.2.7 Mesure de la couverture de code
 Nous allons maintenant configurer la couverture de code qui permet de visualiser les parties du code de l'application couvertes ou non par les tests unitaires.
-Pour cela, nous allons utiliser l’outil opencover ( <a href="https://github.com/sawilde/opencover/downloads">https://github.com/sawilde/opencover/downloads</a> ) et l’outil de génération de rapport ( <a href="http://reportgenerator.codeplex.com/">http://reportgenerator.codeplex.com/ </a>). Les télécharger, les installer et mettre les exécutables dans le PATH.
+Pour cela, nous allons utiliser l’outil opencover ( "http://reportgenerator.codeplex.com/ ":https://github.com/sawilde/opencover/downloads">https://github.com/sawilde/opencover/downloads</a> ) et l’outil de génération de rapport ( <a href="http://reportgenerator.codeplex.com/ ). Les télécharger, les installer et mettre les exécutables dans le PATH.
 Pour générer la couverture de code, nous allons modifier le script écrit précédement de façon à appeler les tests unitaires depuis l’outil de couverture de code.
 Une ligne de commande utilisant opencover doit être de la forme :
 bc.<span>
@@ -174,7 +174,7 @@ Sauvez et executez un build pour obtenir des résultats.
 
 Un nouveau lien “Couverture de code” apparaît sur la page du projet nous permettant de consulter le rapport généré.
 
-[caption id="attachment_5295" align="alignnone" width="442" caption="- Résultats de la couverture de code -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_09_couverture.png"><img class="size-full wp-image-5295" title="Jenkins_09_couverture" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_09_couverture.png" alt="legende : Résultats de la couverture de code" width="442" height="339" /></a>[/caption]
+[caption id="attachment_5295" align="alignnone" width="442" caption="- Résultats de la couverture de code -"]"<img class="size-full wp-image-5295" title="Jenkins_09_couverture" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_09_couverture.png" alt="legende : Résultats de la couverture de code" width="442" height="339" />":http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_09_couverture.png [/caption]
 
 Nous avons maintenant mis en place assez rapidement une usine logicielle minimale nous permettant de compiler les sources archivées sur un dépôt Git commun, exécuter les tests unitaires et obtenir une couverture de code.
 
@@ -196,7 +196,7 @@ Nous allons ici adresser les thèmes suivants :
 
 2.2.3.1 La Complexité ciclomatique : CCM
 C’est un indicateur permettant de connaître la complexité du code écrit. Pour une méthode donnée, la complexité exprime le nombre de chemins différents pour parcourir l'ensemble du code. Plus le nombre est élevé, plus la méthode est difficilement testable et maintenable. Il est alors utile de la refactoriser.
-Pour cela, on peut utiliser CCM, un outil qu’on trouvera ici : <a href="http://www.blunck.se/ccm.html">http://www.blunck.se/ccm.html</a>
+Pour cela, on peut utiliser CCM, un outil qu’on trouvera ici : "http://www.blunck.se/ccm.html":http://www.blunck.se/ccm.html 
 A installer, ainsi que le plugin “CCM plugin” proposé dans Jenkins.
 Aller dans “Administrer Jenkins” puis "Configurer le système":http://localhost:8080/configure  puis dans le paragraphe “CCM”, indiquez le chemin de l’executable (par ex : C:\Program Files (x86)\ccm\bin\CCM.exe)
 
@@ -206,15 +206,15 @@ Aller dans “Administrer Jenkins” puis "Configurer le système":http://localh
 
 Sauvez, buildez et contemplez les résultats :)
 
-[caption id="attachment_5325" align="alignnone" width="417" caption="- Suivi de la complexité du code pour les différents builds -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_01_CCM.png"><img class="size-full wp-image-5325" title="metrique_01_CCM" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_01_CCM.png" alt="Suivi de la complexité du code pour les différents builds" width="417" height="174" /></a>[/caption]
+[caption id="attachment_5325" align="alignnone" width="417" caption="- Suivi de la complexité du code pour les différents builds -"]"<img class="size-full wp-image-5325" title="metrique_01_CCM" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_01_CCM.png" alt="Suivi de la complexité du code pour les différents builds" width="417" height="174" />":http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_01_CCM.png [/caption]
 
-2.2.3.2 Métriques de qualité du code source : <a href="https://wiki.jenkins-ci.org/display/JENKINS/Violations">Violations</a>
+2.2.3.2 Métriques de qualité du code source : "Violations":https://wiki.jenkins-ci.org/display/JENKINS/Violations 
 
 Tout d'abord, nous allons installer les outils suivants :
-Installation de gendarme ( <a href="http://mono-project.com/Gendarme">http://mono-project.com/Gendarme</a> )
-Installation de Simian ( <a href="http://www.harukizaemon.com/simian/index.html">http://www.harukizaemon.com/simian/index.html</a> )
+Installation de gendarme ( "http://mono-project.com/Gendarme":http://mono-project.com/Gendarme  )
+Installation de Simian ( "http://www.harukizaemon.com/simian/index.html":http://www.harukizaemon.com/simian/index.html  )
 Installation FxCop depuis “C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe” (FxCop est fourni dans le sdk 7.0 ou 7.1)
-Installation de StyleCop ( <a href="http://stylecop.codeplex.com/">http://stylecop.codeplex.com/</a> )
+Installation de StyleCop ( "http://stylecop.codeplex.com/":http://stylecop.codeplex.com/  )
 
 Ne pas oublier de mettre les outils dans le path du système...
 Pour utiliser ce plugin, il faut ajouter une étape supplémentaire dans le projet de build pour pouvoir générer les métriques souhaitées (au format xml, seul pris en compte par le plugin).
@@ -247,7 +247,7 @@ bc.<span>
 Note: Pour des raisons inconnues, il faut également indiquer à FxCop le répertoire (paramètre “/directory:”) du fichier “System.Core.dll” soit, dans notre cas, et en fonction su système et du framework “C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0”. Il est également conseillé de lui indiquer le répertoire des assemblys à tester
 
 <strong>StyleCop:</strong>
-StyleCop est fourni à travers un ensemble de dlls et s’intègre au sein de VisualStudio. Pour pouvoir l’utiliser en ligne de commande, on utilisera l’outil “StyleCop CLI” (<a href="http://stylecopcli.sourceforge.net/">http://stylecopcli.sourceforge.net/</a>).
+StyleCop est fourni à travers un ensemble de dlls et s’intègre au sein de VisualStudio. Pour pouvoir l’utiliser en ligne de commande, on utilisera l’outil “StyleCop CLI” ("http://stylecopcli.sourceforge.net/":http://stylecopcli.sourceforge.net/ ).
 StyleCop fonctionne à partir d’un fichier de règles qu’il est préférable d’adapter à son besoin. Il est disponible dans le répertoire d’installation de StyleCop : “Settings.StyleCop”.
 La configuration se fait avec l’outil “StyleCopSettingsEditor.exe” en passant le fichier de configuration en paramètre de l’application. Une fois configuré selon vos besoins, placez le fichier dans le répertoire de travail de Jenkins ( qui correspond à JENKINS_HOME\jobs\MonJob\Workspace avec JENKINS_HOME au répertoire de jenkins --cf valeur dans "Administrer Jenkins":http://localhost:8080/manage  -&gt; "Informations sur le système":http://localhost:8080/systemInfo  -&gt;”JENKINS_HOME”-- et MonJob au nom du job de build créé dans Jenkins). Si le fichier n’est pas positionné dans ce répertoire, lui indiquer le chemin complet.
 
@@ -276,7 +276,7 @@ Il reste à configurer le plugin de façon à prendre en compte les fichiers gé
 
 Le plugin est configuré et un graphe regroupant les diverses métriques devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Violations” est également disponible dans la colonne de gauche.
 
-[caption id="attachment_5296" align="alignnone" width="519" caption="- Graphe de suivi des métriques d&#39;analyse de code -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_10_metriques_violation.png"><img class="size-full wp-image-5296" title="Jenkins_10_metriques_violation" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_10_metriques_violation.png" alt="legende : Graphe de suivi des métriques d'analyse de code" width="519" height="243" /></a>[/caption]
+[caption id="attachment_5296" align="alignnone" width="519" caption="- Graphe de suivi des métriques d&#39;analyse de code -"]"<img class="size-full wp-image-5296" title="Jenkins_10_metriques_violation" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_10_metriques_violation.png" alt="legende : Graphe de suivi des métriques d'analyse de code" width="519" height="243" />":http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_10_metriques_violation.png [/caption]
 
 2.2.3.3 Détection de tàches à faire : Task Scanner Plugin
 Ce plugin permet de détecter des chaines de caractères types (FIXME, TODO,...) dans les commentaires et de suivre leur évolution.
@@ -287,7 +287,7 @@ Puis configurez les options suivantes :
 
 Le plugin est configuré et un graphe “Open Tasks Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Tâches ouvertes” est également disponible dans la colonne de gauche.
 
-[caption id="attachment_5326" align="alignnone" width="416" caption="- Suivi des tâches laissées ouverte dans le code source -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_02_OpenTasks.png"><img class="size-full wp-image-5326" title="metrique_02_OpenTasks" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_02_OpenTasks.png" alt="Suivi des tâches laissées ouverte dans le code source" width="416" height="175" /></a>[/caption]
+[caption id="attachment_5326" align="alignnone" width="416" caption="- Suivi des tâches laissées ouverte dans le code source -"]"<img class="size-full wp-image-5326" title="metrique_02_OpenTasks" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_02_OpenTasks.png" alt="Suivi des tâches laissées ouverte dans le code source" width="416" height="175" />":http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_02_OpenTasks.png [/caption]
 
 2.2.3.4 Détection des similarités de code : Simian / Dry Plugin
 Ce plugin permet une autre visualisation intéressante de l’analyse de la duplication de lignes de codes (donné par l’outil simian).
@@ -296,21 +296,21 @@ Dans la configuration du projet et activez la case à cocher “Publish duplicat
 Puis configurez l’option “Duplicate code results” par le nom du fichier xml de résultat (pour nous : simian-output.xml )
 Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin”, un graphe “Duplicate Code Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Duplicate Code” est également disponible dans la colonne de gauche pour parcourir les résultats...
 
-[caption id="attachment_5332" align="alignnone" width="291" caption="- Affichage des similarités (code dupliqué) dans le dernier build -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_06_Similarités.png"><img class="size-full wp-image-5332" title="metrique_06_Similarités" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_06_Similarités.png" alt="Affichage des similarités (code dupliqué) dans le dernier build" width="291" height="46" /></a>[/caption]
+[caption id="attachment_5332" align="alignnone" width="291" caption="- Affichage des similarités (code dupliqué) dans le dernier build -"]"<img class="size-full wp-image-5332" title="metrique_06_Similarités" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_06_Similarités.png" alt="Affichage des similarités (code dupliqué) dans le dernier build" width="291" height="46" />":http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_06_Similarités.png [/caption]
 
-2.2.3.5 Suivi des Warnings de compilation : <a href="https://wiki.jenkins-ci.org/display/JENKINS/Warnings+Plugin">Warnings Plugin</a>
+2.2.3.5 Suivi des Warnings de compilation : "Warnings Plugin":https://wiki.jenkins-ci.org/display/JENKINS/Warnings+Plugin 
 Ce plugin permet l’affichage, la comptabilisation et le suivi des warnings lors de la compilation du projet.
 Dans la configuration du projet et activez la case à cocher “Scan for compiler warnings” et cliquez sur le bouton “ajouter” à côté du texte “Scan console log” et sélectionnez le parser “MSBuild”.
 Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin”, un graphe “Compiler Warnings Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Compiler Warnings” est également disponible dans la colonne de gauche pour parcourir les résultats..
 
-[caption id="attachment_5327" align="alignnone" width="417" caption="- Suivi des Warnings de compilation -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_03_Warnings.png"><img class="size-full wp-image-5327" title="metrique_03_Warnings" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_03_Warnings.png" alt="Suivi des Warnings de compilation" width="417" height="189" /></a>[/caption]
+[caption id="attachment_5327" align="alignnone" width="417" caption="- Suivi des Warnings de compilation -"]"<img class="size-full wp-image-5327" title="metrique_03_Warnings" src="http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_03_Warnings.png" alt="Suivi des Warnings de compilation" width="417" height="189" />":http://blog.valtech.fr/wordpress/wp-content/uploads/metrique_03_Warnings.png [/caption]
 
 2.2.3.6 Gamification
 Il existe des plugins qui peuvent encourager votre équipe à venir consulter et résoudre les problèmes apparus lors des différents build et ceci en introduisant une certaine décontraction. Nous vous conseillons donc de tester le plugin “ChuckNorris” qui ajoutera une touche d’humour (informaticien) à chacun de vos builds ou le plugin “Continuous Integration Game” qui attribue et retire des points aux commiteurs en fonction de la qualité de leur commit et lors du cassage ou de la réparation des builds. Ambiance garantie!
 
 2.2.3.7 ThinBackup
 Ce plugin permet de faire des sauvegardes et restaurations des configurations des différents jobs créés.
-Installez le plugin, redemarrez Jenkins et allez dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/thinBackup">ThinBackup</a>” et ”Settings”. Configurez le “Backup directory” avec le répertoire de votre choix.
+Installez le plugin, redemarrez Jenkins et allez dans "Administrer Jenkins":http://localhost:8080/manage , ”"ThinBackup":http://localhost:8080/thinBackup ” et ”Settings”. Configurez le “Backup directory” avec le répertoire de votre choix.
 Vous pouvez maintenant sauvegarde et restaurer vis configurations.
 
 2.2.4 Installation facile et rapide : Bonus exceptionnel!!!!! ;)
@@ -319,20 +319,20 @@ Pour cela, il faut installer préalablement TOUS les plugins utilisés dans la c
 <ul>
 	<li> Git Plugin</li>
 	<li> CCM Plugin</li>
-	<li><a href="http://wiki.jenkins-ci.org/x/X4IuAg">Duplicate Code Scanner Plug-in</a>,</li>
-	<li><a href="http://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin">HTML Publisher plugin</a>,</li>
-	<li><a href="http://wiki.hudson-ci.org/display/HUDSON/Hudson+Tray+Application">Hudson Tray Application Plugin,</a></li>
-	<li><a href="http://wiki.jenkins-ci.org/display/JENKINS/MSBuild+Plugin">MSBuild Plugin</a>,</li>
-	<li><a href="http://wiki.jenkins-ci.org/display/JENKINS/MSTest+Plugin">MSTest plugin</a>,</li>
-	<li><a href="http://wiki.jenkins-ci.org/x/XoAs">Task Scanner Plug-in</a>,</li>
-	<li><a href="http://localhost:8080/pluginManager/wiki.jenkins-ci.org/display/JENKINS/Violations">Violations plugin</a>,</li>
-	<li><a href="http://wiki.jenkins-ci.org/x/G4CGAQ">Warnings Plug-in</a></li>
+	<li>"Duplicate Code Scanner Plug-in":http://wiki.jenkins-ci.org/x/X4IuAg ,</li>
+	<li>"HTML Publisher plugin":http://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin ,</li>
+	<li>"Hudson Tray Application Plugin,":http://wiki.hudson-ci.org/display/HUDSON/Hudson+Tray+Application </li>
+	<li>"MSBuild Plugin":http://wiki.jenkins-ci.org/display/JENKINS/MSBuild+Plugin ,</li>
+	<li>"MSTest plugin":http://wiki.jenkins-ci.org/display/JENKINS/MSTest+Plugin ,</li>
+	<li>"Task Scanner Plug-in":http://wiki.jenkins-ci.org/x/XoAs ,</li>
+	<li>"Violations plugin":http://localhost:8080/pluginManager/wiki.jenkins-ci.org/display/JENKINS/Violations ,</li>
+	<li>"Warnings Plug-in":http://wiki.jenkins-ci.org/x/G4CGAQ </li>
 </ul>
-Configurer les plugins le necessitant (git, msbuild, ccm) dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/configure">Configurer le système</a>”. Cette configuration a été décrite précédement.
+Configurer les plugins le necessitant (git, msbuild, ccm) dans "Administrer Jenkins":http://localhost:8080/manage , ”"Configurer le système":http://localhost:8080/configure ”. Cette configuration a été décrite précédement.
 
-Décompressez maintenant <a href="http://blog.valtech.fr/wordpress/wp-content/uploads/FULL-2012-04-09_23-48.zip">cette archive</a> dans le répertoire utilisé par ThinBackup.
-Allez dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/thinBackup">ThinBackup</a>”, ”<a href="http://localhost:8080/thinBackup/restoreOptions">Restore”</a> et restaurez le backup correspondant.
-Puis dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/reload">Recharger la configuration à partir du disque</a>”.
+Décompressez maintenant "cette archive":http://blog.valtech.fr/wordpress/wp-content/uploads/FULL-2012-04-09_23-48.zip  dans le répertoire utilisé par ThinBackup.
+Allez dans "Administrer Jenkins":http://localhost:8080/manage , ”"Restore”":http://localhost:8080/thinBackup">ThinBackup</a>”, ”<a href="http://localhost:8080/thinBackup/restoreOptions  et restaurez le backup correspondant.
+Puis dans "Administrer Jenkins":http://localhost:8080/manage , ”"Recharger la configuration à partir du disque":http://localhost:8080/reload ”.
 Vous devez maintenant avoir un job fonctionnel pré-configuré avec toutes les étapes du build. Il ne reste plus qu’à adapter les chemins et noms à vos besoins :D
 Vous pouvez également supprimer ce dont vous ne voulez pas...
 Note: si vous avez oublié un plugin, vous pouvez le rajouter par la suite et relancer la restauration si besoin.
