@@ -144,7 +144,7 @@ L’execution de 2 builds avec des résultats fait ainsi apparaitre un graphe re
 
 h4. Mesure de la couverture de code
 Nous allons maintenant configurer la couverture de code qui permet de visualiser les parties du code de l'application couvertes ou non par les tests unitaires.
-Pour cela, nous allons utiliser l’outil opencover ( "http://reportgenerator.codeplex.com/ ":https://github.com/sawilde/opencover/downloads">https://github.com/sawilde/opencover/downloads</a> ) et l’outil de génération de rapport ( <a href="http://reportgenerator.codeplex.com/ ). Les télécharger, les installer et mettre les exécutables dans le PATH.
+Pour cela, nous allons utiliser l’outil "opencover":https://github.com/sawilde/opencover/downloads et l’outil de génération de rapport "ReportGenerator":http://reportgenerator.codeplex.com/ . Les télécharger, les installer et mettre les exécutables dans le PATH.
 Pour générer la couverture de code, nous allons modifier le script écrit précédement de façon à appeler les tests unitaires depuis l’outil de couverture de code.
 Une ligne de commande utilisant opencover doit être de la forme :
 bc.
@@ -156,7 +156,7 @@ Notes :
 # Faire également attention à bien échapper par un ‘\’ tous les guillemets ’ “ ‘ dans les arguments de l’executable.
 
 Il reste à inclure dans le script l’appel au générateur de rapport html avec les résultats du test :
-reportgenerator.exe <strong>fichierResultatCouverture.xml</strong> <strong>repertoireDeGeneration</strong>
+@reportgenerator.exe <strong>fichierResultatCouverture.xml</strong> <strong>repertoireDeGeneration</strong>@
 
 Dans notre cas le script une fois modifié est donc le suivant :
 bc.
