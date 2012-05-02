@@ -1,58 +1,28 @@
 ﻿---
 layout: post
-title: "Vers la production agile : Construire une usine logicielle .NET efficace"
-description: "Utilisation de Jenkins pour construire une usine logicielle .Net"
+title: "Construire une usine logicielle Jernkins pour .NET"
+description: "Tutoriel pour construire une usine logicielle .Net efficace facilement avec Jenkins"
 categories: .Net
 tags:
 - Jenkins
-- Integration Conitnue
+- Integration Continue
 published: false
 ---
-#1. Pourquoi l’usine logicielle ?#
+h1.  Qu'est ce qu'une usine logicielle ?
 
-L’élaboration d’une application en entreprise ne se limite pas seulement à l’activité de développement et trop souvent des développeurs ne s’intéressent qu'à celle-ci et pourtant d'autres étapes sont nécessaires à l'obtention de la valeur c’est à dire la livraison en production.
+Une usine logicielle est un ensemble d’outils et de pratiques permettant d’automatiser les différentes étapes du développement d’un logiciel.
+Permettant ainsi la mise en place d’un processus automatisé optimisé, le rendant ainsi reproductible autant que souhaité
+sans qu’un membre de l’équipe ne soit mobilisé (et sans erreur de mainpulation).
 
-Non, nous ne sommes pas que des pisseurs de code :
+h1. Installation et mise en place
 
-<center><a href="http://blog.valtech.fr/wordpress/wp-content/uploads/CodeMonkey.png"><img src="http://blog.valtech.fr/wordpress/wp-content/uploads/CodeMonkey.png" alt="Code Monkey" title="CodeMonkey" width="248" height="199" class="alignnone size-full wp-image-5400" /></a></center>
+Les 2 briques indispensables pour la réalisation d’une usine logicielle sont :
+* le logiciel de gestion de version, qui contient les sources du projet
+* l’outil d'intégration continue, qui permet d'orchestrer les différentes taches de construction, tests,...
 
-Un développeur doit être concerné non seulement par le développement mais aussi par toutes les phases qui permettent de mettre le produit en production et cela en s’outillant et en communiquant avec les équipes opérationnelles afin de constituer un workflow de produit efficace.
-De plus, compte tenu de la répétitivité de ces actions un processus industrialisé permet un réel gain en productivité et peut devenir un argument sérieux de compétitivité. Tous cela, en évitant les erreurs humaines dans les tâches d’intégrations et de déploiement.
-Et la logique peut être poussée jusqu’à la mise en production, certains grands noms de l’Internet (Google, Amazon, Flikr...) ont ainsi mis en place des procédés allant jusqu’à l’automatisation de la mise en production (<a href="http://referentiel.institut-agile.fr/cd.html">Continuous Delivery</a>), mais ça c’est une autre histoire...
+Nous allons donc voir comment installer et configuer ces 2 briques. Pour cela, nous utiliserons donc respectivement Git (pour la gestion des sources) et Jenkins (pour l'intégration continue).
 
-<!--more-->
-
-<em><strong>1.1) Qu’est ce qu’une usine logicielle</strong></em>
-
-<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Industrialiser.png"><center><img src="http://blog.valtech.fr/wordpress/wp-content/uploads/Industrialiser.png" alt="Industrialiser" title="Industrialiser" width="235" height="155" class="alignnone size-full wp-image-5396" /></center></a>
-
-&nbsp;
-
-Une usine logicielle est un ensemble d’outils et de pratiques permettant d’automatiser les différentes étapes du développement d’un logiciel. Permettant ainsi la mise en place d’un processus automatisé optimisé, le rendant ainsi reproductible autant que souhaité sans qu’un membre de l’équipe ne soit mobilisé (et sans erreur de mainpulation).
-
-<em><strong>1.2) Les différentes briques</strong></em>
-
-<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/UsingLogicielle.png"><img src="http://blog.valtech.fr/wordpress/wp-content/uploads/UsingLogicielle.png" alt="Usine logicielle" title="UsineLogicielle" width="853" height="502" class="alignnone size-full wp-image-5397" /></a>
-
-&nbsp;
-
-L’usine logicielle ne s’adresse pas uniquement aux développeurs ; elle cible les différents acteurs du projet : intégrateurs, techniques ou même la direction (avec d’éventuels indicateurs...). A chacune des briques d’une usine logicielle correspond une responsabilité, le tout formant un ensemble cohérent par lequel l’équipe aura défini son workflow de travail :
-
-- La gestion de code source : la première brique essentielle est celle de la gestion de code source ou encore versionning. Actuellement, il en existe deux familles : les <strong>V</strong>ersion <strong>C</strong>ontrol <strong>S</strong>ystem (avec SVN, TFS, Perforce,...) où les sources sont centralisées sur un serveur et les <strong>D</strong>istributed <strong>V</strong>ersion <strong>C</strong>ontrol <strong>S</strong>ystem (avec Git, Mercurial,...) où la gestion des sources est distribuée. De notre point de vue, la seconde famille est l’évolution naturel de ces outils apportant une plus grande souplesse ainsi que d'autres fonctionnalités très avantageuses pour le développeur. Le choix d’un DVCS nous a donc semblé totalement naturel. Pour cette présentation, notre choix s'est donc porté sur Git.
-
-- L’intégration continue : est une pratique d’eXtreme Programming (XP) qui permet d’avoir une version valide du logicielle continuellement... et à défaut détecte les problèmes d’intégration le plus tôt possible. Cela est également valable pour la détection de régressions et d’incohérences fonctionnelles à condition d’avoir des tests appropriés. Notre choix s'est porté sur Jenkins/Hudson, un des plus populaires, qui de part sa communauté et ses nombreux plugins offre une des solutions les plus abouties et extensibles.
-
-- Le test : une fois l’intégration continue mise en place nous pouvons lancer les tests automatiquement, soit à chaque build (Test unitaire), soit la nuit (test intégration, fonctionnel, interface... Souvent plus long à exécuter).
-
-- Les indicateurs : outre les rapports de build, nous pouvons inclure des rapports liés à la qualité du code, la couverture du code source par les tests, les règles de développement... Ceci donne un puissant outil pour observer et améliorer la qualité du code continuellement, ainsi qu'un outil mettant en valeur la qualité interne du code, un travail qui n'est pas assez mis en valeur.
-
-- Le packaging : avant la livraison, aucune valeur concrète n’a été délivrée, ce qui est trop souvent oublié. Un processus automatisé et maîtrisé permet de packager et livrer un logiciel et donc d’obtenir de la valeur dès que les étapes de validation ont été passées.
-
-<strong>2. Installation &amp; mise en place</strong>
-
-Tel que vu précédemment, 2 briques sont indispensables pour la réalisation d’une usine logicielle (les autres étant modulables et venant compléter le tout). Ce sont le logiciel de gestion de version (qui contient les sources du projet) et l’outil d'intégration continue qui permet d'orchestrer les différentes taches de construction, tests,... Nous allons donc voir comment installer et configuer ces 2 briques. Pour cela, nous utiliserons donc respectivement Git (pour la gestion des sources) et Jenkins (pour l'intégration continue).
-
-<em><strong>2.1) Installation et configuration du contrôleur de code source : Git</strong></em>
+h2. Installation et configuration du contrôleur de code source : Git
 
 Le contrôleur de code source étant une brique essentielle, nous allons faire une présentation succinte mais le sujet étant très (trop?) vaste, nous n'évoquerons que le stricte minimum et vous invitons à completer ses informations par des recherches sur le web.
 
@@ -61,59 +31,58 @@ Sous windows, l’utilisation de Git nécessite l’utilisation du portage sous 
 Lancez l’installation (Suivant, suivant...) et répondez au 2 questions (format de fin de ligne des fichiers et intégration de git dans le système) suivants vos besoins. Les choix par défaut conviennent la plupart du temps.
 
 Après, l’installation, Git necessite de configurer le nom et l’email de l’utilisateur. Cela peut être fait, soit en lançant GitExtension pour la première fois (ou après dans l’onglet “Global Settings” de la fenêtre de configuration obtenu dans le menu “Settings=&gt;Settings...”), soit en ligne de commande:
-<code><span>
-<em>git config --global user.name "John Doe"
-git config --global user.email johndoe@example.com</em></span></code>
+bc.
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+bc.
 
 Le but n’est pas de détailler l’utilisation de Git (il y a suffisamment de documentation sur le sujet) et l’utilisation de l’interface graphique de GitExtension est en outre assez explicite. Voici toutefois quelques commandes de base necessaire à creer notre dépot et ajouter du contenu pour pouvoir configurer et tester notre usine logicielle.
 
-<code><span>
-<em>//creation d’un dépot dans le répertoire courant
+bc.
+//creation d’un dépot dans le répertoire courant
 git init
 //ajout de tous les fichiers du répertoire courant
 git add .
 //commit
-git commit -m 'mon message'</em></span></code>
+git commit -m 'mon message'
+bc.
 
 Quelques astuces :
-- télécharger le fichier .gitignore pour éviter d’archiver les fichiers inutiles générés par VisualStudio : https://raw.github.com/github/gitignore/master/Global/VisualStudio.gitignore
-- Généralement, le fichier .gitignore consiste en le premier commit du projet mais il est possible (et peut être judicieux si tous les projets sont dans le même langage) de le définir plutôt dans ses préférences utilisateur pour ne pas être obligé de le rependre dans tous ses dépots.
-- Utilisation de l’outil de merge p4merge qui permet une comparaison de fichiers et surtout un merge de modifications de façon plus aisée (3 way merge).<a href="http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools">Téléchargement</a> et <a href="http://pontusmunck.com/2010/01/30/using-a-cool-merge-tool-with-svn-or-git/">installation</a>.
+* télécharger le fichier .gitignore pour éviter d’archiver les fichiers inutiles générés par VisualStudio : https://raw.github.com/github/gitignore/master/Global/VisualStudio.gitignore
+* Généralement, le fichier .gitignore consiste en le premier commit du projet mais il est possible (et peut être judicieux si tous les projets sont dans le même langage) de le définir plutôt dans ses préférences utilisateur pour ne pas être obligé de le rependre dans tous ses dépots.
+* Utilisation de l’outil de merge p4merge qui permet une comparaison de fichiers et surtout un merge de modifications de façon plus aisée (3 way merge). "Téléchargement":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools et "installation":http://pontusmunck.com/2010/01/30/using-a-cool-merge-tool-with-svn-or-git/ .
 
-&nbsp;
+h2. Installation et configuration de Jenkins
 
-<em><strong>2.2) Installation et configuration de Jenkins</strong></em>
-
-2.2.1 Installation de Jenkins
+h3. Installation de Jenkins
 L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war à l’adresse suivante <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a> et copier le fichier dans le répertoire où vous voulez installer Jenkins.
 Pour lancer jenkins, vous devez avoir une version de la JVM (Java Virtual Machine) installée (nous ne détaillerons pas le procédure d'installation ici).
 Lancez jenkins depuis la ligne de commande (depuis le répertoire de jenkins) :
-<code><span>java.exe -jar jenkins.war</span></code>
-Attendre le lancement et dans le navigateur chargez la page <a href="http://localhost:8080/">http://localhost:8080/</a>
+@java.exe -jar jenkins.war@
+Attendre le lancement et dans le navigateur chargez la page "http://localhost:8080/":http://localhost:8080/
 
 [caption id="attachment_5292" align="alignnone" width="776" caption="- Ecran principal de Jenkins avec 2 projets configurés -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_01_ecran_principal.png"><img class="size-full wp-image-5292" title="Jenkins_01_ecran_principal" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_01_ecran_principal.png" alt="Ecran principal de Jenkins avec 2 projets configurés" width="776" height="277" /></a>[/caption]
 
 Il est fortement conseillé d’installer jenkins en tant que service windows sinon la procédure de lancement en ligne de commande décrite ci-dessus devra être reproduite systématiquement.
-Pour cela, dans l’écran principal, cliquez sur “<a href="http://localhost:8080/manage">Administrer Jenkins</a>” puis sur “Installer en tant que service Windows”.
+Pour cela, dans l’écran principal, cliquez sur "Administrer Jenkins":http://localhost:8080/manage puis sur “Installer en tant que service Windows”.
 
-2.2.2 Configuration de la construction des sources du projet
+h3. Configuration de la construction des sources du projet
 
-<strong>Note préalable :</strong> La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe §2.2.4.
+*Note préalable :* La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe §2.2.4.
 
-2.2.2.1 Installation des plugins
-Nous allons maintenant installer les plugins nécessaires pour gérer notre projet .Net. Pour cela, toujours dans “<a href="http://localhost:8080/manage">Administrer Jenkins</a>”, cliquez sur “<a href="http://localhost:8080/pluginManager/">Gestion des plugins</a>”.
+h4. Installation des plugins
+Nous allons maintenant installer les plugins nécessaires pour gérer notre projet .Net. Pour cela, toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur “<a href="http://localhost:8080/pluginManager/">Gestion des plugins</a>”.
 
 Dans l’onglet “Disponibles”, nous choisirons :
-<ul>
-	<li> Git</li>
-	<li> MSBuild</li>
-	<li> MStest</li>
-	<li> HTML Publisher plugin (pour pouvoir afficher le résultat de la couverture de code)</li>
-</ul>
+* Git
+* MSBuild
+* MStest
+* HTML Publisher plugin (pour pouvoir afficher le résultat de la couverture de code)
+
 Puis cliquer sur “Installer sans redémarrer”
 
-2.2.2.1 Configuration des outils .Net
-Toujours dans “<a href="http://localhost:8080/manage">Administrer Jenkins</a>”, cliquez sur “<a href="http://localhost:8080/configure">Configurer le système</a>”.
+h4. Configuration des outils .Net
+Toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur “<a href="http://localhost:8080/configure">Configurer le système</a>”.
 Verifiez que l’executable de Git est bien détecté. Si ce n’est pas le cas, rajoutez Git dans le PATH de votre système (solution conseillée) ou renseignez dans le champ proposé, le chemin complet de l’exécutable.
 Dans le paragraphe “MSBuild”, ajoutez une configuration de MSBuild en lui donnant un nom et le chemin vers l’exécutable
 (ex : “MSBuild .Net 4” et “C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe”
@@ -155,14 +124,14 @@ Dans la zone de texte, insérer la ligne de commande pour l’execution des test
 
 Un exemple de script pour exécuter des tests mstest ressemblerait à celui-ci (les parties en gras sont celles à adapter à votre besoin)  :
 
-<code><span>
+bc.<span>
 <span>
 <em>REM MSTest necessite l’absance du fichier résultat
-del MSTestResults.trx</em></span></span></code><span>
-<code><span><em>MSTest.exe /nologo /usestderr /testSettings:"<strong>%WORKSPACE%\Solution\ContinuousIntegration.testsettings</strong>" /resultsfile:MSTestResults.trx  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll</strong>"  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll</strong>"
+del MSTestResults.trx</em></span></span>bc.<span>
+bc.<span><em>MSTest.exe /nologo /usestderr /testSettings:"<strong>%WORKSPACE%\Solution\ContinuousIntegration.testsettings</strong>" /resultsfile:MSTestResults.trx  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll</strong>"  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll</strong>"
 REM On ne veut pas que le build soit en echec si les tests ne sont pas tous un succès
 exit 0
-</em></span></code></span>
+</em></span>bc.</span>
 
 Dans la partie “Actions à la suite du build”, recherchez et activer l’option “Publish MSTest test result report” et indiquez le nom du fichier trx de résultat des tests (dans notre cas "MSTestResults.trx").
 
@@ -179,9 +148,9 @@ Nous allons maintenant configurer la couverture de code qui permet de visualiser
 Pour cela, nous allons utiliser l’outil opencover ( <a href="https://github.com/sawilde/opencover/downloads">https://github.com/sawilde/opencover/downloads</a> ) et l’outil de génération de rapport ( <a href="http://reportgenerator.codeplex.com/">http://reportgenerator.codeplex.com/ </a>). Les télécharger, les installer et mettre les exécutables dans le PATH.
 Pour générer la couverture de code, nous allons modifier le script écrit précédement de façon à appeler les tests unitaires depuis l’outil de couverture de code.
 Une ligne de commande utilisant opencover doit être de la forme :
-<code><span>
+bc.<span>
 <em>OpenCover.Console.exe -register:user -target:"<strong>Chemin absolu vers l’executable de test</strong>" -targetargs:"<strong>arguments de l’executable passés précédement</strong>" -filter:+[<strong>MonProjet</strong>.*]* -output:"coverage_report.xml"
-</em></span></code>
+</em></span>bc.
 Notes : 1. Faire attention à bien passer le chemin absolu vers l’executable de tests (soit dans notre cas "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe")
 2. Faire également attention à bien échapper par un ‘\’ tous les guillemets ’ “ ‘ dans les arguments de l’executable.
 
@@ -189,12 +158,12 @@ Il reste à inclure dans le script l’appel au générateur de rapport html ave
 reportgenerator.exe <strong>fichierResultatCouverture.xml</strong> <strong>repertoireDeGeneration</strong>
 
 Dans notre cas le script une fois modifié est donc le suivant :
-<code><span>
+bc.<span>
 <em>del MSTestResults.trx
 OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe" -targetargs:"/nologo /usestderr /testSettings:\"<strong>%WORKSPACE%\Solution\ContinuousIntegration.testsettings\</strong>" /resultsfile:MSTestResults.trx  /testcontainer:\"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll</strong>\"  /testcontainer:\"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll</strong>\" " -filter:+[<strong>MonProjet</strong>.*]* -output:"coverage_report.xml"
 reportgenerator <strong>coverage_report.xml</strong> <strong>coverage_report</strong>
 exit 0
-</em></span></code>
+</em></span>bc.
 
 Il reste à indiquer au plugin “HTML Publisher” les informations de couverture à publier. En se referant aux données ci-dessus, on indiquera les données suivantes :
 HTML directory to archive = coverage_report
@@ -254,16 +223,16 @@ Nous allons ajouter une ligne de commande pour chaque outil utilisé.
 
 <strong>Gendarme :</strong>
 Gendarme est un outil d’analyse d’assembly. Pour cela, nous devons spécifier le chemin des assemblys que nous souhaitons analyser. Nous lui indiquons également de générer un fichier xml et lui indiquons le nom du fichier résultat.
-<code><span>
+bc.<span>
 <em>gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe</strong> <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong>
-</em></span></code>
+</em></span>bc.
 Note: Gendarme nécessite la présence des fichiers pdb dans le répertoire du fichier assembly analysé.
 
 <strong>Simian :</strong>
 Simian est un outil d’analyse de code source à la recherche de code dupliqué. Pour cela, nous devons spécifier le pattern des fichiers à analyser (et également si besoin celui des fichiers à exclure). Nous lui indiquons également de générer un fichier xml et lui indiquons le nom du fichier résultat.
-<code><span>
+bc.<span>
 <em>simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs
-</em></span></code>
+</em></span>bc.
 Note: Le pattern **/*.cs indique qu’il faut analyser tous les fichier .cs se trouvant dans tous les sous-répertoires
 
 <strong>FxCop :</strong>
@@ -272,36 +241,36 @@ Comme gendarme, il faut lui indiquer les fichiers assembly à analyser (paramèt
 FxCop fonctionne grâce à des fichiers de règles que l’on peut utiliser au choix (paramètres “/rule:”) et dont la liste est disponible dans le sous-répertoire “rules” du dossier d’installation de FxCop. Dans l’exemple ci-dessous, toutes les règles sont utilisées.
 Il convient également de lui indiquer le fichier de sortie (paramètre “/out:”)
 
-<code><span>
+bc.<span>
 <em>fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*</strong>" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml
-</em></span></code>
+</em></span>bc.
 Note: Pour des raisons inconnues, il faut également indiquer à FxCop le répertoire (paramètre “/directory:”) du fichier “System.Core.dll” soit, dans notre cas, et en fonction su système et du framework “C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0”. Il est également conseillé de lui indiquer le répertoire des assemblys à tester
 
 <strong>StyleCop:</strong>
 StyleCop est fourni à travers un ensemble de dlls et s’intègre au sein de VisualStudio. Pour pouvoir l’utiliser en ligne de commande, on utilisera l’outil “StyleCop CLI” (<a href="http://stylecopcli.sourceforge.net/">http://stylecopcli.sourceforge.net/</a>).
 StyleCop fonctionne à partir d’un fichier de règles qu’il est préférable d’adapter à son besoin. Il est disponible dans le répertoire d’installation de StyleCop : “Settings.StyleCop”.
-La configuration se fait avec l’outil “StyleCopSettingsEditor.exe” en passant le fichier de configuration en paramètre de l’application. Une fois configuré selon vos besoins, placez le fichier dans le répertoire de travail de Jenkins ( qui correspond à JENKINS_HOME\jobs\MonJob\Workspace avec JENKINS_HOME au répertoire de jenkins --cf valeur dans “<a href="http://localhost:8080/manage">Administrer Jenkins</a>” -&gt; “<a href="http://localhost:8080/systemInfo">Informations sur le système</a>” -&gt;”JENKINS_HOME”-- et MonJob au nom du job de build créé dans Jenkins). Si le fichier n’est pas positionné dans ce répertoire, lui indiquer le chemin complet.
+La configuration se fait avec l’outil “StyleCopSettingsEditor.exe” en passant le fichier de configuration en paramètre de l’application. Une fois configuré selon vos besoins, placez le fichier dans le répertoire de travail de Jenkins ( qui correspond à JENKINS_HOME\jobs\MonJob\Workspace avec JENKINS_HOME au répertoire de jenkins --cf valeur dans "Administrer Jenkins":http://localhost:8080/manage  -&gt; “<a href="http://localhost:8080/systemInfo">Informations sur le système</a>” -&gt;”JENKINS_HOME”-- et MonJob au nom du job de build créé dans Jenkins). Si le fichier n’est pas positionné dans ce répertoire, lui indiquer le chemin complet.
 
 On peut maintenant ajouter la ligne de commande suivante au script où on indique le chemin vers le fichier de la Solution, le nom du fichier de résultat à générer et le fichier de paramètre à utiliser :
-<code><span>
+bc.<span>
 <em>StyleCopCLI -sln <strong>%WORKSPACE%\Solution\MaSolution.sln</strong> -out StyleCopResults.xml -set Settings.StyleCop
-</em></span></code>
+</em></span>bc.
 
 Enfin, le batch doit se terminer par “exit 0” pour que le build n’échoue pas si un des outils renvoie un code non satisfaisant.
 
 Notre batch ressemble donc à cela :
-<code><span>
+bc.<span>
 <em>REM Analyse statistique
-gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe .\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong></em></span></code>
+gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe .\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong></em></span>bc.
 
-<code><span><em>simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs</em></span></code>
+bc.<span><em>simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs</em></span>bc.
 
-<code><span><em>fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet</strong>.*.*" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml</em></span></code>
+bc.<span><em>fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet</strong>.*.*" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml</em></span>bc.
 
-<code><span><em>StyleCopCLI -sln <strong>%WORKSPACE%\Solution\MaSolution.sln</strong> -out StyleCopResults.xml -set Settings.StyleCop</em></span></code>
-<code><span><em>exit 0
+bc.<span><em>StyleCopCLI -sln <strong>%WORKSPACE%\Solution\MaSolution.sln</strong> -out StyleCopResults.xml -set Settings.StyleCop</em></span>bc.
+bc.<span><em>exit 0
 REM Fin Analyse statistique
-</em></span></code>
+</em></span>bc.
 
 Il reste à configurer le plugin de façon à prendre en compte les fichiers générés lors de cette étape du build. Pour cela, il faut cocher l’option “Report Violations” et renseigner pour chaque ligne correspondante à l’outil utilisé (Gendarme, Simian, FxCop, StyleCop), le nom du fichier de résultat généré ainsi que ajuster (ou pas) selon vos besoins les 3 chiffres correspondants aux valeurs limites indiquant un build bon/de qualité médiocre/instable!
 
@@ -341,7 +310,7 @@ Il existe des plugins qui peuvent encourager votre équipe à venir consulter et
 
 2.2.3.7 ThinBackup
 Ce plugin permet de faire des sauvegardes et restaurations des configurations des différents jobs créés.
-Installez le plugin, redemarrez Jenkins et allez dans “<a href="http://localhost:8080/manage">Administrer Jenkins</a>”, ”<a href="http://localhost:8080/thinBackup">ThinBackup</a>” et ”Settings”. Configurez le “Backup directory” avec le répertoire de votre choix.
+Installez le plugin, redemarrez Jenkins et allez dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/thinBackup">ThinBackup</a>” et ”Settings”. Configurez le “Backup directory” avec le répertoire de votre choix.
 Vous pouvez maintenant sauvegarde et restaurer vis configurations.
 
 2.2.4 Installation facile et rapide : Bonus exceptionnel!!!!! ;)
@@ -359,11 +328,11 @@ Pour cela, il faut installer préalablement TOUS les plugins utilisés dans la c
 	<li><a href="http://localhost:8080/pluginManager/wiki.jenkins-ci.org/display/JENKINS/Violations">Violations plugin</a>,</li>
 	<li><a href="http://wiki.jenkins-ci.org/x/G4CGAQ">Warnings Plug-in</a></li>
 </ul>
-Configurer les plugins le necessitant (git, msbuild, ccm) dans “<a href="http://localhost:8080/manage">Administrer Jenkins</a>”, ”<a href="http://localhost:8080/configure">Configurer le système</a>”. Cette configuration a été décrite précédement.
+Configurer les plugins le necessitant (git, msbuild, ccm) dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/configure">Configurer le système</a>”. Cette configuration a été décrite précédement.
 
 Décompressez maintenant <a href="http://blog.valtech.fr/wordpress/wp-content/uploads/FULL-2012-04-09_23-48.zip">cette archive</a> dans le répertoire utilisé par ThinBackup.
-Allez dans “<a href="http://localhost:8080/manage">Administrer Jenkins</a>”, ”<a href="http://localhost:8080/thinBackup">ThinBackup</a>”, ”<a href="http://localhost:8080/thinBackup/restoreOptions">Restore”</a> et restaurez le backup correspondant.
-Puis dans “<a href="http://localhost:8080/manage">Administrer Jenkins</a>”, ”<a href="http://localhost:8080/reload">Recharger la configuration à partir du disque</a>”.
+Allez dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/thinBackup">ThinBackup</a>”, ”<a href="http://localhost:8080/thinBackup/restoreOptions">Restore”</a> et restaurez le backup correspondant.
+Puis dans "Administrer Jenkins":http://localhost:8080/manage , ”<a href="http://localhost:8080/reload">Recharger la configuration à partir du disque</a>”.
 Vous devez maintenant avoir un job fonctionnel pré-configuré avec toutes les étapes du build. Il ne reste plus qu’à adapter les chemins et noms à vos besoins :D
 Vous pouvez également supprimer ce dont vous ne voulez pas...
 Note: si vous avez oublié un plugin, vous pouvez le rajouter par la suite et relancer la restauration si besoin.

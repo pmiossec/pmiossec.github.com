@@ -14,19 +14,19 @@ Utilisation de Git en environnement hostile (... avec un serveur TFS)
 h1. Cloner la branche principale du dépôt tfs
 
 h2. En récupérant l'historique commplet du dépot
-git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
+@git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
 
 h2. En ne récupérerant que le dernier commit du dépot
-git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
+@git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
 
 A l'ouverture de la solution Visual Studio => choix de la déconnexion temporaire (sinon il modifie plein de fichier)
 
 h1. Synchronisation avec le dépot tfs
-h2. Récupération des commits
-git tfs fetch
+h2. Récupération des commits du tronc
+@git tfs fetch@
 
 h2. Commiter sur le dépot tfs
-git tfs ct
+@git tfs ct@
 
 
 ! Toujours faire une fetch & rebase (ou merge) avant de commiter (sinon risque d'écrasement de fichier communs modifiés)
@@ -43,31 +43,31 @@ Pour cela :
 [tfs-remote "maBrancheTfs"]
 url = http://myTfsServer:8080/tfs/DepotTfs
 repository = $/MonProjet/NomDeLaBranche
-fetch = refs/remotes/default/maBrancheTfs
+fetch = refs/remotes/tfs/maBrancheTfs
 
 	2. Trouvez le numéro de premier commit tfs de la branche
     Ce numéro est disponible, soit dans les propriétés de la branche depuis le "Team Explorer" soit en utilisant la ligne de commande :
-	"tf branches $/MonProjet/NomDeLaBranche"
+	@tf branches $/MonProjet/NomDeLaBranche@
 	
-	3. Trouvez le sha1 du commit parent à celui trouvé précédement.
+	3. Trouvez dans l'historique de git le sha1 du commit parent à celui trouvé précédement.
 	Dans l'historique de git, chercher le sha1, non pas du commit trouvé à l'étape suivante mais de son parent (n° du commit précédent -1). C'est à dire le dernier commit commun au tronc et à la branche!
 	
     4. Extraire ce commit en créant une branche locale par la commande :
-	git checkout -b maBrancheTfs [SHA1_TROUVE_PRECEDEMENT]
+	@git checkout -b maBrancheTfs [SHA1_TROUVE_PRECEDEMENT]@
 	"maBrancheTfs" est le nom de la branche git locale correspondant à la branche sur tfs
 	
     5. Créer manuellement la référence sur la branche locale (autrement notre future branche ne sera pas connectée au tonc :( )
     "maBrancheTfs" est le nom de la branche distante tfs définie à l'étape 1.
-    git rev-parse maBrancheTfs >> ./.git/refs/remotes/tfs/maBrancheTfs
+    @git rev-parse maBrancheTfs >> ./.git/refs/remotes/tfs/maBrancheTfs@
 
     6. Récupérer l'historique des commits de la branche tfs!!! Commande à effectuer chaque fois qu'on voudra resynchroniser la branche avec le serveur...
-    git tfs fetch -i maBrancheTfs
+    @git tfs fetch -i maBrancheTfs@
 
-h2. Récupération des commits de la branche
-git tfs fetch -i maBrancheTfs
+h2. Récupération des commits d'une branche
+@git tfs fetch -i maBrancheTfs@
 
-h2. Commiter sur la branche
-git tfs ct -i maBrancheTfs
+h2. Commiter sur une branche
+@git tfs ct -i maBrancheTfs@
 
 <!--
 Annexe :
