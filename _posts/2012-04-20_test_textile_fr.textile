@@ -1,8 +1,0 @@
-﻿---
-layout: post
-title: "Test de textile"
-description: "Test de textile"
-categories: Markdown
-published: true
----
-Test de textile.....
