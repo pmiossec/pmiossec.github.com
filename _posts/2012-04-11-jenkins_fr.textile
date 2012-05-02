@@ -71,7 +71,7 @@ h3. Configuration de la construction des sources du projet
 *Note préalable :* La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe §2.2.4.
 
 h4. Installation des plugins
-Nous allons maintenant installer les plugins nécessaires pour gérer notre projet .Net. Pour cela, toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur “<a href="http://localhost:8080/pluginManager/">Gestion des plugins</a>”.
+Nous allons maintenant installer les plugins nécessaires pour gérer notre projet .Net. Pour cela, toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur "Gestion des plugins":http://localhost:8080/pluginManager/ .
 
 Dans l’onglet “Disponibles”, nous choisirons :
 * Git
@@ -82,7 +82,7 @@ Dans l’onglet “Disponibles”, nous choisirons :
 Puis cliquer sur “Installer sans redémarrer”
 
 h4. Configuration des outils .Net
-Toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur “<a href="http://localhost:8080/configure">Configurer le système</a>”.
+Toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur "Configurer le système":http://localhost:8080/configure .
 Verifiez que l’executable de Git est bien détecté. Si ce n’est pas le cas, rajoutez Git dans le PATH de votre système (solution conseillée) ou renseignez dans le champ proposé, le chemin complet de l’exécutable.
 Dans le paragraphe “MSBuild”, ajoutez une configuration de MSBuild en lui donnant un nom et le chemin vers l’exécutable
 (ex : “MSBuild .Net 4” et “C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe”
@@ -90,7 +90,7 @@ cf <a href="https://wiki.jenkins-ci.org/display/JENKINS/MSBuild+Plugin">https://
 Cliquez sur “Enregistrer” pour valider la configuration.
 
 2.2.2.2 Creation du job d'intégration
-Nous allons maintenant configurer le job d’intégration continue de notre projet. Pour cela, cliquez sur “<a href="http://localhost:8080/view/Tous/newJob">Nouveau Job</a>”.
+Nous allons maintenant configurer le job d’intégration continue de notre projet. Pour cela, cliquez sur "Nouveau Job":http://localhost:8080/view/Tous/newJob .
 Nommez votre projet puis sélectionnez l’option “Construire un projet free-style”.
 
 Astuce : Par la suite, si vous voulez un job similaire à un job existant, vous pourez choisir l'option “Copier un Job existant” en saisissant son nom et ainsi récupérer le configuration du projet similaire pour l’adapter à votre besoin.
@@ -108,7 +108,7 @@ Dans “MsBuild Build File”, indiquez le chemin (en relatif) du fichier .sln d
 Dans “Command Line Arguments”, indiquez les paramètres de msbuild. Souvent, le seul paramètre nécessaire permet d’indiquer la configuration à compiler par le paramètre “/p:Configuration=DEBUG”.
 Il peut cependant être nécessaire de reconstruire entièrement le projet (dans notre cas pour obtenir tous les warnings lors de la compilation pour utiliser par la suite le plugin “warnings” mais qui à pour contrepartie d’augmenter le temps de build), ce qui peut se faire en ajoutant le paramètre “/t:Clean;Build”.
 
-A ce stade, vous pouvez lancer un build et vérifier que votre projet est bien rapatrié du dépôt Git et compile. Pour cela, n’oubliez pas de sauver la configuration puis cliquez sur “<a href="http://localhost:8080/job/JenkinsTest/build?delay=0sec">Lancer un build</a>”.
+A ce stade, vous pouvez lancer un build et vérifier que votre projet est bien rapatrié du dépôt Git et compile. Pour cela, n’oubliez pas de sauver la configuration puis cliquez sur "Lancer un build":http://localhost:8080/job/JenkinsTest/build?delay=0sec .
 Si le build ne marche pas ou que le résultat attendu n’est pas le bon, vous pouvez maintenant et tout au long de la configuration des différentes  étapes voir les logs de déroulement de chaque build en affichant la page “Sortie Console” du build souhaité.
 
 [caption id="attachment_5331" align="alignnone" width="733" caption="- Ecran de résultat d&#39;un build avec l&#39;ensemble des métriques disponibles -"]<a href="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_07_resultat_compilation.png"><img class="size-full wp-image-5331" title="Jenkins_07_resultat_compilation" src="http://blog.valtech.fr/wordpress/wp-content/uploads/Jenkins_07_resultat_compilation.png" alt="Ecran de résultat d'un build avec l'ensemble des métriques disponibles" width="733" height="776" /></a>[/caption]
@@ -137,7 +137,7 @@ Dans la partie “Actions à la suite du build”, recherchez et activer l’opt
 
 Vous pouvez également sauvegarder le fichier de résultat de test pour le laisser à la disposition des développeur. Il peut alors être ouvert avec VisualStudio pour avoir les résultats des tests unitaires. Pour cela, cochez la case "Archiver des artefacts" et indiquez le nom du fichier de résultat des test  (dans notre cas "MSTestResults.trx").
 
-A ce stade, vous pouvez lancer un build et vérifier que les tests sont bien executés. N’oubliez pas de sauver la configuration puis cliquez sur “<a href="http://localhost:8080/job/JenkinsTest/build?delay=0sec">Lancer un build</a>”.
+A ce stade, vous pouvez lancer un build et vérifier que les tests sont bien executés. N’oubliez pas de sauver la configuration puis cliquez sur "Lancer un build":http://localhost:8080/job/JenkinsTest/build?delay=0sec .
 
 L’execution de 2 builds avec des résultats fait ainsi apparaitre un graphe représentant l’évolution du nombre de tests en échec sur le projet.
 
@@ -178,7 +178,7 @@ Un nouveau lien “Couverture de code” apparaît sur la page du projet nous pe
 
 Nous avons maintenant mis en place assez rapidement une usine logicielle minimale nous permettant de compiler les sources archivées sur un dépôt Git commun, exécuter les tests unitaires et obtenir une couverture de code.
 
-Arrivée ici, nous avons rempli une bonne partie de nos objectifs et avons une usine logicielle fonctionnelle. Il convient toutefois de permettre à l’équipe d’être au courant de l’état du build (cela est très important de fournir de façon active les résultats à l’équipe de développement). Pour cela, Jenkins fourni de nombreuses méthodes nativement ou à travers l’installation de plugins (email, flux rss, lava lamp,...). Nous conseillons toutefois d’installer le plugin “<a href="http://wiki.hudson-ci.org/display/HUDSON/Hudson+Tray+Application">Hudson Tray Application Plugin</a>” qui permet à toute personne d’installer depuis le portail Jenkins un programme affichant le résultat des builds dans la barre de notification du système.
+Arrivée ici, nous avons rempli une bonne partie de nos objectifs et avons une usine logicielle fonctionnelle. Il convient toutefois de permettre à l’équipe d’être au courant de l’état du build (cela est très important de fournir de façon active les résultats à l’équipe de développement). Pour cela, Jenkins fourni de nombreuses méthodes nativement ou à travers l’installation de plugins (email, flux rss, lava lamp,...). Nous conseillons toutefois d’installer le plugin "Hudson Tray Application Plugin":http://wiki.hudson-ci.org/display/HUDSON/Hudson+Tray+Application  qui permet à toute personne d’installer depuis le portail Jenkins un programme affichant le résultat des builds dans la barre de notification du système.
 
 2.2.2.8 Archivage de fichiers de build
 Jenkins permet, à la suite d’un build, de conserver certains fichiers de votre choix. Pour cela, dans la configuration du projet, cocher la case “Archiver des artefacts” et indiquez le chemin des fichiers à archiver (par exemple : “.\bin\Debug\*”).
@@ -198,7 +198,7 @@ Nous allons ici adresser les thèmes suivants :
 C’est un indicateur permettant de connaître la complexité du code écrit. Pour une méthode donnée, la complexité exprime le nombre de chemins différents pour parcourir l'ensemble du code. Plus le nombre est élevé, plus la méthode est difficilement testable et maintenable. Il est alors utile de la refactoriser.
 Pour cela, on peut utiliser CCM, un outil qu’on trouvera ici : <a href="http://www.blunck.se/ccm.html">http://www.blunck.se/ccm.html</a>
 A installer, ainsi que le plugin “CCM plugin” proposé dans Jenkins.
-Aller dans “Administrer Jenkins” puis “<a href="http://localhost:8080/configure">Configurer le système</a>” puis dans le paragraphe “CCM”, indiquez le chemin de l’executable (par ex : C:\Program Files (x86)\ccm\bin\CCM.exe)
+Aller dans “Administrer Jenkins” puis "Configurer le système":http://localhost:8080/configure  puis dans le paragraphe “CCM”, indiquez le chemin de l’executable (par ex : C:\Program Files (x86)\ccm\bin\CCM.exe)
 
 “Ajoutez une étape au Build” du type “Invoke CCM” et spécifiez dans “Project Source Folders” la liste des projet C# à analyser (en allant à la ligne après chaque chemin indiqué). Par exemple :
 .\Solution\MonProjet.Assembly1
@@ -249,7 +249,7 @@ Note: Pour des raisons inconnues, il faut également indiquer à FxCop le réper
 <strong>StyleCop:</strong>
 StyleCop est fourni à travers un ensemble de dlls et s’intègre au sein de VisualStudio. Pour pouvoir l’utiliser en ligne de commande, on utilisera l’outil “StyleCop CLI” (<a href="http://stylecopcli.sourceforge.net/">http://stylecopcli.sourceforge.net/</a>).
 StyleCop fonctionne à partir d’un fichier de règles qu’il est préférable d’adapter à son besoin. Il est disponible dans le répertoire d’installation de StyleCop : “Settings.StyleCop”.
-La configuration se fait avec l’outil “StyleCopSettingsEditor.exe” en passant le fichier de configuration en paramètre de l’application. Une fois configuré selon vos besoins, placez le fichier dans le répertoire de travail de Jenkins ( qui correspond à JENKINS_HOME\jobs\MonJob\Workspace avec JENKINS_HOME au répertoire de jenkins --cf valeur dans "Administrer Jenkins":http://localhost:8080/manage  -&gt; “<a href="http://localhost:8080/systemInfo">Informations sur le système</a>” -&gt;”JENKINS_HOME”-- et MonJob au nom du job de build créé dans Jenkins). Si le fichier n’est pas positionné dans ce répertoire, lui indiquer le chemin complet.
+La configuration se fait avec l’outil “StyleCopSettingsEditor.exe” en passant le fichier de configuration en paramètre de l’application. Une fois configuré selon vos besoins, placez le fichier dans le répertoire de travail de Jenkins ( qui correspond à JENKINS_HOME\jobs\MonJob\Workspace avec JENKINS_HOME au répertoire de jenkins --cf valeur dans "Administrer Jenkins":http://localhost:8080/manage  -&gt; "Informations sur le système":http://localhost:8080/systemInfo  -&gt;”JENKINS_HOME”-- et MonJob au nom du job de build créé dans Jenkins). Si le fichier n’est pas positionné dans ce répertoire, lui indiquer le chemin complet.
 
 On peut maintenant ajouter la ligne de commande suivante au script où on indique le chemin vers le fichier de la Solution, le nom du fichier de résultat à générer et le fichier de paramètre à utiliser :
 bc.<span>
