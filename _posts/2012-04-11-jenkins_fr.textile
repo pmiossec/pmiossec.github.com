@@ -6,7 +6,7 @@ categories: .Net
 tags:
 - Jenkins
 - Integration Continue
-published: false
+published: true
 ---
 h1. Qu'est ce qu'une usine logicielle ?
 
