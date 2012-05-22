@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Construire une usine logicielle Jernkins pour .NET"
+title: "Construire une usine logicielle Jenkins pour .NET"
 description: "Tutoriel pour construire une usine logicielle .Net efficace facilement avec Jenkins"
 categories: .Net
 tags:
