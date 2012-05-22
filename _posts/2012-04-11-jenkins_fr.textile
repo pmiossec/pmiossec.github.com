@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Construire une usine logicielle Jernkins pour .NET"
 description: "Tutoriel pour construire une usine logicielle .Net efficace facilement avec Jenkins"

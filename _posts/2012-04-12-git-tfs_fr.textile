@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Utilisation de git avec un serveur tfs"
 description: "Utilisation de git avec un serveur tfs"
