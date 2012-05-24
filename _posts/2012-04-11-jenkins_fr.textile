@@ -62,7 +62,8 @@ p. Lancez jenkins depuis la ligne de commande (depuis le répertoire de jenkins)
 @java.exe -jar jenkins.war@
 Attendre le lancement et dans le navigateur chargez la page "http://localhost:8080/":http://localhost:8080/
 
-[caption id="attachment_5292" align="alignnone" width="776" caption="- Ecran principal de Jenkins avec 2 projets configurés -"]"<img class="size-full wp-image-5292" title="Jenkins_01_ecran_principal" src="../images/Jenkins_01_ecran_principal.png" alt="Ecran principal de Jenkins avec 2 projets configurés" width="776" height="277" />":../images/Jenkins_01_ecran_principal.png [/caption]
+!../images/Jenkins_01_ecran_principal.png ( Ecran principal de Jenkins avec 2 projets configurés)!
+==<!-- width="776" height="277" -->==
 
 Il est fortement conseillé d’installer jenkins en tant que service windows sinon la procédure de lancement en ligne de commande décrite ci-dessus devra être reproduite systématiquement.
 Pour cela, dans l’écran principal, cliquez sur "Administrer Jenkins":http://localhost:8080/manage puis sur “Installer en tant que service Windows”.
