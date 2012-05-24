@@ -184,7 +184,7 @@ Sauvez et executez un build pour obtenir des résultats.
 
 Un nouveau lien “Couverture de code” apparaît sur la page du projet nous permettant de consulter le rapport généré.
 
-[caption id="attachment_5295" align="alignnone" width="442" caption="- Résultats de la couverture de code -"]"<img class="size-full wp-image-5295" title="Jenkins_09_couverture" src="../images/Jenkins_09_couverture.png" alt="legende : Résultats de la couverture de code" width="442" height="339" />":../images/Jenkins_09_couverture.png [/caption]
+!../images/Jenkins_09_couverture.png(Résultats de la couverture de code)!
 
 Nous avons maintenant mis en place assez rapidement une usine logicielle minimale nous permettant de compiler les sources archivées sur un dépôt Git commun, exécuter les tests unitaires et obtenir une couverture de code.
 
@@ -218,7 +218,7 @@ Aller dans “Administrer Jenkins” puis "Configurer le système":http://localh
 
 Sauvez, buildez et contemplez les résultats :)
 
-[caption id="attachment_5325" align="alignnone" width="417" caption="- Suivi de la complexité du code pour les différents builds -"]"<img class="size-full wp-image-5325" title="metrique_01_CCM" src="../images/metrique_01_CCM.png" alt="Suivi de la complexité du code pour les différents builds" width="417" height="174" />":../images/metrique_01_CCM.png [/caption]
+!../images/metrique_01_CCM.png(Suivi de la complexité du code pour les différents builds)!
 
 h4. Métriques de qualité du code source : "Violations":https://wiki.jenkins-ci.org/display/JENKINS/Violations 
 
@@ -286,7 +286,7 @@ Il reste à configurer le plugin de façon à prendre en compte les fichiers gé
 
 Le plugin est configuré et un graphe regroupant les diverses métriques devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Violations” est également disponible dans la colonne de gauche.
 
-[caption id="attachment_5296" align="alignnone" width="519" caption="- Graphe de suivi des métriques d&#39;analyse de code -"]"<img class="size-full wp-image-5296" title="Jenkins_10_metriques_violation" src="../images/Jenkins_10_metriques_violation.png" alt="legende : Graphe de suivi des métriques d'analyse de code" width="519" height="243" />":../images/Jenkins_10_metriques_violation.png [/caption]
+!../images/Jenkins_10_metriques_violation.png(Graphe de suivi des métriques d'analyse de code)!
 
 h4. Détection de tàches à faire : Task Scanner Plugin
 
@@ -298,7 +298,7 @@ Puis configurez les options suivantes :
 
 Le plugin est configuré et un graphe “Open Tasks Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Tâches ouvertes” est également disponible dans la colonne de gauche.
 
-[caption id="attachment_5326" align="alignnone" width="416" caption="- Suivi des tâches laissées ouverte dans le code source -"]"<img class="size-full wp-image-5326" title="metrique_02_OpenTasks" src="../images/metrique_02_OpenTasks.png" alt="Suivi des tâches laissées ouverte dans le code source" width="416" height="175" />":../images/metrique_02_OpenTasks.png [/caption]
+!../images/metrique_02_OpenTasks.png(Suivi des tâches laissées ouverte dans le code source)!
 
 h4. Détection des similarités de code : Simian / Dry Plugin
 
@@ -308,7 +308,7 @@ Dans la configuration du projet et activez la case à cocher “Publish duplicat
 Puis configurez l’option “Duplicate code results” par le nom du fichier xml de résultat (pour nous : simian-output.xml )
 Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin”, un graphe “Duplicate Code Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Duplicate Code” est également disponible dans la colonne de gauche pour parcourir les résultats...
 
-[caption id="attachment_5332" align="alignnone" width="291" caption="- Affichage des similarités (code dupliqué) dans le dernier build -"]"<img class="size-full wp-image-5332" title="metrique_06_Similarités" src="../images/metrique_06_Similarités.png" alt="Affichage des similarités (code dupliqué) dans le dernier build" width="291" height="46" />":../images/metrique_06_Similarités.png [/caption]
+!../images/metrique_06_Similarités.png(Affichage des similarités, ou code dupliqué, dans le dernier build)!
 
 h4. Suivi des Warnings de compilation : "Warnings Plugin":https://wiki.jenkins-ci.org/display/JENKINS/Warnings+Plugin 
 
@@ -316,7 +316,7 @@ Ce plugin permet l’affichage, la comptabilisation et le suivi des warnings lor
 Dans la configuration du projet et activez la case à cocher “Scan for compiler warnings” et cliquez sur le bouton “ajouter” à côté du texte “Scan console log” et sélectionnez le parser “MSBuild”.
 Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin”, un graphe “Compiler Warnings Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Compiler Warnings” est également disponible dans la colonne de gauche pour parcourir les résultats..
 
-[caption id="attachment_5327" align="alignnone" width="417" caption="- Suivi des Warnings de compilation -"]"<img class="size-full wp-image-5327" title="metrique_03_Warnings" src="../images/metrique_03_Warnings.png" alt="Suivi des Warnings de compilation" width="417" height="189" />":../images/metrique_03_Warnings.png [/caption]
+!../images/metrique_03_Warnings.png(Suivi des Warnings de compilation)!
 
 h4. Gamification
 
