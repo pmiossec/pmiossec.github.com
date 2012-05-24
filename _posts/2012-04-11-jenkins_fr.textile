@@ -26,11 +26,16 @@ h2. Installation et configuration du contrôleur de code source : Git
 
 Le contrôleur de code source étant une brique essentielle, nous allons faire une présentation succinte mais le sujet étant très (trop?) vaste, nous n'évoquerons que le stricte minimum et vous invitons à completer ses informations par des recherches sur le web.
 
+
 Sous windows, l’utilisation de Git nécessite l’utilisation du portage sous windows msysgit (http://code.google.com/p/msysgit/). Nous conseillons d’installer <span style="color: #ff6600;"> </span> GitExtension (http://code.google.com/p/gitextensions/) qui permet de l’installer en même temps qu’une interface graphique à Git et une extension pour VisualStudio 2005 à 2010 (msysgit étant suffisant pour l'intégration continue).
+
 
 Lancez l’installation (Suivant, suivant... et répondez au 2 questions (format de fin de ligne des fichiers et intégration de git dans le système) suivants vos besoins. Les choix par défaut conviennent la plupart du temps.
 
+
 Après, l’installation, Git necessite de configurer le nom et l’email de l’utilisateur. Cela peut être fait, soit en lançant GitExtension pour la première fois (ou après dans l’onglet “Global Settings” de la fenêtre de configuration obtenu dans le menu “Settings=&gt;Settings...”), soit en ligne de commande:
+
+
 bc. git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 
@@ -152,6 +157,7 @@ Nous allons maintenant configurer la couverture de code qui permet de visualiser
 Pour cela, nous allons utiliser l’outil "opencover":https://github.com/sawilde/opencover/downloads et l’outil de génération de rapport "ReportGenerator":http://reportgenerator.codeplex.com/ . Les télécharger, les installer et mettre les exécutables dans le PATH.
 Pour générer la couverture de code, nous allons modifier le script écrit précédement de façon à appeler les tests unitaires depuis l’outil de couverture de code.
 Une ligne de commande utilisant opencover doit être de la forme :
+
 bc. OpenCover.Console.exe -register:user -target:"<strong>Chemin absolu vers l’executable de test</strong>" -targetargs:"<strong>arguments de l’executable passés précédement</strong>" -filter:+[<strong>MonProjet</strong>.*]* -output:"coverage_report.xml"
 
 Notes : 
@@ -162,6 +168,7 @@ Il reste à inclure dans le script l’appel au générateur de rapport html ave
 @reportgenerator.exe <strong>fichierResultatCouverture.xml</strong> <strong>repertoireDeGeneration</strong>@
 
 Dans notre cas le script une fois modifié est donc le suivant :
+
 bc. del MSTestResults.trx
 OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe" -targetargs:"/nologo /usestderr /testSettings:\"<strong>%WORKSPACE%\Solution\ContinuousIntegration.testsettings\</strong>" /resultsfile:MSTestResults.trx  /testcontainer:\"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll</strong>\"  /testcontainer:\"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll</strong>\" " -filter:+[<strong>MonProjet</strong>.*]* -output:"coverage_report.xml"
 reportgenerator <strong>coverage_report.xml</strong> <strong>coverage_report</strong>
@@ -191,11 +198,11 @@ h3. Mises en place de métriques de notre code
 Il est maintenant intéressant d’obtenir des métriques un peu plus poussées sur le code écrit au court du projet pour donner un retour aux développeurs sur la qualité du code écrit. Pour cela, nous pouvons utiliser plusieurs plugin, décrit ci-dessous, au choix...
 
 Nous allons ici adresser les thèmes suivants :
-- Complexité du code écrit (plugin “CCM”)
-- Duplication de code (plugin “Dry” / outil Simian)
-- Suivi des taches ouvertes (plugin “Open Task Scanner”)
-- Analyse statistiques de code et des assemblys (Plugin “Violation” / outil FxCop, Simian, Gendarme, StyleCop)
-- Suivi des Warnings de compilation (Plugin “Warnings”)
+* Complexité du code écrit (plugin “CCM”)
+* Duplication de code (plugin “Dry” / outil Simian)
+* Suivi des taches ouvertes (plugin “Open Task Scanner”)
+* Analyse statistiques de code et des assemblys (Plugin “Violation” / outil FxCop, Simian, Gendarme, StyleCop)
+* Suivi des Warnings de compilation (Plugin “Warnings”)
 
 h4. La Complexité ciclomatique : CCM
 
@@ -228,14 +235,16 @@ Nous allons ajouter une ligne de commande pour chaque outil utilisé.
 h5. Gendarme
 
 Gendarme est un outil d’analyse d’assembly. Pour cela, nous devons spécifier le chemin des assemblys que nous souhaitons analyser. Nous lui indiquons également de générer un fichier xml et lui indiquons le nom du fichier résultat.
-bc. gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe</strong> <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong>
+
+@ gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe</strong> <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong> @
 
 Note: Gendarme nécessite la présence des fichiers pdb dans le répertoire du fichier assembly analysé.
 
 h5. Simian
 
 Simian est un outil d’analyse de code source à la recherche de code dupliqué. Pour cela, nous devons spécifier le pattern des fichiers à analyser (et également si besoin celui des fichiers à exclure). Nous lui indiquons également de générer un fichier xml et lui indiquons le nom du fichier résultat.
-bc. simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs
+
+@ simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs @
 
 Note: Le pattern **/*.cs indique qu’il faut analyser tous les fichier .cs se trouvant dans tous les sous-répertoires
 
@@ -246,7 +255,7 @@ Comme gendarme, il faut lui indiquer les fichiers assembly à analyser (paramèt
 FxCop fonctionne grâce à des fichiers de règles que l’on peut utiliser au choix (paramètres “/rule:”) et dont la liste est disponible dans le sous-répertoire “rules” du dossier d’installation de FxCop. Dans l’exemple ci-dessous, toutes les règles sont utilisées.
 Il convient également de lui indiquer le fichier de sortie (paramètre “/out:”)
 
-bc. fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*</strong>" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml
+@ fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*</strong>" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml @
 
 Note: Pour des raisons inconnues, il faut également indiquer à FxCop le répertoire (paramètre “/directory:”) du fichier “System.Core.dll” soit, dans notre cas, et en fonction su système et du framework “C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0”. Il est également conseillé de lui indiquer le répertoire des assemblys à tester
 
@@ -257,7 +266,7 @@ StyleCop fonctionne à partir d’un fichier de règles qu’il est préférable
 La configuration se fait avec l’outil “StyleCopSettingsEditor.exe” en passant le fichier de configuration en paramètre de l’application. Une fois configuré selon vos besoins, placez le fichier dans le répertoire de travail de Jenkins ( qui correspond à JENKINS_HOME\jobs\MonJob\Workspace avec JENKINS_HOME au répertoire de jenkins --cf valeur dans "Administrer Jenkins":http://localhost:8080/manage  -&gt; "Informations sur le système":http://localhost:8080/systemInfo  -&gt;”JENKINS_HOME”-- et MonJob au nom du job de build créé dans Jenkins). Si le fichier n’est pas positionné dans ce répertoire, lui indiquer le chemin complet.
 
 On peut maintenant ajouter la ligne de commande suivante au script où on indique le chemin vers le fichier de la Solution, le nom du fichier de résultat à générer et le fichier de paramètre à utiliser :
-bc. StyleCopCLI -sln <strong>%WORKSPACE%\Solution\MaSolution.sln</strong> -out StyleCopResults.xml -set Settings.StyleCop
+@ StyleCopCLI -sln <strong>%WORKSPACE%\Solution\MaSolution.sln</strong> -out StyleCopResults.xml -set Settings.StyleCop @
 
 
 Enfin, le batch doit se terminer par “exit 0” pour que le build n’échoue pas si un des outils renvoie un code non satisfaisant.
