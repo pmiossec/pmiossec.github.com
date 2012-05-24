@@ -9,31 +9,31 @@ tags:
 published: true
 ---
 
-Utilisation de Git en environnement hostile (... avec un serveur TFS)
+h1. Utilisation de Git en environnement hostile (... avec un serveur TFS)
 
-h1. Cloner la branche principale du dépôt tfs
+h2. Cloner la branche principale du dépôt tfs
 
-h2. En récupérant l'historique commplet du dépot
+* En récupérant l'historique commplet du dépot
 @git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
 
-h2. En ne récupérerant que le dernier commit du dépot
+* En ne récupérerant que le dernier commit du dépot
 @git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
 
 A l'ouverture de la solution Visual Studio => choix de la déconnexion temporaire (sinon il modifie plein de fichier)
 
-h1. Synchronisation avec le dépot tfs
-h2. Récupération des commits du tronc
+h2. Synchronisation avec le dépot tfs
+h3. Récupération des commits du tronc
 @git tfs fetch@
 
-h2. Commiter sur le dépot tfs
+h3. Commiter sur le dépot tfs
 @git tfs ct@
 
 
 ! Toujours faire une fetch & rebase (ou merge) avant de commiter (sinon risque d'écrasement de fichier communs modifiés)
 
-h1. Gestion d'une branche
+h2. Gestion d'une branche
 
-h2. Récupération de la branche
+h3. Récupération de la branche
 
 A l'heure actuelle, il n'y a pas de solution simple et évidente :(
 Toutefois, ce n'est pas impossible...
@@ -63,11 +63,15 @@ fetch = refs/remotes/tfs/maBrancheTfs
     6. Récupérer l'historique des commits de la branche tfs!!! Commande à effectuer chaque fois qu'on voudra resynchroniser la branche avec le serveur...
     @git tfs fetch -i maBrancheTfs@
 
-h2. Récupération des commits d'une branche
+h3. Récupération des commits d'une branche
 @git tfs fetch -i maBrancheTfs@
 
-h2. Commiter sur une branche
+h3. Commiter sur une branche
 @git tfs ct -i maBrancheTfs@
+
+Note : Lors de commit, on peut ajouter des références aux éléments de travail pour les associer ou les clore (lors de l'utilisation de rcheckin). Voici la syntaxe :
+@git-tfs-work-item: <id> associate@ 
+@git-tfs-work-item: <id> resolve@
 
 <!--
 Annexe :
