@@ -24,23 +24,18 @@ Nous allons donc voir comment installer et configuer ces 2 briques. Pour cela, n
 
 h2. Installation et configuration du contrôleur de code source : Git
 
-Le contrôleur de code source étant une brique essentielle, nous allons faire une présentation succinte mais le sujet étant très (trop?) vaste, nous n'évoquerons que le stricte minimum et vous invitons à completer ses informations par des recherches sur le web.
+p. Le contrôleur de code source étant une brique essentielle, nous allons faire une présentation succinte mais le sujet étant très (trop?) vaste, nous n'évoquerons que le stricte minimum et vous invitons à completer ses informations par des recherches sur le web.
 
+p. Sous windows, l’utilisation de Git nécessite l’utilisation du portage sous windows msysgit (http://code.google.com/p/msysgit/). Nous conseillons d’installer <span style="color: #ff6600;"> </span> GitExtension (http://code.google.com/p/gitextensions/) qui permet de l’installer en même temps qu’une interface graphique à Git et une extension pour VisualStudio 2005 à 2010 (msysgit étant suffisant pour l'intégration continue).
 
-Sous windows, l’utilisation de Git nécessite l’utilisation du portage sous windows msysgit (http://code.google.com/p/msysgit/). Nous conseillons d’installer <span style="color: #ff6600;"> </span> GitExtension (http://code.google.com/p/gitextensions/) qui permet de l’installer en même temps qu’une interface graphique à Git et une extension pour VisualStudio 2005 à 2010 (msysgit étant suffisant pour l'intégration continue).
+p. Lancez l’installation (Suivant, suivant... et répondez au 2 questions (format de fin de ligne des fichiers et intégration de git dans le système) suivants vos besoins. Les choix par défaut conviennent la plupart du temps.
 
-
-Lancez l’installation (Suivant, suivant... et répondez au 2 questions (format de fin de ligne des fichiers et intégration de git dans le système) suivants vos besoins. Les choix par défaut conviennent la plupart du temps.
-
-
-Après, l’installation, Git necessite de configurer le nom et l’email de l’utilisateur. Cela peut être fait, soit en lançant GitExtension pour la première fois (ou après dans l’onglet “Global Settings” de la fenêtre de configuration obtenu dans le menu “Settings=&gt;Settings...”), soit en ligne de commande:
-
+p. Après, l’installation, Git necessite de configurer le nom et l’email de l’utilisateur. Cela peut être fait, soit en lançant GitExtension pour la première fois (ou après dans l’onglet “Global Settings” de la fenêtre de configuration obtenu dans le menu “Settings=&gt;Settings...”), soit en ligne de commande:
 
 bc. git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 
-
-Le but n’est pas de détailler l’utilisation de Git (il y a suffisamment de documentation sur le sujet) et l’utilisation de l’interface graphique de GitExtension est en outre assez explicite. Voici toutefois quelques commandes de base necessaire à creer notre dépot et ajouter du contenu pour pouvoir configurer et tester notre usine logicielle.
+p. Le but n’est pas de détailler l’utilisation de Git (il y a suffisamment de documentation sur le sujet) et l’utilisation de l’interface graphique de GitExtension est en outre assez explicite. Voici toutefois quelques commandes de base necessaire à creer notre dépot et ajouter du contenu pour pouvoir configurer et tester notre usine logicielle.
 
 bc. //creation d’un dépot dans le répertoire courant
 git init
@@ -59,9 +54,11 @@ h2. Installation et configuration de Jenkins
 
 h3. Installation de Jenkins
 
-L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war à l’adresse suivante "http://jenkins-ci.org/":http://jenkins-ci.org/  et copier le fichier dans le répertoire où vous voulez installer Jenkins.
-Pour lancer jenkins, vous devez avoir une version de la JVM (Java Virtual Machine) installée (nous ne détaillerons pas le procédure d'installation ici).
-Lancez jenkins depuis la ligne de commande (depuis le répertoire de jenkins) :
+p. L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war à l’adresse suivante "http://jenkins-ci.org/":http://jenkins-ci.org/  et copier le fichier dans le répertoire où vous voulez installer Jenkins.
+
+p. Pour lancer jenkins, vous devez avoir une version de la JVM (Java Virtual Machine) installée (nous ne détaillerons pas le procédure d'installation ici).
+
+p. Lancez jenkins depuis la ligne de commande (depuis le répertoire de jenkins) :
 @java.exe -jar jenkins.war@
 Attendre le lancement et dans le navigateur chargez la page "http://localhost:8080/":http://localhost:8080/
 
