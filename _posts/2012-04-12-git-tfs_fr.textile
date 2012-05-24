@@ -13,7 +13,7 @@ h1. Utilisation de Git en environnement hostile (... avec un serveur TFS)
 
 h2. Cloner la branche principale du dépôt tfs
 
-* En récupérant l'historique commplet du dépot
+* En récupérant l'historique complet du dépot
 @git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
 
 * En ne récupérerant que le dernier commit du dépot
@@ -22,12 +22,12 @@ h2. Cloner la branche principale du dépôt tfs
 A l'ouverture de la solution Visual Studio => choix de la déconnexion temporaire (sinon il modifie plein de fichier)
 
 h2. Synchronisation avec le dépot tfs
+
 h3. Récupération des commits du tronc
 @git tfs fetch@
 
 h3. Commiter sur le dépot tfs
 @git tfs ct@
-
 
 ! Toujours faire une fetch & rebase (ou merge) avant de commiter (sinon risque d'écrasement de fichier communs modifiés)
 
@@ -69,11 +69,11 @@ h3. Récupération des commits d'une branche
 h3. Commiter sur une branche
 @git tfs ct -i maBrancheTfs@
 
-Note : Lors de commit, on peut ajouter des références aux éléments de travail pour les associer ou les clore (lors de l'utilisation de rcheckin). Voici la syntaxe :
+Note : Lors d'un commit local, on peut ajouter des références aux éléments de travail pour les associer ou les clore (lors de l'utilisation de rcheckin). Voici la syntaxe :
 @git-tfs-work-item: <id> associate@ 
 @git-tfs-work-item: <id> resolve@
 
-<!--
+==<!--
 Annexe :
 http://www.drrandom.org/post/2011/11/16/Grappling-with-multiple-remotes-in-git-tfs.aspx
 http://stackoverflow.com/questions/8559814/merge-two-tfs-branches-with-git-tfs
@@ -88,7 +88,7 @@ https://github.com/git-tfs/git-tfs/issues/171
 https://github.com/git-tfs/git-tfs/issues/172
 https://github.com/spdr870/gitextensions/issues/869
 
-=======================================================
+___________________________________________________
 Exclusion  des fichiers App.config modifiés localement:
 
 git update-index --assume-unchanged <file>
@@ -101,6 +101,6 @@ La liste de fichier ignorés :
 
 git ls-files -v | grep ^[a-z]
 http://gitready.com/intermediate/2009/02/18/temporarily-ignoring-files.html
--->
+-->==
 
 
