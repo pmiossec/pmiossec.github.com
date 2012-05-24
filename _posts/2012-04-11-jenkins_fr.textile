@@ -63,7 +63,9 @@ p. Lancez jenkins depuis la ligne de commande (depuis le répertoire de jenkins)
 Attendre le lancement et dans le navigateur chargez la page "http://localhost:8080/":http://localhost:8080/
 
 !../images/Jenkins_01_ecran_principal.png(Ecran principal de Jenkins avec 2 projets configurés)!
+
 p=. _Ecran principal de Jenkins avec 2 projets configurés_
+
 ==<!-- width="776" height="277" -->==
 
 Il est fortement conseillé d’installer jenkins en tant que service windows sinon la procédure de lancement en ligne de commande décrite ci-dessus devra être reproduite systématiquement.
@@ -120,7 +122,7 @@ Il peut cependant être nécessaire de reconstruire entièrement le projet (dans
 A ce stade, vous pouvez lancer un build et vérifier que votre projet est bien rapatrié du dépôt Git et compile. Pour cela, n’oubliez pas de sauver la configuration puis cliquez sur "Lancer un build":http://localhost:8080/job/JenkinsTest/build?delay=0sec .
 Si le build ne marche pas ou que le résultat attendu n’est pas le bon, vous pouvez maintenant et tout au long de la configuration des différentes  étapes voir les logs de déroulement de chaque build en affichant la page “Sortie Console” du build souhaité.
 
-[caption id="attachment_5331" align="alignnone" width="733" caption="- Ecran de résultat d&#39;un build avec l&#39;ensemble des métriques disponibles -"]"<img class="size-full wp-image-5331" title="Jenkins_07_resultat_compilation" src="../images/Jenkins_07_resultat_compilation.png" alt="Ecran de résultat d'un build avec l'ensemble des métriques disponibles" width="733" height="776" />":../images/Jenkins_07_resultat_compilation.png [/caption]
+!../images/Jenkins_07_resultat_compilation.png(Ecran de résultat d'un build avec l'ensemble des métriques disponibles)!
 
 h4. Configuration d'une tache de tests unitaires
 
@@ -148,7 +150,7 @@ A ce stade, vous pouvez lancer un build et vérifier que les tests sont bien exe
 
 L’execution de 2 builds avec des résultats fait ainsi apparaitre un graphe représentant l’évolution du nombre de tests en échec sur le projet.
 
-[caption id="attachment_5294" align="alignnone" width="600" caption="- Résultats des tests untaires des différents builds -"]"<img class="size-full wp-image-5294" title="Jenkins_08_resultat_tests" src="../images/Jenkins_08_resultat_tests.png" alt="legende : Résultats des tests untaires des différents builds" width="600" height="287" />":../images/Jenkins_08_resultat_tests.png [/caption]
+!../images/Jenkins_08_resultat_tests.png(Résultats des tests untaires des différents builds)!
 
 h4. Mesure de la couverture de code
 
