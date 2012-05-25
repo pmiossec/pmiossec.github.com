@@ -260,7 +260,7 @@ h5. Gendarme
 
 Gendarme est un outil d’analyse d’assembly. Pour cela, nous devons spécifier le chemin des assemblys que nous souhaitons analyser. Nous lui indiquons également de générer un fichier xml et lui indiquons le nom du fichier résultat.
 
-@gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe</strong> <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong> @
+@gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe</strong> <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong>@
 
 Note: Gendarme nécessite la présence des fichiers pdb dans le répertoire du fichier assembly analysé.
 
@@ -282,7 +282,7 @@ FxCop fonctionne grâce à des fichiers de règles que l’on peut utiliser au c
 
 Il convient également de lui indiquer le fichier de sortie (paramètre “/out:”)
 
-@fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*</strong>" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml @
+@fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*</strong>" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml@
 
 Note: Pour des raisons inconnues, il faut également indiquer à FxCop le répertoire (paramètre “/directory:”) du fichier “System.Core.dll” soit, dans notre cas, et en fonction su système et du framework “C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0”. Il est également conseillé de lui indiquer le répertoire des assemblys à tester
 
