@@ -85,7 +85,7 @@ Dans l’onglet “Disponibles”, nous choisirons :
 
 Puis cliquer sur “Installer sans redémarrer”
 
-h5. 2.2.2. Configuration des outils .Net
+h5(#config_dotnet). 2.2.2. Configuration des outils .Net
 
 Toujours dans "Administrer Jenkins":http://localhost:8080/manage , cliquez sur "Configurer le système":http://localhost:8080/configure .
 Verifiez que l’executable de Git est bien détecté. Si ce n’est pas le cas, rajoutez Git dans le PATH de votre système (solution conseillée) ou renseignez dans le champ proposé, le chemin complet de l’exécutable.
@@ -113,7 +113,7 @@ h5. 2.2.6. Compilation des sources
 
 Dans le paragraphe “Build”, cliquez sur le bouton “Ajouter une étape au Build” et selectionnez “Build a VisualStudio projet or solution using MSBuild”
 
-Dans “MsBuild Version”, vous devez retrouver la ligne correspondant à la configuration que vous avez effectuée à l'étape "§2.2.1. Configuration des outils .Net". Sélectionnez là.
+Dans “MsBuild Version”, vous devez retrouver la ligne correspondant à la configuration que vous avez effectuée à l'étape "Configuration des outils .Net":#config_dotnet . Sélectionnez là.
 
 Dans “MsBuild Build File”, indiquez le chemin (en relatif) du fichier .sln de votre projet.
 
