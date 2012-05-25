@@ -71,7 +71,7 @@ Pour cela, dans l’écran principal, cliquez sur "Administrer Jenkins":http://l
 
 h4. 2.2. Configuration de la construction des sources du projet
 
-*Note préalable :* La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe §2.2.4.
+*Note préalable :* La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe §2.4.
 
 h5. 2.2.1. Installation des plugins
 
@@ -113,7 +113,7 @@ h5. 2.2.6. Compilation des sources
 
 Dans le paragraphe “Build”, cliquez sur le bouton “Ajouter une étape au Build” et selectionnez “Build a VisualStudio projet or solution using MSBuild”
 
-Dans “MsBuild Version”, vous devez retrouver la ligne correspondant à la configuration que vous avez effectuée à l'étape "§2.2.2.1. Configuration des outils .Net". Sélectionnez là.
+Dans “MsBuild Version”, vous devez retrouver la ligne correspondant à la configuration que vous avez effectuée à l'étape "§2.2.1. Configuration des outils .Net". Sélectionnez là.
 
 Dans “MsBuild Build File”, indiquez le chemin (en relatif) du fichier .sln de votre projet.
 
