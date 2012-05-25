@@ -4,8 +4,8 @@ title: "Git-tfs : Utilisation de Git avec un serveur TFS"
 description: "Git-tfs : Utilisation de Git avec un serveur TFS"
 categories: .Net
 tags:
-- Jenkins
-- Integration Continue
+- Git
+- TFS
 published: true
 ---
 _(ou comment utiliser Git en environnement hostile!)_
