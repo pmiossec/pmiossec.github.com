@@ -8,13 +8,13 @@ tags:
 - Integration Continue
 published: true
 ---
-h2. Qu'est ce qu'une usine logicielle ?
+h2. 1.Qu'est ce qu'une usine logicielle ?
 
 Une usine logicielle est un ensemble d’outils et de pratiques permettant d’automatiser les différentes étapes du développement d’un logiciel.
 Permettant ainsi la mise en place d’un processus automatisé optimisé, le rendant ainsi reproductible autant que souhaité
 sans qu’un membre de l’équipe ne soit mobilisé (et sans erreur de mainpulation).
 
-h2. Installation et mise en place
+h2. 2.Installation et mise en place
 
 Les 2 briques indispensables pour la réalisation d’une usine logicielle sont :
 * le logiciel de gestion de version, qui contient les sources du projet
@@ -22,7 +22,7 @@ Les 2 briques indispensables pour la réalisation d’une usine logicielle sont 
 
 Nous allons donc voir comment installer et configuer ces 2 briques. Pour cela, nous utiliserons donc respectivement Git (pour la gestion des sources) et Jenkins (pour l'intégration continue).
 
-h3. Installation et configuration du contrôleur de code source : Git
+h3. 2.1.Installation et configuration du contrôleur de code source : Git
 
 p. Le contrôleur de code source étant une brique essentielle, nous allons faire une présentation succinte mais le sujet étant très (trop?) vaste, nous n'évoquerons que le stricte minimum et vous invitons à completer ses informations par des recherches sur le web.
 
@@ -50,9 +50,9 @@ Quelques astuces :
 * Généralement, le fichier .gitignore consiste en le premier commit du projet mais il est possible (et peut être judicieux si tous les projets sont dans le même langage) de le définir plutôt dans ses préférences utilisateur pour ne pas être obligé de le rependre dans tous ses dépots.
 * Utilisation de l’outil de merge p4merge qui permet une comparaison de fichiers et surtout un merge de modifications de façon plus aisée (3 way merge). "Téléchargement":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools et "installation":http://pontusmunck.com/2010/01/30/using-a-cool-merge-tool-with-svn-or-git/ .
 
-h3. Installation et configuration de Jenkins
+h3. 2.2.Installation et configuration de Jenkins
 
-h4. Installation de Jenkins
+h4. 2.2.1.Installation de Jenkins
 
 p. L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war à l’adresse suivante "http://jenkins-ci.org/":http://jenkins-ci.org/  et copier le fichier dans le répertoire où vous voulez installer Jenkins.
 
@@ -69,7 +69,7 @@ p=. _Ecran principal de Jenkins avec 2 projets configurés_
 Il est fortement conseillé d’installer jenkins en tant que service windows sinon la procédure de lancement en ligne de commande décrite ci-dessus devra être reproduite systématiquement.
 Pour cela, dans l’écran principal, cliquez sur "Administrer Jenkins":http://localhost:8080/manage puis sur “Installer en tant que service Windows”.
 
-h4. Configuration de la construction des sources du projet
+h4. 2.2.2.Configuration de la construction des sources du projet
 
 *Note préalable :* La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe §2.2.4.
 
