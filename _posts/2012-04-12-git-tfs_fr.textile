@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Git-tfs : Utilisation de git avec un serveur tfs"
-description: "Git-tfs : Utilisation de git avec un serveur tfs"
+title: "Git-tfs : Utilisation de Git avec un serveur TFS"
+description: "Git-tfs : Utilisation de Git avec un serveur TFS"
 categories: .Net
 tags:
 - Jenkins
