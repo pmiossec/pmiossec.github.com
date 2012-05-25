@@ -371,7 +371,7 @@ h4. ThinBackup
 
 Ce plugin permet de faire des sauvegardes et restaurations des configurations des différents jobs créés.
 
-Installez le plugin, redemarrez Jenkins et allez dans "Administrer Jenkins":http://localhost:8080/manage , ”"ThinBackup":http://localhost:8080/thinBackup ” et ”Settings”. Configurez le “Backup directory” avec le répertoire de votre choix.
+Installez le plugin, redemarrez Jenkins et allez dans "”Administrer Jenkins”":http://localhost:8080/manage , "”ThinBackup”":http://localhost:8080/thinBackup  et ”Settings”. Configurez le “Backup directory” avec le répertoire de votre choix.
 
 Vous pouvez maintenant sauvegarde et restaurer vis configurations.
 
@@ -390,7 +390,7 @@ Pour cela, il faut installer préalablement TOUS les plugins utilisés dans la c
 * "Violations plugin":http://localhost:8080/pluginManager/wiki.jenkins-ci.org/display/JENKINS/Violations ,
 * "Warnings Plug-in":http://wiki.jenkins-ci.org/x/G4CGAQ 
 
-Configurer les plugins le necessitant (git, msbuild, ccm) dans "Administrer Jenkins":http://localhost:8080/manage , ”"Configurer le système":http://localhost:8080/configure ”. Cette configuration a été décrite précédement.
+Configurer les plugins le necessitant (git, msbuild, ccm) dans "”Administrer Jenkins”":http://localhost:8080/manage , "”Configurer le système”":http://localhost:8080/configure . Cette configuration a été décrite précédement.
 
 Décompressez maintenant "cette archive":../files/article_jenkins/FULL-2012-04-09_23-48.zip  dans le répertoire utilisé par ThinBackup.
 
