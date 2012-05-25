@@ -66,8 +66,6 @@ Attendre le lancement et dans le navigateur chargez la page "http://localhost:80
 
 p=. _Ecran principal de Jenkins avec 2 projets configurés_
 
-==<!-- width="776" height="277" -->==
-
 Il est fortement conseillé d’installer jenkins en tant que service windows sinon la procédure de lancement en ligne de commande décrite ci-dessus devra être reproduite systématiquement.
 Pour cela, dans l’écran principal, cliquez sur "Administrer Jenkins":http://localhost:8080/manage puis sur “Installer en tant que service Windows”.
 
@@ -124,6 +122,8 @@ Si le build ne marche pas ou que le résultat attendu n’est pas le bon, vous p
 
 !../images/Jenkins_07_resultat_compilation.png(Ecran de résultat d'un build avec l'ensemble des métriques disponibles)!
 
+p=. _Ecran de résultat d'un build avec l'ensemble des métriques disponibles_
+
 h4. Configuration d'une tache de tests unitaires
 
 Nous allons maintenant configurer l’intégration continue pour executer les tests unitaires MSTest.
@@ -151,6 +151,9 @@ A ce stade, vous pouvez lancer un build et vérifier que les tests sont bien exe
 L’execution de 2 builds avec des résultats fait ainsi apparaitre un graphe représentant l’évolution du nombre de tests en échec sur le projet.
 
 !../images/Jenkins_08_resultat_tests.png(Résultats des tests untaires des différents builds)!
+
+p=. _Résultats des tests untaires des différents builds_
+
 
 h4. Mesure de la couverture de code
 
@@ -186,6 +189,9 @@ Un nouveau lien “Couverture de code” apparaît sur la page du projet nous pe
 
 !../images/Jenkins_09_couverture.png(Résultats de la couverture de code)!
 
+p=. _Résultats de la couverture de code_
+
+
 Nous avons maintenant mis en place assez rapidement une usine logicielle minimale nous permettant de compiler les sources archivées sur un dépôt Git commun, exécuter les tests unitaires et obtenir une couverture de code.
 
 Arrivée ici, nous avons rempli une bonne partie de nos objectifs et avons une usine logicielle fonctionnelle. Il convient toutefois de permettre à l’équipe d’être au courant de l’état du build (cela est très important de fournir de façon active les résultats à l’équipe de développement). Pour cela, Jenkins fourni de nombreuses méthodes nativement ou à travers l’installation de plugins (email, flux rss, lava lamp,...). Nous conseillons toutefois d’installer le plugin "Hudson Tray Application Plugin":http://wiki.hudson-ci.org/display/HUDSON/Hudson+Tray+Application  qui permet à toute personne d’installer depuis le portail Jenkins un programme affichant le résultat des builds dans la barre de notification du système.
@@ -219,6 +225,9 @@ Aller dans “Administrer Jenkins” puis "Configurer le système":http://localh
 Sauvez, buildez et contemplez les résultats :)
 
 !../images/metrique_01_CCM.png(Suivi de la complexité du code pour les différents builds)!
+
+p=. _Suivi de la complexité du code pour les différents builds_
+
 
 h4. Métriques de qualité du code source : "Violations":https://wiki.jenkins-ci.org/display/JENKINS/Violations 
 
@@ -288,6 +297,9 @@ Le plugin est configuré et un graphe regroupant les diverses métriques devrait
 
 !../images/Jenkins_10_metriques_violation.png(Graphe de suivi des métriques d'analyse de code)!
 
+p=. _Graphe de suivi des métriques d'analyse de code_
+
+
 h4. Détection de tàches à faire : Task Scanner Plugin
 
 Ce plugin permet de détecter des chaines de caractères types (FIXME, TODO,... dans les commentaires et de suivre leur évolution.
@@ -300,6 +312,9 @@ Le plugin est configuré et un graphe “Open Tasks Trend” devrait être dispo
 
 !../images/metrique_02_OpenTasks.png(Suivi des tâches laissées ouverte dans le code source)!
 
+p=. _Suivi des tâches laissées ouverte dans le code source_
+
+
 h4. Détection des similarités de code : Simian / Dry Plugin
 
 Ce plugin permet une autre visualisation intéressante de l’analyse de la duplication de lignes de codes (donné par l’outil simian).
@@ -310,6 +325,9 @@ Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin�
 
 !../images/metrique_06_Similarités.png(Affichage des similarités, ou code dupliqué, dans le dernier build)!
 
+p=. _Affichage des similarités, ou code dupliqué, dans le dernier build_
+
+
 h4. Suivi des Warnings de compilation : "Warnings Plugin":https://wiki.jenkins-ci.org/display/JENKINS/Warnings+Plugin 
 
 Ce plugin permet l’affichage, la comptabilisation et le suivi des warnings lors de la compilation du projet.
@@ -317,6 +335,9 @@ Dans la configuration du projet et activez la case à cocher “Scan for compile
 Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin”, un graphe “Compiler Warnings Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Compiler Warnings” est également disponible dans la colonne de gauche pour parcourir les résultats..
 
 !../images/metrique_03_Warnings.png(Suivi des Warnings de compilation)!
+
+p=. _Suivi des Warnings de compilation_
+
 
 h4. Gamification
 
