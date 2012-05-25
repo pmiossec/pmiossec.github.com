@@ -1,19 +1,18 @@
 ---
 layout: post
-title: "Utilisation de git avec un serveur tfs"
-description: "Utilisation de git avec un serveur tfs"
+title: "Git-tfs : Utilisation de git avec un serveur tfs"
+description: "Git-tfs : Utilisation de git avec un serveur tfs"
 categories: .Net
 tags:
 - Jenkins
 - Integration Continue
 published: true
 ---
+_(ou comment utiliser Git en environnement hostile!)_
 
-h2. Utilisation de Git en environnement hostile (... avec un serveur TFS)
+h3. 1. Cloner la branche principale du dépôt tfs
 
-h3. Cloner la branche principale du dépôt tfs
-
-* En récupérant l'historique complet du dépot
+* En récupérant l'historique complet du dépot (long mais conseillé...)
 @git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
 
 * En ne récupérerant que le dernier commit du dépot
@@ -21,21 +20,21 @@ h3. Cloner la branche principale du dépôt tfs
 
 A l'ouverture de la solution Visual Studio => choix de la déconnexion temporaire (sinon il modifie plein de fichier)
 
-h3. Synchronisation avec le dépot tfs
+h3. 2. Synchronisation avec le dépot tfs
 
-h4. Récupération des commits du tronc
+h4. 2.1. Récupération des commits du tronc
 
 @git tfs fetch@
 
-h4. Commiter sur le dépot tfs
+h4. 2.2. Commiter sur le dépot tfs
 
 @git tfs ct@
 
 ! Toujours faire une fetch & rebase (ou merge) avant de commiter (sinon risque d'écrasement de fichier communs modifiés)
 
-h3. Gestion d'une branche
+h3. 3. Gestion d'une branche
 
-h4. Récupération de la branche
+h4. 3.1. Récupération de la branche
 
 A l'heure actuelle, il n'y a pas de solution simple et évidente :(
 Toutefois, ce n'est pas impossible...
@@ -66,11 +65,11 @@ fetch = refs/remotes/tfs/maBrancheTfs
 	6. Récupérer l'historique des commits de la branche tfs!!! Commande à effectuer chaque fois qu'on voudra resynchroniser la branche avec le serveur...
     @git tfs fetch -i maBrancheTfs@
 
-h4. Récupération des commits d'une branche
+h4. 3.2. Récupération des commits d'une branche
 
 @git tfs fetch -i maBrancheTfs@
 
-h4. Commiter sur une branche
+h4. 3.3. Commiter sur une branche
 
 @git tfs ct -i maBrancheTfs@
 
