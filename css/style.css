@@ -86,30 +86,30 @@ h1, h2, h3 {
 }
 
 .huge, h1 {
-	font-size: 30px;
-	line-height: 32px;
+	font-size: 28px;
+	line-height: 30px;
 	letter-spacing: -1px;
 	margin-bottom: 20px;
 }
 
 .large, h2 {
-	font-size: 26px;
-	line-height: 28px;
+	font-size: 24px;
+	line-height: 26px;
 	margin-bottom: 10px;
 }
 
 .bigger, h3 {
-	font-size: 22px;
-	line-height: 32px;
+	font-size: 20px;
+	line-height: 30px;
 }
 
 .big, h4 {
-	font-size: 18px;
-	line-height: 26px;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 body {
-	font: 16px/24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: 12px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .small, small {
@@ -146,7 +146,7 @@ cols    1     2      3      4      5      6      7      8      9      10
 px      68    160    252    344    436    528    620    712    804    896    */
 
 body {	
-	width: 896px;
+	width: 1000px;
 	background: url(../images/bg.png) repeat #e8e8e8;
 	color: rgb(60,60,60);
 	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
