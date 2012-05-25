@@ -9,9 +9,9 @@ tags:
 published: true
 ---
 
-h1. Utilisation de Git en environnement hostile (... avec un serveur TFS)
+h2. Utilisation de Git en environnement hostile (... avec un serveur TFS)
 
-h2. Cloner la branche principale du dépôt tfs
+h3. Cloner la branche principale du dépôt tfs
 
 * En récupérant l'historique complet du dépot
 @git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
@@ -21,21 +21,21 @@ h2. Cloner la branche principale du dépôt tfs
 
 A l'ouverture de la solution Visual Studio => choix de la déconnexion temporaire (sinon il modifie plein de fichier)
 
-h2. Synchronisation avec le dépot tfs
+h3. Synchronisation avec le dépot tfs
 
-h3. Récupération des commits du tronc
+h4. Récupération des commits du tronc
 
 @git tfs fetch@
 
-h3. Commiter sur le dépot tfs
+h4. Commiter sur le dépot tfs
 
 @git tfs ct@
 
 ! Toujours faire une fetch & rebase (ou merge) avant de commiter (sinon risque d'écrasement de fichier communs modifiés)
 
-h2. Gestion d'une branche
+h3. Gestion d'une branche
 
-h3. Récupération de la branche
+h4. Récupération de la branche
 
 A l'heure actuelle, il n'y a pas de solution simple et évidente :(
 Toutefois, ce n'est pas impossible...
@@ -66,11 +66,11 @@ fetch = refs/remotes/tfs/maBrancheTfs
 	6. Récupérer l'historique des commits de la branche tfs!!! Commande à effectuer chaque fois qu'on voudra resynchroniser la branche avec le serveur...
     @git tfs fetch -i maBrancheTfs@
 
-h3. Récupération des commits d'une branche
+h4. Récupération des commits d'une branche
 
 @git tfs fetch -i maBrancheTfs@
 
-h3. Commiter sur une branche
+h4. Commiter sur une branche
 
 @git tfs ct -i maBrancheTfs@
 
