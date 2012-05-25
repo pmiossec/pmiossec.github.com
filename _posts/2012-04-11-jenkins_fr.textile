@@ -56,7 +56,7 @@ h3. 2. Installation et configuration de Jenkins
 
 h4. 2.1. Installation de Jenkins
 
-p. L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war à l’adresse suivante "http://jenkins-ci.org/":http://jenkins-ci.org/  et copier le fichier dans le répertoire où vous voulez installer Jenkins.
+p. L’installation de jenkins reste assez simple. Pour cela, téléchargez la dernière version au format war "sur le site de Jenkins":http://jenkins-ci.org et copier le fichier dans le répertoire où vous voulez installer Jenkins.
 
 p. Pour lancer jenkins, vous devez avoir une version de la JVM (Java Virtual Machine) installée (nous ne détaillerons pas le procédure d'installation ici).
 
