@@ -145,7 +145,7 @@ Un exemple de script pour exécuter des tests mstest ressemblerait à celui-ci (
 
 bc. REM MSTest necessite l’absence du fichier résultat
 del MSTestResults.trx
-MSTest.exe /nologo /usestderr /testSettings:"<strong>%WORKSPACE%\Solution\ContinuousIntegration.testsettings</strong>" /resultsfile:MSTestResults.trx  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll</strong>"  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll</strong>"
+MSTest.exe /nologo /usestderr /testSettings:"%WORKSPACE%\Solution\ContinuousIntegration.testsettings" /resultsfile:MSTestResults.trx  /testcontainer:"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll"  /testcontainer:"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll"
 REM On ne veut pas que le build soit en echec si les tests ne sont pas tous un succès
 exit 0
 
@@ -172,20 +172,20 @@ Pour générer la couverture de code, nous allons modifier le script écrit pré
 
 Une ligne de commande utilisant opencover doit être de la forme :
 
-bc. OpenCover.Console.exe -register:user -target:"<strong>Chemin absolu vers l’executable de test</strong>" -targetargs:"<strong>arguments de l’executable passés précédement</strong>" -filter:+[<strong>MonProjet</strong>.*]* -output:"coverage_report.xml"
+bc. OpenCover.Console.exe -register:user -target:"Chemin absolu vers l’executable de test" -targetargs:"arguments de l’executable passés précédement" -filter:+[MonProjet.*]* -output:"coverage_report.xml"
 
 Notes : 
 # Faire attention à bien passer le chemin absolu vers l’executable de tests (soit dans notre cas "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe")
 # Faire également attention à bien échapper par un ‘\’ tous les guillemets ’ “ ‘ dans les arguments de l’executable.
 
 Il reste à inclure dans le script l’appel au générateur de rapport html avec les résultats du test :
-@reportgenerator.exe <strong>fichierResultatCouverture.xml</strong> <strong>repertoireDeGeneration</strong>@
+@reportgenerator.exe fichierResultatCouverture.xml repertoireDeGeneration@
 
 Dans notre cas le script une fois modifié est donc le suivant :
 
 bc. del MSTestResults.trx
-OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe" -targetargs:"/nologo /usestderr /testSettings:\"<strong>%WORKSPACE%\Solution\ContinuousIntegration.testsettings\</strong>" /resultsfile:MSTestResults.trx  /testcontainer:\"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll</strong>\"  /testcontainer:\"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll</strong>\" " -filter:+[<strong>MonProjet</strong>.*]* -output:"coverage_report.xml"
-reportgenerator <strong>coverage_report.xml</strong> <strong>coverage_report</strong>
+OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe" -targetargs:"/nologo /usestderr /testSettings:\"%WORKSPACE%\Solution\ContinuousIntegration.testsettings\" /resultsfile:MSTestResults.trx  /testcontainer:\"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll\"  /testcontainer:\"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll\" " -filter:+[MonProjet.*]* -output:"coverage_report.xml"
+reportgenerator coverage_report.xml coverage_report
 exit 0
 
 Il reste à indiquer au plugin “HTML Publisher” les informations de couverture à publier. En se referant aux données ci-dessus, on indiquera les données suivantes :
@@ -262,7 +262,7 @@ h6. 2.3.2.1. Gendarme
 
 Gendarme est un outil d’analyse d’assembly. Pour cela, nous devons spécifier le chemin des assemblys que nous souhaitons analyser. Nous lui indiquons également de générer un fichier xml et lui indiquons le nom du fichier résultat.
 
-@gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe</strong> <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong>@
+@gendarme --xml gendarme_report.xml .\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe .\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll@
 
 Note: Gendarme nécessite la présence des fichiers pdb dans le répertoire du fichier assembly analysé.
 
@@ -284,7 +284,7 @@ FxCop fonctionne grâce à des fichiers de règles que l’on peut utiliser au c
 
 Il convient également de lui indiquer le fichier de sortie (paramètre “/out:”)
 
-@fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*</strong>" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml@
+@fxcopcmd /file:"%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*" /directory:"%WORKSPACE%\Chemin\Vers\Mon\Assembly"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml@
 
 Note: Pour des raisons inconnues, il faut également indiquer à FxCop le répertoire (paramètre “/directory:”) du fichier “System.Core.dll” soit, dans notre cas, et en fonction su système et du framework “C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0”. Il est également conseillé de lui indiquer le répertoire des assemblys à tester
 
@@ -297,7 +297,7 @@ StyleCop fonctionne à partir d’un fichier de règles qu’il est préférable
 La configuration se fait avec l’outil “StyleCopSettingsEditor.exe” en passant le fichier de configuration en paramètre de l’application. Une fois configuré selon vos besoins, placez le fichier dans le répertoire de travail de Jenkins ( qui correspond à JENKINS_HOME\jobs\MonJob\Workspace avec JENKINS_HOME au répertoire de jenkins -- cf valeur dans "Administrer Jenkins":http://localhost:8080/manage  - > "Informations sur le système":http://localhost:8080/systemInfo  - > ”JENKINS_HOME” -- et MonJob au nom du job de build créé dans Jenkins). Si le fichier n’est pas positionné dans ce répertoire, lui indiquer le chemin complet.
 
 On peut maintenant ajouter la ligne de commande suivante au script où on indique le chemin vers le fichier de la Solution, le nom du fichier de résultat à générer et le fichier de paramètre à utiliser :
-@StyleCopCLI -sln <strong>%WORKSPACE%\Solution\MaSolution.sln</strong> -out StyleCopResults.xml -set Settings.StyleCop@
+@StyleCopCLI -sln %WORKSPACE%\Solution\MaSolution.sln -out StyleCopResults.xml -set Settings.StyleCop@
 
 
 Enfin, le batch doit se terminer par “exit 0” pour que le build n’échoue pas si un des outils renvoie un code non satisfaisant.
@@ -305,10 +305,10 @@ Enfin, le batch doit se terminer par “exit 0” pour que le build n’échoue 
 Notre batch ressemble donc à cela :
 
 bc. REM Analyse statistique
-gendarme --xml gendarme_report.xml <strong>.\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe .\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll</strong>
+gendarme --xml gendarme_report.xml .\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe .\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll
 simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs
-fxcopcmd /file:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet</strong>.*.*" /directory:"<strong>%WORKSPACE%\Chemin\Vers\Mon\Assembly</strong>"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml
-StyleCopCLI -sln <strong>%WORKSPACE%\Solution\MaSolution.sln</strong> -out StyleCopResults.xml -set Settings.StyleCop
+fxcopcmd /file:"%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*" /directory:"%WORKSPACE%\Chemin\Vers\Mon\Assembly"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml
+StyleCopCLI -sln %WORKSPACE%\Solution\MaSolution.sln -out StyleCopResults.xml -set Settings.StyleCop
 exit 0
 REM Fin Analyse statistique
 
