@@ -143,7 +143,7 @@ Dans la zone de texte, insérer la ligne de commande pour l’execution des test
 
 Un exemple de script pour exécuter des tests mstest ressemblerait à celui-ci (les parties en gras sont celles à adapter à votre besoin)  :
 
-bc. REM MSTest necessite l’absance du fichier résultat
+bc. REM MSTest necessite l’absence du fichier résultat
 del MSTestResults.trx
 MSTest.exe /nologo /usestderr /testSettings:"<strong>%WORKSPACE%\Solution\ContinuousIntegration.testsettings</strong>" /resultsfile:MSTestResults.trx  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll</strong>"  /testcontainer:"<strong>%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll</strong>"
 REM On ne veut pas que le build soit en echec si les tests ne sont pas tous un succès
