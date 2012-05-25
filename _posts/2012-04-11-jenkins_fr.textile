@@ -26,7 +26,7 @@ h2. Installation et configuration du contrôleur de code source : Git
 
 p. Le contrôleur de code source étant une brique essentielle, nous allons faire une présentation succinte mais le sujet étant très (trop?) vaste, nous n'évoquerons que le stricte minimum et vous invitons à completer ses informations par des recherches sur le web.
 
-p. Sous windows, l’utilisation de Git nécessite l’utilisation du portage sous windows msysgit (http://code.google.com/p/msysgit/). Nous conseillons d’installer <span style="color: #ff6600;"> </span> GitExtension (http://code.google.com/p/gitextensions/) qui permet de l’installer en même temps qu’une interface graphique à Git et une extension pour VisualStudio 2005 à 2010 (msysgit étant suffisant pour l'intégration continue).
+p. Sous windows, l’utilisation de Git nécessite l’utilisation du portage sous windows "msysgit":http://code.google.com/p/msysgit/ . Nous conseillons d’installer "GitExtension":http://code.google.com/p/gitextensions/ qui permet de l’installer en même temps qu’une interface graphique à Git et une extension pour VisualStudio 2005 à 2010 (msysgit étant suffisant pour l'intégration continue).
 
 p. Lancez l’installation (Suivant, suivant... et répondez au 2 questions (format de fin de ligne des fichiers et intégration de git dans le système) suivants vos besoins. Les choix par défaut conviennent la plupart du temps.
 
