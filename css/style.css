@@ -108,12 +108,17 @@ h1, h2, h3 {
 	line-height: 24px;
 }
 
-body {
-	font: 12px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+h5, h6{
+	font-size: 14px;
+	line-height: 20px;
 }
 
-.small, small {
-	font-size: 13px;
+body {
+	font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.small, small, code {
+	font-size: 12px;
 	line-height: 18px;
 }
 
