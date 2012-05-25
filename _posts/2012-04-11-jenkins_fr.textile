@@ -71,7 +71,7 @@ Pour cela, dans l’écran principal, cliquez sur "Administrer Jenkins":http://l
 
 h4. 2.2. Configuration de la construction des sources du projet
 
-*Note préalable :* La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe §2.4.
+*Note préalable :* La suite de cet article indique la marche à suivre pour configurer entièrement votre usine logicielle jenkins et vaut la lecture ;). Cependant, si vous souhaitez installez rapidement jenkins, peut-être devriez vous directement lire le paragraphe "§Bonus":#bonus .
 
 h5. 2.2.1. Installation des plugins
 
@@ -375,7 +375,7 @@ Installez le plugin, redemarrez Jenkins et allez dans "”Administrer Jenkins”
 
 Vous pouvez maintenant sauvegarde et restaurer vis configurations.
 
-h4. 2.4. Installation facile et rapide : Bonus exceptionnel!!!!! ;)
+h4(#bonus). 2.4. Installation facile et rapide : Bonus exceptionnel!!!!! ;)
 
 Nous allons utiliser ThinBackup pour pouvoir installer facilement la configuration complète de job utilisant tous les plugins comme décrit tout au long de cet article. Nous allons vous fournir ci-dessous un squelette de configuration à adapter de façon à mettre en place jenkins TRES rapidement.
 Pour cela, il faut installer préalablement TOUS les plugins utilisés dans la configuration (sinon la configuration sera perdue lors de l'import de la configuration), soit :
