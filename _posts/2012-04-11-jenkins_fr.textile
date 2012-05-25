@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Construire une usine logicielle Jenkins pour .NET"
+title: "Construire une usine logicielle efficace pour .NET"
 description: "Tutoriel pour construire une usine logicielle .Net efficace facilement avec Jenkins"
 categories: .Net
 tags:
@@ -8,11 +8,13 @@ tags:
 - Integration Continue
 published: true
 ---
+_(ou comment utiliser jenkins pour un environnement .Net! *LE* tutoriel!!)_
+
 h2. Qu'est ce qu'une usine logicielle ?
 
 Une usine logicielle est un ensemble d’outils et de pratiques permettant d’automatiser les différentes étapes du développement d’un logiciel.
-Permettant ainsi la mise en place d’un processus automatisé optimisé, le rendant ainsi reproductible autant que souhaité
-sans qu’un membre de l’équipe ne soit mobilisé (et sans erreur de mainpulation).
+
+Permettant ainsi la mise en place d’un processus automatisé optimisé, le rendant ainsi reproductible autant que souhaité sans qu’un membre de l’équipe ne soit mobilisé (et sans erreur de manipulation).
 
 h2. Installation et mise en place
 
