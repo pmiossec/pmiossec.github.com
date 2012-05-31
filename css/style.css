@@ -144,6 +144,11 @@ code {
 	word-wrap: break-word;
 }
 
+/* Réduction des images à la largeur de la page */
+img {
+    max-width: 100%;
+}
+
 /*		Default Layout: 992px. 
 		Gutters: 24px.
 		Outer margins: 48px.
