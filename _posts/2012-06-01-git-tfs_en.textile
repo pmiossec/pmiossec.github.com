@@ -6,81 +6,82 @@ categories: .Net
 tags:
 - Git
 - TFS
-published: false
+published: true
 ---
 _(or how to use Git in unfriendly environment!)_
 
-h3. 1. Cloner la branche principale du dépôt tfs
+h3. 1. Clone main branch of the TFS repository
 
-* En récupérant l'historique complet du dépot (long mais conseillé...)
-@git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
+* With the entire historic of the repository (long but advised...)
+@git tfs clone http://myTfsServer:8080/tfs/TfsRepository $/MyProject/TroncName .@
 
 * En ne récupérerant que le dernier commit du dépot
-@git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .@
+@git tfs quick-clone http://myTfsServer:8080/tfs/TfsRepository $/MyProject/TroncName .@
 
-A l'ouverture de la solution Visual Studio => choix de la déconnexion temporaire (sinon il modifie plein de fichier)
+At the Visual Studio first opening, choose to deconnect temporary the solution from the server (otherwise it will modify some files)
 
-h3. 2. Synchronisation avec le dépot tfs
+h3. 2. Synchronise with the Tfs repository
 
-h4. 2.1. Récupération des commits du tronc
+h4. 2.1. Fetch the commits from the trunc
 
 @git tfs fetch@
 
-h4. 2.2. Commiter sur le dépot tfs
+h4. 2.2. Commit to the Tfs repository
 
-h5. 2.2.1 Commiter manuellement
+h5. 2.2.1 Commit manualy
 @git tfs ct@
 
-! Toujours faire une fetch & rebase (ou merge) avant de commiter (sinon risque d'écrasement de fichier communs modifiés)
+! Always do a fetch & rebase (or a merge) before the commit (to avoid a overwrite of a file by your modifications)
 
-h5. 2.2.2 Commiter automatiquement les commits Git locaux
+h5. 2.2.2 Commit automaticly some local Git commits
 @git tfs rcheckin@
 
-Note : Lors de l'utilisation de rcheckin, il est possible lors d'un commit Git local, d'ajouter des références aux éléments de travail pour les associer ou les clore ( lors du commit sur le serveur TFS).
-Voici la syntaxe :
+Note : During the use of rcheckin, you can add references, in your local commit message, to Tfs workitems to associate or close them ( during the commits on the TFS Server).
+The synthaxe is the following :
 @git-tfs-work-item: <id> associate@ 
 @git-tfs-work-item: <id> resolve@
 
-h3. 3. Gestion d'une branche
+h3. 3. Manage a Tfs branch
 
-h4. 3.1. Récupération de la branche
+h4. 3.1. Fetch the Tfs branch
 
-A l'heure actuelle, il n'y a pas de solution simple et évidente :(
-Toutefois, ce n'est pas impossible...
+Actually, there is no straight forward and easy solution :( 
+But, that's not impossible...
 
-Pour cela :
-	1. Modifiez le fichier "config" dans le répertoire ".git" pour ajouter les lignes (Attention! : pas de '.' dans le nom de la branche distante) :
+The following steps are :
+	1. Modify "config" file in the directory ".git" to add the lines (Attention! : don't use '.' in the name of the remote branch) :
 bc.
-[tfs-remote "maBrancheTfs"]
-url = http://myTfsServer:8080/tfs/DepotTfs
-repository = $/MonProjet/NomDeLaBranche
-fetch = refs/remotes/tfs/maBrancheTfs
+[tfs-remote "myTfsBranch"]
+url = http://myTfsServer:8080/tfs/TfsRepository
+repository = $/MyProject/BrancheName
+fetch = refs/remotes/tfs/myTfsBranch
 
-	2. Trouvez le numéro de premier commit tfs de la branche
-    Ce numéro est disponible, soit dans les propriétés de la branche depuis le "Team Explorer" soit en utilisant la ligne de commande :
-	@tf branches $/MonProjet/NomDeLaBranche@
+	2. Find the commit number of the first commit on the Tfs branch
+    This number is displayed, even in the properties of the branch using the "Team Explorer", even with the command line :
+	@tf branches $/MyProject/BrancheName@
 
-	3. Trouvez dans l'historique de git le sha1 du commit parent à celui trouvé précédement.
-	Dans l'historique de git, chercher le sha1, non pas du commit trouvé à l'étape suivante mais de son parent (n° du commit précédent -1). C'est à dire le dernier commit commun au tronc et à la branche!
+	3. Find in the Git historic the sha1 of the father commit of the previously found commit.
+	In the Git historic, find the sha1, not of the previously found commit but the one od his father ( in fact number of the previously found commit -1).
+	This is in fact the last common commit between the trunc and the branch!
+	
+	4. Extract this commit with creating a local branch using the command line :
+	@git checkout -b myTfsBranch [SHA1_PREVIOUSLY_FOUND]@
+	"myTfsBranch" is the name of the local branch corresponding to the tfs branch.
 
-	4. Extraire ce commit en créant une branche locale par la commande :
-	@git checkout -b maBrancheTfs [SHA1_TROUVE_PRECEDEMENT]@
-	"maBrancheTfs" est le nom de la branche git locale correspondant à la branche sur tfs
+	5. Manualy create the reference on the local branch (otherwise the branch won't be connected to the trunc :( )
+    "myTfsBranch" is the name of the remote Tfs branch defined in the step 1.
+    @git rev-parse myTfsBranch >> ./.git/refs/remotes/tfs/myTfsBranch@
 
-	5. Créer manuellement la référence sur la branche locale (autrement notre future branche ne sera pas connectée au tonc :( )
-    "maBrancheTfs" est le nom de la branche distante tfs définie à l'étape 1.
-    @git rev-parse maBrancheTfs >> ./.git/refs/remotes/tfs/maBrancheTfs@
+	6. Fetch commit historic of the Tfs branch!!! This command should be run each time you want to retrieve the commits from the Tfs branch (and thus synchronise your local branch with the server).
+    @git tfs fetch -i myTfsBranch@
 
-	6. Récupérer l'historique des commits de la branche tfs!!! Commande à effectuer chaque fois qu'on voudra resynchroniser la branche avec le serveur...
-    @git tfs fetch -i maBrancheTfs@
+h4. 3.2. Fetch new commits from the Tfs branch
 
-h4. 3.2. Récupération des commits d'une branche
+@git tfs fetch -i myTfsBranch@
 
-@git tfs fetch -i maBrancheTfs@
+h4. 3.3. Commit on the Tfs branch
 
-h4. 3.3. Commiter sur une branche
-
-@git tfs ct -i maBrancheTfs@
+@git tfs ct -i myTfsBranch@
 
 h4. 4. Sources
 
