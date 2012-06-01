@@ -13,10 +13,10 @@ _(or how to use Git in unfriendly environment!)_
 h3. 1. Clone main branch of the TFS repository
 
 * With the entire historic of the repository (long but advised...)
-@git tfs clone http://myTfsServer:8080/tfs/TfsRepository $/MyProject/TroncName .@
+@git tfs clone http://myTfsServer:8080/tfs/TfsRepository $/MyProject/TruncName .@
 
 * En ne récupérerant que le dernier commit du dépot
-@git tfs quick-clone http://myTfsServer:8080/tfs/TfsRepository $/MyProject/TroncName .@
+@git tfs quick-clone http://myTfsServer:8080/tfs/TfsRepository $/MyProject/TruncName .@
 
 At the Visual Studio first opening, choose to deconnect temporary the solution from the server (otherwise it will modify some files)
 
