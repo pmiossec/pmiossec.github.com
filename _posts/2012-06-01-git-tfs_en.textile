@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Git-tfs : Use of Git with a TFS sever"
-description: "Git-tfs : Use of Git with a TFS sever"
+title: "Git-tfs : Use of Git with a TFS server"
+description: "Git-tfs : Use of Git with a TFS server"
 categories: .Net
 tags:
 - Git
