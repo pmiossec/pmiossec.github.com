@@ -272,7 +272,7 @@ Simian est un outil d’analyse de code source à la recherche de code dupliqué
 
 @simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs@
 
-Note: Le pattern **/*.cs indique qu’il faut analyser tous les fichier .cs se trouvant dans tous les sous-répertoires
+Note: Le pattern @**/*.cs@ indique qu’il faut analyser tous les fichier .cs se trouvant dans tous les sous-répertoires
 
 h6. 2.3.2.3. FxCop
 
