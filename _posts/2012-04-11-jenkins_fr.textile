@@ -143,11 +143,11 @@ Dans la zone de texte, insérer la ligne de commande pour l’execution des test
 
 Un exemple de script pour exécuter des tests mstest ressemblerait à celui-ci (les parties en gras sont celles à adapter à votre besoin)  :
 
-bc. REM MSTest necessite l’absence du fichier résultat
-del MSTestResults.trx
-MSTest.exe /nologo /usestderr /testSettings:"%WORKSPACE%\Solution\ContinuousIntegration.testsettings" /resultsfile:MSTestResults.trx  /testcontainer:"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll"  /testcontainer:"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll"
-REM On ne veut pas que le build soit en echec si les tests ne sont pas tous un succès
-exit 0
+@REM MSTest necessite l’absence du fichier résultat@
+@del MSTestResults.trx@
+@MSTest.exe /nologo /usestderr /testSettings:"%WORKSPACE%\Solution\ContinuousIntegration.testsettings" /resultsfile:MSTestResults.trx  /testcontainer:"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll"  /testcontainer:"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll"@
+@REM On ne veut pas que le build soit en echec si les tests ne sont pas tous un succès@
+@exit 0@
 
 Dans la partie “Actions à la suite du build”, recherchez et activer l’option “Publish MSTest test result report” et indiquez le nom du fichier trx de résultat des tests (dans notre cas "MSTestResults.trx").
 
@@ -172,7 +172,7 @@ Pour générer la couverture de code, nous allons modifier le script écrit pré
 
 Une ligne de commande utilisant opencover doit être de la forme :
 
-bc. OpenCover.Console.exe -register:user -target:"Chemin absolu vers l’executable de test" -targetargs:"arguments de l’executable passés précédement" -filter:+[MonProjet.*]* -output:"coverage_report.xml"
+@OpenCover.Console.exe -register:user -target:"Chemin absolu vers l’executable de test" -targetargs:"arguments de l’executable passés précédement" -filter:+[MonProjet.*]* -output:"coverage_report.xml"@
 
 Notes : 
 # Faire attention à bien passer le chemin absolu vers l’executable de tests (soit dans notre cas "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe")
@@ -183,10 +183,10 @@ Il reste à inclure dans le script l’appel au générateur de rapport html ave
 
 Dans notre cas le script une fois modifié est donc le suivant :
 
-bc. del MSTestResults.trx
-OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe" -targetargs:"/nologo /usestderr /testSettings:\"%WORKSPACE%\Solution\ContinuousIntegration.testsettings\" /resultsfile:MSTestResults.trx  /testcontainer:\"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll\"  /testcontainer:\"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll\" " -filter:+[MonProjet.*]* -output:"coverage_report.xml"
-reportgenerator coverage_report.xml coverage_report
-exit 0
+@del MSTestResults.trx@
+@OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe" -targetargs:"/nologo /usestderr /testSettings:\"%WORKSPACE%\Solution\ContinuousIntegration.testsettings\" /resultsfile:MSTestResults.trx  /testcontainer:\"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly1\bin\Debug\MSTest.MonProjet.Assembly1.dll\"  /testcontainer:\"%WORKSPACE%\Solution\MSTest.MonProjet.Assembly2\bin\Debug\MSTest.MonProjet.Assembly2.dll\" " -filter:+[MonProjet.*]* -output:"coverage_report.xml"@
+@reportgenerator coverage_report.xml coverage_report@
+@exit 0@
 
 Il reste à indiquer au plugin “HTML Publisher” les informations de couverture à publier. En se referant aux données ci-dessus, on indiquera les données suivantes :
 HTML directory to archive = coverage_report
@@ -304,13 +304,13 @@ Enfin, le batch doit se terminer par “exit 0” pour que le build n’échoue 
 
 Notre batch ressemble donc à cela :
 
-bc. REM Analyse statistique
-gendarme --xml gendarme_report.xml .\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe .\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll
-simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs
-fxcopcmd /file:"%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*" /directory:"%WORKSPACE%\Chemin\Vers\Mon\Assembly"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml
-StyleCopCLI -sln %WORKSPACE%\Solution\MaSolution.sln -out StyleCopResults.xml -set Settings.StyleCop
-exit 0
-REM Fin Analyse statistique
+@REM Analyse statistique@
+@gendarme --xml gendarme_report.xml .\Chemin\Vers\Mon\Assembly\Mon.Assembly.exe .\Chemin\Vers\Mon\Assembly\Mon.Assembly2.dll@
+@simian **/*.cs -formatter=xml:simian-output.xml -excludes=**/*.xaml.cs@
+@fxcopcmd /file:"%WORKSPACE%\Chemin\Vers\Mon\Assembly\MonProjet.*.*" /directory:"%WORKSPACE%\Chemin\Vers\Mon\Assembly"  /directory:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /rule:UsageRules.dll /rule:DesignRules.dll /rule:GlobalizationRules.dll /rule:InteroperabilityRules.dll /rule:MobilityRules.dll /rule:NamingRules.dll /rule:PerformanceRules.dll /rule:PortabilityRules.dll /rule:SecurityRules.dll /out:fxcop-result.xml@
+@StyleCopCLI -sln %WORKSPACE%\Solution\MaSolution.sln -out StyleCopResults.xml -set Settings.StyleCop@
+@exit 0@
+@REM Fin Analyse statistique@
 
 Il reste à configurer le plugin de façon à prendre en compte les fichiers générés lors de cette étape du build. Pour cela, il faut cocher l’option “Report Violations” et renseigner pour chaque ligne correspondante à l’outil utilisé (Gendarme, Simian, FxCop, StyleCop), le nom du fichier de résultat généré ainsi que ajuster (ou pas) selon vos besoins les 3 chiffres correspondants aux valeurs limites indiquant un build bon/de qualité médiocre/instable!
 
