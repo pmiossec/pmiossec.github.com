@@ -245,10 +245,10 @@ p=. _Suivi de la complexité du code pour les différents builds_
 h5. 2.3.2. Métriques de qualité du code source : "Violations":https://wiki.jenkins-ci.org/display/JENKINS/Violations 
 
 Tout d'abord, nous allons installer les outils suivants :
-* Gendarme ( "http://mono-project.com/Gendarme":http://mono-project.com/Gendarme )
-* Simian ( "http://www.harukizaemon.com/simian/index.html":http://www.harukizaemon.com/simian/index.html  )
+* "Gendarme":http://mono-project.com/Gendarme
+* "Simian":http://www.harukizaemon.com/simian/index.html
 * FxCop depuis “C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe” (FxCop est fourni dans le sdk 7.0 ou 7.1)
-* StyleCop ( "http://stylecop.codeplex.com/":http://stylecop.codeplex.com/  )
+* "StyleCop":http://stylecop.codeplex.com
 
 Ne pas oublier de mettre les outils dans le path du système...
 
@@ -320,7 +320,7 @@ p=. !../images/article_jenkins/Jenkins_10_metriques_violation.png(Graphe de suiv
 
 p=. _Graphe de suivi des métriques d'analyse de code_
 
-h5. 2.3.3. Détection de tàches à faire : Task Scanner Plugin
+h5. 2.3.3. Détection de tâches à faire : Task Scanner Plugin
 
 Ce plugin permet de détecter des chaines de caractères types (FIXME, TODO,... dans les commentaires et de suivre leur évolution.
 
