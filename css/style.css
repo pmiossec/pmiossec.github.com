@@ -140,7 +140,7 @@ img::selection 		{background: transparent;}
 img::-moz-selection	{background: transparent;}
 body {-webkit-tap-highlight-color: rgb(255,255,158);}
 
-code {
+code,pre {
 	word-wrap: break-word;
 }
 
