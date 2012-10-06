@@ -64,7 +64,7 @@ p. Lancez jenkins depuis la ligne de commande (depuis le répertoire de jenkins)
 @java.exe -jar jenkins.war@
 Attendre le lancement et dans le navigateur chargez la page "http://localhost:8080/":http://localhost:8080/
 
-p=. !../images/article_jenkins/Jenkins_01_ecran_principal.png(Ecran principal de Jenkins avec 2 projets configurés)!
+p=. !../../../../../images/article_jenkins/Jenkins_01_ecran_principal.png(Ecran principal de Jenkins avec 2 projets configurés)!
 
 p=. _Ecran principal de Jenkins avec 2 projets configurés_
 
@@ -127,7 +127,7 @@ A ce stade, vous pouvez lancer un build et vérifier que votre projet est bien r
 
 Si le build ne marche pas ou que le résultat attendu n’est pas le bon, vous pouvez maintenant et tout au long de la configuration des différentes  étapes voir les logs de déroulement de chaque build en affichant la page “Sortie Console” du build souhaité.
 
-p=. !../images/article_jenkins/Jenkins_07_resultat_compilation.png(Ecran de résultat d'un build avec l'ensemble des métriques disponibles)!
+p=. !../../../../../images/article_jenkins/Jenkins_07_resultat_compilation.png(Ecran de résultat d'un build avec l'ensemble des métriques disponibles)!
 
 p=. _Ecran de résultat d'un build avec l'ensemble des métriques disponibles_
 
@@ -157,7 +157,7 @@ A ce stade, vous pouvez lancer un build et vérifier que les tests sont bien exe
 
 L’execution de 2 builds avec des résultats fait ainsi apparaitre un graphe représentant l’évolution du nombre de tests en échec sur le projet.
 
-p=. !../images/article_jenkins/Jenkins_08_resultat_tests.png(Résultats des tests untaires des différents builds)!
+p=. !../../../../../images/article_jenkins/Jenkins_08_resultat_tests.png(Résultats des tests untaires des différents builds)!
 
 p=. _Résultats des tests untaires des différents builds_
 
@@ -197,7 +197,7 @@ Sauvez et executez un build pour obtenir des résultats.
 
 Un nouveau lien “Couverture de code” apparaît sur la page du projet nous permettant de consulter le rapport généré.
 
-p=. !../images/article_jenkins/Jenkins_09_couverture.png(Résultats de la couverture de code)!
+p=. !../../../../../images/article_jenkins/Jenkins_09_couverture.png(Résultats de la couverture de code)!
 
 p=. _Résultats de la couverture de code_
 
@@ -237,7 +237,7 @@ Aller dans “Administrer Jenkins” puis "Configurer le système":http://localh
 
 Sauvez, buildez et contemplez les résultats :)
 
-p=. !../images/article_jenkins/metrique_01_CCM.png(Suivi de la complexité du code pour les différents builds)!
+p=. !../../../../../images/article_jenkins/metrique_01_CCM.png(Suivi de la complexité du code pour les différents builds)!
 
 p=. _Suivi de la complexité du code pour les différents builds_
 
@@ -316,7 +316,7 @@ Il reste à configurer le plugin de façon à prendre en compte les fichiers gé
 
 Le plugin est configuré et un graphe regroupant les diverses métriques devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Violations” est également disponible dans la colonne de gauche.
 
-p=. !../images/article_jenkins/Jenkins_10_metriques_violation.png(Graphe de suivi des métriques d'analyse de code)!
+p=. !../../../../../images/article_jenkins/Jenkins_10_metriques_violation.png(Graphe de suivi des métriques d'analyse de code)!
 
 p=. _Graphe de suivi des métriques d'analyse de code_
 
@@ -332,7 +332,7 @@ Puis configurez les options suivantes :
 
 Le plugin est configuré et un graphe “Open Tasks Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Tâches ouvertes” est également disponible dans la colonne de gauche.
 
-p=. !../images/article_jenkins/metrique_02_OpenTasks.png(Suivi des tâches laissées ouverte dans le code source)!
+p=. !../../../../../images/article_jenkins/metrique_02_OpenTasks.png(Suivi des tâches laissées ouverte dans le code source)!
 
 p=. _Suivi des tâches laissées ouverte dans le code source_
 
@@ -349,7 +349,7 @@ Puis configurez l’option “Duplicate code results” par le nom du fichier xm
 
 Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin”, un graphe “Duplicate Code Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Duplicate Code” est également disponible dans la colonne de gauche pour parcourir les résultats...
 
-p=. !../images/article_jenkins/metrique_06_Similarités.png(Affichage des similarités, ou code dupliqué, dans le dernier build)!
+p=. !../../../../../images/article_jenkins/metrique_06_Similarités.png(Affichage des similarités, ou code dupliqué, dans le dernier build)!
 
 p=. _Affichage des similarités, ou code dupliqué, dans le dernier build_
 
@@ -360,7 +360,7 @@ Ce plugin permet l’affichage, la comptabilisation et le suivi des warnings lor
 Dans la configuration du projet et activez la case à cocher “Scan for compiler warnings” et cliquez sur le bouton “ajouter” à côté du texte “Scan console log” et sélectionnez le parser “MSBuild”.
 Le plugin est maintenant configuré et, comme le plugin “Task Scanner Plugin”, un graphe “Compiler Warnings Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Compiler Warnings” est également disponible dans la colonne de gauche pour parcourir les résultats..
 
-p=. !../images/article_jenkins/metrique_03_Warnings.png(Suivi des Warnings de compilation)!
+p=. !../../../../../images/article_jenkins/metrique_03_Warnings.png(Suivi des Warnings de compilation)!
 
 p=. _Suivi des Warnings de compilation_
 
@@ -394,7 +394,7 @@ Pour cela, il faut installer préalablement TOUS les plugins utilisés dans la c
 
 Configurer les plugins le necessitant (git, msbuild, ccm) dans "”Administrer Jenkins”":http://localhost:8080/manage , "”Configurer le système”":http://localhost:8080/configure . Cette configuration a été décrite précédement.
 
-Décompressez maintenant "cette archive":../files/article_jenkins/FULL-2012-04-09_23-48.zip  dans le répertoire utilisé par ThinBackup.
+Décompressez maintenant "cette archive":../../../../../files/article_jenkins/FULL-2012-04-09_23-48.zip  dans le répertoire utilisé par ThinBackup.
 
 Allez dans "Administrer Jenkins":http://localhost:8080/manage , "ThinBackup":http://localhost:8080/thinBackup, "Restore":http://localhost:8080/thinBackup/restoreOptions  et restaurez le backup correspondant.
 
