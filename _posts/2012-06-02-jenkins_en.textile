@@ -8,15 +8,15 @@ tags:
 - Continuous Integration
 published: false
 ---
-_(ou comment utiliser jenkins pour un environnement .Net! *LE* tutoriel!!)_
+_(or how to use jenkins in an unfriendly .Net environment ! *THE* tutorial!!)_
 
-h2. Qu'est ce qu'une usine logicielle ?
+h2. What is a Continuous Integration environment ?
 
-Une usine logicielle est un ensemble d’outils et de pratiques permettant d’automatiser les différentes étapes du développement d’un logiciel.
+A Continuous Integration environment is group of tools permitting to automate some steps of software developpment.
 
-Permettant ainsi la mise en place d’un processus automatisé optimisé, le rendant ainsi reproductible autant que souhaité sans qu’un membre de l’équipe ne soit mobilisé (et sans erreur de manipulation).
+A consequence, is to permit the set up of an optimised and automated processus, to make it repeatable as wished and without monopolising a member of the team (and without human errors)
 
-h2. Installation et mise en place
+h2. Installation and set up
 
 Les 2 briques indispensables pour la réalisation d’une usine logicielle sont :
 * le logiciel de gestion de version, qui contient les sources du projet
