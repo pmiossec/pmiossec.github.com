@@ -1,0 +1,132 @@
+---
+layout: post
+title: "Textile Help"
+description: "Textile Help"
+categories: textile
+tags:
+- Textile
+published: false
+---
+h1. Header 1
+h2. Header 2
+h3. Header 3
+h4. Header 4
+h5. Header 5
+
+This is a paragraph, which is text surrounded by whitespace. Paragraphs can be on one 
+line (or many), and can drone on for hours.  "Quotes" and 'quotes' are handled 
+nicely--as are dashes and such.
+
+Here is a link to "Warped":http://warpedvisions.org.
+
+Now some inline markup like _italics_,  *bold*, and <code>code()</code>. Note
+that underscores in words are ignored. Textile also has a few handy character helpers like 
+trademark(TM), reserved(R), copyright(C), ellipses ..., superscripts^2, subscripts~2, 
+and so on.
+
+!/images/photo.jpeg(this is the alt text)!
+
+bq. Blockquotes are like quoted text in email replies
+
+* Bullet lists are easy too
+* Another one
+* Another one
+
+# A numbered list
+# Which is numbered
+# With periods and a space
+
+A mixed list: 
+
+* Bullet one
+* Bullet two
+## Step 1
+## Step 2
+## Step 3
+* Bullet three
+** Sub Bullet 1
+** Sub Bullet 2
+
+And now some code:
+
+<pre>
+  // Code requires HTML PRE blocks
+  which(is_easy, enough) to_remember();
+</pre>
+
+Text with  
+newlines
+(on the right)  
+can be used  
+for things like poems  
+with the right css.
+
+|_.Col 1|_.Col 2|_.Col 3|
+|a|table|row|
+|a|table|row|
+
+* <, >, =, and <> used for alignment
+
+ABC(Abbreviation definition here)
+
+
+=======================================
+
+
+Overview
+Textile works by allowing you to type in plain text, and have that text be converted to XHTML in a way you would expect. You can enter your own HTML tags if you wish, and these will not be affected by the Textile processing system.
+
+For instance, instead of inserting <p> tags around your paragraphs, just hit the enter key twice. Textile will enclose the blocks of text that look like paragraphs in the proper tags.
+Block Modifiers
+
+Header: hn.
+Blockquote: bq.
+Footnote: fnn.
+Numeric list: #
+Bulleted list: *
+
+Phrase Modifiers
+
+_emphasis_
+*strong*
+??reference??
+-deleted text-
++inserted text+
+^superscript^
+~subscript~
+%span%
+
+Apply Attributes
+
+(class)
+(#id)
+{style}
+[language]
+
+Align Blocks
+
+< right
+> left
+= center
+<> justify
+
+Insert a Table
+
+|a|table|row|
+
+To Insert a Link
+
+"linktext":url
+
+To Insert an Image
+
+!imageurl!
+
+To Define an Acronym
+
+ABC(Always Be Closing)
+
+To Reference a Footnote
+
+[n]
+
