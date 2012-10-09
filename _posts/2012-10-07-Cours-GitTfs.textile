@@ -30,11 +30,11 @@ Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos in
 
 2.Par ligne de commande
 Les configuration necessaires pour faire fonctionner Git: 
-git config --global user.name "Ton Nom"
+bc. git config --global user.name "Ton Nom"
 git config --global user.email ton_mail@valtech.fr
 
 Les configuration necessaires pour faire fonctionner Git sous Windows!: 
-git config --global core.ignorecase true
+bc. git config --global core.ignorecase true
 git config --global core.autocrlf false
 
 3.Depuis GitExtension
@@ -68,11 +68,11 @@ h1. Utilisation de Git-TFS:
 
 1. Clonage du dépôt TFS
 Commande de clone du dépot TFS avec historique (conseillé!):
-git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
+bc. git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
 ex: git tfs clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/trunk .
 
 Commande de clone du dépot TFS sans historique:
-git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
+bc. git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
 ex: git tfs quick-clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/trunk .
 
 Utilisation du login/mdp
@@ -80,26 +80,28 @@ login:snd\[LoginCodePlex]_cp
 mdp:celui du compte codeplex
 
 2. Récupération des commits de TFS (sans merge ni rebase dans branche master)
-git tfs fetch
+bc. git tfs fetch
 
 3. Création des commits locaux
 Lors des commits locaux dans Git, l'association de Workitems se fait par l'ajout des meta-données suivantes dans la description du commit
 
-git-tfs-work-item: 2198 associate //Pour associer un workitem
+bc. git-tfs-work-item: 2198 associate //Pour associer un workitem
 git-tfs-work-item: 2198 resolve //Pour clore le workitem
 
 4. Report des commits locaux sur le serveur TFS
 Méthode facile mais déconseillée :
-git tfs ct
+bc. git tfs ct
+
 Cette commande ouvre la fenêtre de commit de TFS (message + association de workitems) mais crée un commit de merge (moche et peut y avoir des conflits de merge)
 
 Méthode conseillée :
-git tfs rcheckin
+bc. git tfs rcheckin
+
 Cette commande réapplique les commits sur le serveur TFS. Nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux.
 Mais nécessite de ne pas avoir de modifications dans l'espace de travail => "git stash save" puis après "git stash pop"
 
 Worklow en découlant :
-git tfs fetch ==>récupération de derniers commits du serveur
+bc. git tfs fetch ==>récupération de derniers commits du serveur
 git stash save ==>mise de côté des modifications non commitées
 git rebase tfs/default =>réapplication des commits locaux sur la dernière version de TFS (merges possibles!)
 git tfs rcheckin => réapplication des commits sur TFS
@@ -107,11 +109,12 @@ git stash pop => réapplication des modifications non commitées
 
 Ajout d'alias pour automatiser ce workflow:
 Pour synchroniser ses modifications avec la dernière version de TFS:
-git config --global alias.tfsrebase '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git stash pop"'
+bc. git config --global alias.tfsrebase '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git stash pop"'
+
 =>Utilisation: git tfsrebase
 
 Pour commiter sur TFS:
-git config --global alias.tfscommit '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git tfs rcheckin ; git stash pop"'
+bc. git config --global alias.tfscommit '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git tfs rcheckin ; git stash pop"'
 =>Utilisation: git tfscommit
 
 Scripts GitExtension:
@@ -135,35 +138,40 @@ Solution Facile (qu'on ne fera pas!!):
 
 Solution Plus convenable:
 Utiliser le script git-tfs-branch.sh depuis le répertoire git du projet ( ou https://gist.github.com/3760810 ou https://github.com/git-tfs/git-tfs/issues/172 ):
-sh ./git-tfs-branch.sh $/MyProject/MyTFSBranch myBranch [IdFirstCommitInTheBranch]
+bc. sh ./git-tfs-branch.sh $/MyProject/MyTFSBranch myBranch [IdFirstCommitInTheBranch]
+
 Notes : - Pour le nom "myBranch", éviter absolument les '.' et ' ' et mettre les paramètres entre '"' si besoin.
 - Le 3ème paramètre, correspondant au 1er commit dans la branche, est facultatif et dans ce cas là le script essaye de le retrouver en utilisant la commande 'tf history $/MyProject/MyTFSBranch'.
 Cependant, cela ne marche pas tout le temps (par exemple pour les dépots Codeplex :( ). Il convient donc de le retrouver et de le passer au script.
 Pour cela, depuis l'explorateur de code source de TFS, faire "Afficher l'historique" sur la branche et prendre le n° de la serbière ligne.
-ex : sh ./git-tfs-branch.sh $/valtechgittfs/branche1 branche1
+bc. ex :
+sh ./git-tfs-branch.sh $/valtechgittfs/branche1 branche1
 ou
 sh ./git-tfs-branch.sh $/valtechgittfs/branche1 branche1 16877
 
 Encore mieux! :
 Copie du script dans le répertoire binaires de Git, puis :
-git config --global alias.tfsbranch '!sh git-tfs-branch.sh'
+bc. git config --global alias.tfsbranch '!sh git-tfs-branch.sh'
+
 Utilisation:
-git tfsbranch $/ProjectRepository/BranchDirectory localBranchName [IdFirstCommitInTheBranch]
+bc. git tfsbranch $/ProjectRepository/BranchDirectory localBranchName [IdFirstCommitInTheBranch]
 ex: git tfsbranch $/valtechgittfs/branche1 branche1 16877
 
 Récupération des commits d’une branche:
-git tfs fetch -i branche1
+bc. git tfs fetch -i branche1
 
 Commiter sur une branche TFS:
-git tfs rcheckin -i branche1
+bc. git tfs rcheckin -i branche1
 
 Ajout d'alias pour automatiser le workflow précédent avec des branches:
 Pour synchroniser ses modifications avec la dernière version de la branche sur TFS:
-git config --global alias.tfsrebasebranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git stash pop"'
+bc. git config --global alias.tfsrebasebranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git stash pop"'
+
 =>Utilisation: git tfsrebasebranch branche1
 
 Pour commiter sur la brance sur TFS:
-git config --global alias.tfscommitbranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git tfs -i $1 rcheckin ; git stash pop"'
+bc. git config --global alias.tfscommitbranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git tfs -i $1 rcheckin ; git stash pop"'
+
 =>Utilisation: git tfscommitbranch branche1
 
 Scripts GitExtension (suite):
@@ -182,16 +190,16 @@ Tfs(Branche)> Commit/sh/-c "git tfs rcheckin -i $(echo {sRemoteBranch} | sed 's/
 Travailler avec les shelvesets
 ------------------------------
 Liste de ses commits réservés
-git tfs shelve-list
+bc. git tfs shelve-list
 
 Ceux d'un autre utilisateur:
-git tfs shelve-list -u LOGIN_UTILISATEUR
+bc. git tfs shelve-list -u LOGIN_UTILISATEUR
 
 Créer une branche à partir d'un shelveset:
-git tfs unshelve MonShelveset MaBranche
+bc. git tfs unshelve MonShelveset MaBranche
 
 Créer un commit réservé de la branche courante:
-git tfs shelve MonShelveset
+bc. git tfs shelve MonShelveset
 
 Avantage de la branche Git sur le shelveset TFS :
 - on peut faire plusieurs commits
@@ -203,11 +211,12 @@ h1. Utilisation de Git
 - Règle de Base : Ne JAMAIS modifier des commits déjà partagés!!!!!!
 
 - Modification des commits existants (pour par ex. rajouter l'association de workitems!)
-git rebase -i HEAD~n (avec 'n' à remplacer par le nombre de commit qu'on veut réécrire)
+bc. git rebase -i HEAD~n (avec 'n' à remplacer par le nombre de commit qu'on veut réécrire)
+
 Attention : Ne pas enfreindre la règle précédente!!!
 
 - Historique des opérations (et réparation des erreurs!) : 
-git reflog => voire l'historique des modification
+bc. git reflog => voire l'historique des modification
 git branch MaBranche d995afd => creation d'une branche sur un commit (en indiquant son sha1)
 
 - Astuce: Git ne fait qu'ajouter des commits et n'en détruie AUCUN! (sauf lors du passage du Garbage Collector tous les 30 jours pour effacer ceux non utilisés).
