@@ -30,10 +30,12 @@ Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos in
 
 2.Par ligne de commande
 Les configuration necessaires pour faire fonctionner Git: 
+
 bc. git config --global user.name "Ton Nom"
 git config --global user.email ton_mail@valtech.fr
 
 Les configuration necessaires pour faire fonctionner Git sous Windows!: 
+
 bc. git config --global core.ignorecase true
 git config --global core.autocrlf false
 
@@ -68,10 +70,12 @@ h1. Utilisation de Git-TFS:
 
 1. Clonage du dépôt TFS
 Commande de clone du dépot TFS avec historique (conseillé!):
+
 bc. git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
 ex: git tfs clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/trunk .
 
 Commande de clone du dépot TFS sans historique:
+
 bc. git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
 ex: git tfs quick-clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/trunk .
 
@@ -90,17 +94,20 @@ git-tfs-work-item: 2198 resolve //Pour clore le workitem
 
 4. Report des commits locaux sur le serveur TFS
 Méthode facile mais déconseillée :
+
 bc. git tfs ct
 
 Cette commande ouvre la fenêtre de commit de TFS (message + association de workitems) mais crée un commit de merge (moche et peut y avoir des conflits de merge)
 
 Méthode conseillée :
+
 bc. git tfs rcheckin
 
 Cette commande réapplique les commits sur le serveur TFS. Nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux.
 Mais nécessite de ne pas avoir de modifications dans l'espace de travail => "git stash save" puis après "git stash pop"
 
 Worklow en découlant :
+
 bc. git tfs fetch ==>récupération de derniers commits du serveur
 git stash save ==>mise de côté des modifications non commitées
 git rebase tfs/default =>réapplication des commits locaux sur la dernière version de TFS (merges possibles!)
@@ -109,11 +116,13 @@ git stash pop => réapplication des modifications non commitées
 
 Ajout d'alias pour automatiser ce workflow:
 Pour synchroniser ses modifications avec la dernière version de TFS:
+
 bc. git config --global alias.tfsrebase '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git stash pop"'
 
 =>Utilisation: git tfsrebase
 
 Pour commiter sur TFS:
+
 bc. git config --global alias.tfscommit '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git tfs rcheckin ; git stash pop"'
 =>Utilisation: git tfscommit
 
@@ -138,12 +147,14 @@ Solution Facile (qu'on ne fera pas!!):
 
 Solution Plus convenable:
 Utiliser le script git-tfs-branch.sh depuis le répertoire git du projet ( ou https://gist.github.com/3760810 ou https://github.com/git-tfs/git-tfs/issues/172 ):
+
 bc. sh ./git-tfs-branch.sh $/MyProject/MyTFSBranch myBranch [IdFirstCommitInTheBranch]
 
 Notes : - Pour le nom "myBranch", éviter absolument les '.' et ' ' et mettre les paramètres entre '"' si besoin.
 - Le 3ème paramètre, correspondant au 1er commit dans la branche, est facultatif et dans ce cas là le script essaye de le retrouver en utilisant la commande 'tf history $/MyProject/MyTFSBranch'.
 Cependant, cela ne marche pas tout le temps (par exemple pour les dépots Codeplex :( ). Il convient donc de le retrouver et de le passer au script.
 Pour cela, depuis l'explorateur de code source de TFS, faire "Afficher l'historique" sur la branche et prendre le n° de la serbière ligne.
+
 bc. ex :
 sh ./git-tfs-branch.sh $/valtechgittfs/branche1 branche1
 ou
@@ -151,28 +162,32 @@ sh ./git-tfs-branch.sh $/valtechgittfs/branche1 branche1 16877
 
 Encore mieux! :
 Copie du script dans le répertoire binaires de Git, puis :
+
 bc. git config --global alias.tfsbranch '!sh git-tfs-branch.sh'
 
 Utilisation:
+
 bc. git tfsbranch $/ProjectRepository/BranchDirectory localBranchName [IdFirstCommitInTheBranch]
 ex: git tfsbranch $/valtechgittfs/branche1 branche1 16877
 
 Récupération des commits d’une branche:
+
 bc. git tfs fetch -i branche1
 
 Commiter sur une branche TFS:
+
 bc. git tfs rcheckin -i branche1
 
 Ajout d'alias pour automatiser le workflow précédent avec des branches:
 Pour synchroniser ses modifications avec la dernière version de la branche sur TFS:
-bc. git config --global alias.tfsrebasebranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git stash pop"'
 
-=>Utilisation: git tfsrebasebranch branche1
+bc. git config --global alias.tfsrebasebranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git stash pop"'
+ex:  git tfsrebasebranch branche1
 
 Pour commiter sur la brance sur TFS:
-bc. git config --global alias.tfscommitbranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git tfs -i $1 rcheckin ; git stash pop"'
 
-=>Utilisation: git tfscommitbranch branche1
+bc. git config --global alias.tfscommitbranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git tfs -i $1 rcheckin ; git stash pop"'
+ex: git tfscommitbranch branche1
 
 Scripts GitExtension (suite):
 -----------------------------
@@ -190,15 +205,19 @@ Tfs(Branche)> Commit/sh/-c "git tfs rcheckin -i $(echo {sRemoteBranch} | sed 's/
 Travailler avec les shelvesets
 ------------------------------
 Liste de ses commits réservés
+
 bc. git tfs shelve-list
 
 Ceux d'un autre utilisateur:
+
 bc. git tfs shelve-list -u LOGIN_UTILISATEUR
 
 Créer une branche à partir d'un shelveset:
+
 bc. git tfs unshelve MonShelveset MaBranche
 
 Créer un commit réservé de la branche courante:
+
 bc. git tfs shelve MonShelveset
 
 Avantage de la branche Git sur le shelveset TFS :
@@ -211,11 +230,13 @@ h1. Utilisation de Git
 - Règle de Base : Ne JAMAIS modifier des commits déjà partagés!!!!!!
 
 - Modification des commits existants (pour par ex. rajouter l'association de workitems!)
+
 bc. git rebase -i HEAD~n (avec 'n' à remplacer par le nombre de commit qu'on veut réécrire)
 
 Attention : Ne pas enfreindre la règle précédente!!!
 
 - Historique des opérations (et réparation des erreurs!) : 
+
 bc. git reflog => voire l'historique des modification
 git branch MaBranche d995afd => creation d'une branche sur un commit (en indiquant son sha1)
 
