@@ -11,14 +11,14 @@ published: true
 
 h2. Installation des outils nécessaires
 
-* Installation de "GitExtension"https://code.google.com/p/gitextensions/ (et Git)
+* Installation de "GitExtension":http://code.google.com/p/gitextensions/ (et Git)
 	->Options par defaut de Git sauf : "Checkout as-is, commit as-is"
 
-* Installation de "p4merge"http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools (si besoin... on doit avoir un outil de 3way-merge!)
+* Installation de "p4merge":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools (si besoin... on doit avoir un outil de 3way-merge!)
 
 * Installation de notepad++ (si besoin) -> Note: il faut avoir un éditeur de texte multiinstance!! (notepad++ -multiInst -notabbar)
 
-* Copie des fichiers de "Git-tfs"http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git
+* Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git
 
 * Verifier que le répertoire 'bin' de Git est dans le path
 
@@ -27,7 +27,7 @@ h2. Configuration de Git & GitExtension
 Trois moyens...
 
 1.Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
-Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du .gitignore_global ( ou celui de "GitHub"https://github.com/github/gitignore )
+Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du .gitignore_global ( ou celui de "GitHub":https://github.com/github/gitignore )
 Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos informations personnelles!)
 
 2.Par ligne de commande
