@@ -8,19 +8,17 @@ tags:
 - TFS
 published: true
 ---
-user codeplex : vtccds/vtccds
-user codeplex : vtc_cds/vtc_cds
 
 h2. Installation des outils nécessaires
 
-* Installation de GitExtension (et Git) => https://code.google.com/p/gitextensions/
+* Installation de "GitExtension"https://code.google.com/p/gitextensions/ (et Git)
 	->Options par defaut de Git sauf : "Checkout as-is, commit as-is"
 
-* Installation de p4merge (si besoin : on doit avoir un outil de 3way-merge) => http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools
+* Installation de "p4merge"http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools (si besoin... on doit avoir un outil de 3way-merge!)
 
-* Installation de notepad++ (si besoin) => Note: il faut avoir un éditeur de texte multiinstance!! (notepad++ -multiInst -notabbar)
+* Installation de notepad++ (si besoin) -> Note: il faut avoir un éditeur de texte multiinstance!! (notepad++ -multiInst -notabbar)
 
-* Copie des fichiers de Git-tfs dans le répertoire de Git => https://github.com/git-tfs/git-tfs/downloads
+* Copie des fichiers de "Git-tfs"http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git
 
 * Verifier que le répertoire 'bin' de Git est dans le path
 
@@ -29,7 +27,7 @@ h2. Configuration de Git & GitExtension
 Trois moyens...
 
 1.Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
-Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du .gitignore_global ( ou celui sur https://github.com/github/gitignore )
+Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du .gitignore_global ( ou celui de "GitHub"https://github.com/github/gitignore )
 Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos informations personnelles!)
 
 2.Par ligne de commande
@@ -71,6 +69,8 @@ h2. Présentation de GitExtension
 
 h2. Utilisation de Git-TFS:
 
+Utilisation des logins codeplex pour le cours du soir : vtccds/vtccds
+
 h3. 1. Clonage du dépôt TFS
 Commande de clone du dépot TFS avec historique (conseillé!):
 
@@ -87,6 +87,7 @@ login:snd\[LoginCodePlex]_cp
 mdp:celui du compte codeplex
 
 h3. 2. Récupération des commits de TFS (sans merge ni rebase dans branche master)
+
 bc. git tfs fetch
 
 h3. 3. Création des commits locaux
@@ -122,24 +123,27 @@ Pour synchroniser ses modifications avec la dernière version de TFS:
 
 bc. git config --global alias.tfsrebase '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git stash pop"'
 
-=>Utilisation: git tfsrebase
+->Utilisation: git tfsrebase
 
 Pour commiter sur TFS:
 
 bc. git config --global alias.tfscommit '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git tfs rcheckin ; git stash pop"'
-=>Utilisation: git tfscommit
+
+->Utilisation: git tfscommit
 
 h3. 5.Scripts GitExtension:
 
 Il peut être pratique de créer dans GitExtension les scripts decrit ci-dessous ensuites disponibles par un clic droit dans le Browser de GitExtension.
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
+table{border:1px solid black}.
 |Tfs(Tronc)> Fetch|git|tfs fetch|
 |Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
 |Tfs(Tronc)> Commit|git|tfscommit|
 
 Pour info mais non utile:
 
+table{border:1px solid black}.
 |Tfs(Tronc)> Commit|git|tfs rcheckin|
 |Tfs(Tronc)> Commit Visuel|git|tfs ct|
 
@@ -156,8 +160,8 @@ Utiliser le script git-tfs-branch.sh depuis le répertoire git du projet ( ou ht
 bc. sh ./git-tfs-branch.sh $/MyProject/MyTFSBranch myBranch [IdFirstCommitInTheBranch]
 
 Notes : 
-> * Pour le nom "myBranch", éviter absolument les '.' et ' ' et mettre les paramètres entre '"' si besoin.
-> * Le 3ème paramètre, correspondant au 1er commit dans la branche, est facultatif et dans ce cas là le script essaye de le retrouver en utilisant la commande 'tf history $/MyProject/MyTFSBranch'.
+* Pour le nom "myBranch", éviter absolument les '.' et ' ' et mettre les paramètres entre '"' si besoin.
+* Le 3ème paramètre, correspondant au 1er commit dans la branche, est facultatif et dans ce cas là le script essaye de le retrouver en utilisant la commande 'tf history $/MyProject/MyTFSBranch'.
 Cependant, cela ne marche pas tout le temps (par exemple pour les dépots Codeplex :( ). Il convient donc de le retrouver et de le passer au script.
 Pour cela, depuis l'explorateur de code source de TFS, faire "Afficher l'historique" sur la branche et prendre le n° de la serbière ligne.
 
@@ -187,26 +191,30 @@ bc. git tfs rcheckin -i branche1
 Ajout d'alias pour automatiser le workflow précédent avec des branches:
 Pour synchroniser ses modifications avec la dernière version de la branche sur TFS:
 
+Création de l'alias git :
 bc. git config --global alias.tfsrebasebranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git stash pop"'
-ex:  git tfsrebasebranch branche1
+Utilisation:  git tfsrebasebranch branche1
 
 Pour commiter sur la brance sur TFS:
 
+Création de l'alias git :
 bc. git config --global alias.tfscommitbranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git tfs -i $1 rcheckin ; git stash pop"'
-ex: git tfscommitbranch branche1
+Utilisation: git tfscommitbranch branche1
 
 h3. 7.Scripts GitExtension (suite):
 
 Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
-{border:1px solid black}.|Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-{border:1px solid black}.|Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-{border:1px solid black}.|Tfs(Branche)> Commit|sh|-c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+table{border:1px solid black}.
+|Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|Tfs(Branche)> Commit|sh|-c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
 
 Pour info mais non utile:
 
+table{border:1px solid black}.
 |Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 h3. 8.Travailler avec les shelvesets
