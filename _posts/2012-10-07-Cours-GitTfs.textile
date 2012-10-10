@@ -64,6 +64,7 @@ Difftool Path :
 bc. C:/Program Files (x86)/p4merge/p4merge.exe
 
 Difftool command : 
+
 bc. "C:/Program Files (x86)/p4merge/p4merge.exe" "$LOCAL" "$REMOTE"
 
 
@@ -124,6 +125,7 @@ bc. git tfs rcheckin
 Cette commande réapplique les commits sur le serveur TFS. Cependant, nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux.
 Nécessite également de ne pas avoir de modifications dans l'espace de travail :(
 ->
+
 bc. git stash save //pour mettre les modifications de côté
 //Commit...
 git stash pop //pour récupérer les modifications mises de côté
@@ -225,7 +227,7 @@ Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remp
 
 table{border:1px solid black}.
 |{border:1px solid black}. Tfs(Branche)> Fetch|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-{border:1px solid black}. Tfs(Branche)> Fetch and rebase|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|{border:1px solid black}. Tfs(Branche)> Fetch and rebase|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 |{border:1px solid black}. Tfs(Branche)> Commit|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
@@ -254,35 +256,35 @@ Créer un commit réservé de la branche courante:
 bc. git tfs shelve MonShelveset
 
 Avantage de la branche Git sur le shelveset TFS :
-- on peut faire plusieurs commits
-- on connait le commit parent et voit exactement les modifications faites (là ou TFS présente seulement un état de fichier et on ne sait pas comment il serait mergé!)
-- mergeable plus facilement (moins sensible au modifications) 
+* on peut faire plusieurs commits
+* on connait le commit parent et voit exactement les modifications faites (là ou TFS présente seulement un état de fichier et on ne sait pas comment il serait mergé!)
+* mergeable plus facilement (moins sensible au modifications) 
 
 h2. Utilisation de Git
 
-- Règle de Base : Ne JAMAIS modifier des commits déjà partagés!!!!!!
+* Règle de Base : Ne JAMAIS modifier des commits déjà partagés!!!!!!
 
-- Modification des commits existants (pour par ex. rajouter l'association de workitems!)
+* Modification des commits existants (pour par ex. rajouter l'association de workitems!)
 
 bc. git rebase -i HEAD~n (avec 'n' à remplacer par le nombre de commit qu'on veut réécrire)
 
 Attention : Ne pas enfreindre la règle précédente!!!
 
-- Historique des opérations (et réparation des erreurs!) : 
+* Historique des opérations (et réparation des erreurs!) : 
 
 bc. git reflog => voire l'historique des modification
 git branch MaBranche d995afd => creation d'une branche sur un commit (en indiquant son sha1)
 
-- Astuce: Git ne fait qu'ajouter des commits et n'en détruie AUCUN! (sauf lors du passage du Garbage Collector tous les 30 jours pour effacer ceux non utilisés).
+* Astuce: Git ne fait qu'ajouter des commits et n'en détruie AUCUN! (sauf lors du passage du Garbage Collector tous les 30 jours pour effacer ceux non utilisés).
  Donc avant de faire une opération dont vous n'avez pas l'habitude, vous avez juste à créer une branche là où vous êtes qui vous servira de sauvegarde!
  Et à l'effacer quand vous avez réussi...
 
 h2. Aperçu de Git-TF
 
 * C'est du Java
-* Attention à l'option --deep
-* Association des workitems dans la ligne de commande (donc pas de possibilité d'utiliser depuis GitExtension)
- et même association de workitems pour TOUS les commits (si utilisation de l'option --deep)
+* Par défaut, création d'un seul commit de merge (utiliser l'option - -deep pour réappliquer les commits locaux sur le serveur TFS)
+* Association des workitems dans la ligne de commande (donc pas de possibilité d'utiliser depuis une GUI :( )
+ et même association de workitems pour TOUS les commits (si utilisation de l'option - -deep. Et apparement il y aurait un bug :( )
 
 h2. Retour d'expérience
 
