@@ -45,13 +45,27 @@ git config --global core.autocrlf false
 Au lancement de GitExtension, verifier que le checkup est bon!
 Ou configurer en conséquence...
 Menu "Settings"->"Settings..."->Onglet "Global Settings"
-Editor : notepad++ -multiInst -notabbar
+Editor : 
+
+bc. notepad++ -multiInst -notabbar
+
 MergeTool : p4merge 
-MergeTool Path : C:/Program Files (x86)/p4merge/p4merge.exe
-MergeTool command : "C:/Program Files (x86)/p4merge/p4merge.exe" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+MergeTool Path : 
+
+bc. C:/Program Files (x86)/p4merge/p4merge.exe
+
+MergeTool command : 
+
+bc. "C:/Program Files (x86)/p4merge/p4merge.exe" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+
 Difftool : p4merge
-Difftool Path : C:/Program Files (x86)/p4merge/p4merge.exe
-Difftool command : "C:/Program Files (x86)/p4merge/p4merge.exe" "$LOCAL" "$REMOTE"
+Difftool Path : 
+
+bc. C:/Program Files (x86)/p4merge/p4merge.exe
+
+Difftool command : 
+bc. "C:/Program Files (x86)/p4merge/p4merge.exe" "$LOCAL" "$REMOTE"
+
 
 h2. Rappels sur Git!
 
@@ -101,16 +115,20 @@ Méthode facile mais déconseillée :
 
 bc. git tfs ct
 
-Cette commande ouvre la fenêtre de commit de TFS (message + association de workitems) mais crée un commit de merge (moche et peut y avoir des conflits de merge)
+Cette commande ouvre la fenêtre de commit de TFS (message + association de workitems) mais crée un commit de merge (moche et peut y avoir des conflits de merge au moment du commit :( )
 
 Méthode conseillée :
 
 bc. git tfs rcheckin
 
-Cette commande réapplique les commits sur le serveur TFS. Nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux.
-Mais nécessite de ne pas avoir de modifications dans l'espace de travail => "git stash save" puis après "git stash pop"
+Cette commande réapplique les commits sur le serveur TFS. Cependant, nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux.
+Nécessite également de ne pas avoir de modifications dans l'espace de travail :(
+->
+bc. git stash save //pour mettre les modifications de côté
+//Commit...
+git stash pop //pour récupérer les modifications mises de côté
 
-Worklow en découlant :
+Worklow utilisé en découlant :
 
 bc. git tfs fetch ==>récupération de derniers commits du serveur
 git stash save ==>mise de côté des modifications non commitées
@@ -133,19 +151,19 @@ bc. git config --global alias.tfscommit '!sh -c "git tfs fetch ; git stash save 
 
 h3. 5.Scripts GitExtension:
 
-Il peut être pratique de créer dans GitExtension les scripts decrit ci-dessous ensuites disponibles par un clic droit dans le Browser de GitExtension.
+Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
 table{border:1px solid black}.
-|Tfs(Tronc)> Fetch|git|tfs fetch|
-|Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
-|Tfs(Tronc)> Commit|git|tfscommit|
+|{border:1px solid black}. Tfs(Tronc)> Fetch|{border:1px solid black}. git|{border:1px solid black}. tfs fetch|
+|{border:1px solid black}. Tfs(Tronc)> Fetch and Rebase|{border:1px solid black}. git|{border:1px solid black}. tfsrebase|
+|{border:1px solid black}. Tfs(Tronc)> Commit|{border:1px solid black}. git|{border:1px solid black}. tfscommit|
 
 Pour info mais non utile:
 
 table{border:1px solid black}.
-|Tfs(Tronc)> Commit|git|tfs rcheckin|
-|Tfs(Tronc)> Commit Visuel|git|tfs ct|
+|{border:1px solid black}. Tfs(Tronc)> Commit|{border:1px solid black}. git|{border:1px solid black}. tfs rcheckin|
+|{border:1px solid black}. Tfs(Tronc)> Commit Visuel|{border:1px solid black}. git|{border:1px solid black}. tfs ct|
 
 h3. 6.Gestion d'une branche de TFS:
 
@@ -206,16 +224,16 @@ h3. 7.Scripts GitExtension (suite):
 Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
 table{border:1px solid black}.
-|Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-|Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-|Tfs(Branche)> Commit|sh|-c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|{border:1px solid black}. Tfs(Branche)> Fetch|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+{border:1px solid black}. Tfs(Branche)> Fetch and rebase|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|{border:1px solid black}. Tfs(Branche)> Commit|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
 
 Pour info mais non utile:
 
 table{border:1px solid black}.
-|Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|{border:1px solid black}. Tfs(Branche)> Commit|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 h3. 8.Travailler avec les shelvesets
 
@@ -272,7 +290,7 @@ h3. Avantages:
 * Connaissance à tout instant de quelle version on utilise localement
 * Branches et commits locaux (expérimentation, retour en arrières, meilleur développement, baby steps,...)
 * Meilleur connaissance des modifications des autres utilisateurs (visualisation de l'historique + diffs)
-* BEAUCOUP plus grande souplesse de développement et de commit
+* BEAUCOUP plus grande souplesse de développement et de commit (commit de parties de fichiers!)
 * Remplacement du shelving par les branches ( et on peut faire plusieurs commits)
 * Commit de Revert
 * Bisect : trouver une régression facilement en testant les commits successivement par dichotomie
