@@ -210,13 +210,17 @@ Ajout d'alias pour automatiser le workflow précédent avec des branches:
 Pour synchroniser ses modifications avec la dernière version de la branche sur TFS:
 
 Création de l'alias git :
+
 bc. git config --global alias.tfsrebasebranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git stash pop"'
+
 Utilisation:  git tfsrebasebranch branche1
 
 Pour commiter sur la brance sur TFS:
 
 Création de l'alias git :
+
 bc. git config --global alias.tfscommitbranch '!sh -c "git tfs fetch -i $1 ; git stash save ; git rebase tfs/$1 ; git tfs -i $1 rcheckin ; git stash pop"'
+
 Utilisation: git tfscommitbranch branche1
 
 h3. 7.Scripts GitExtension (suite):
