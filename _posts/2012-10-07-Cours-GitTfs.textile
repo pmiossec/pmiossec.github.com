@@ -156,16 +156,16 @@ h3. 5.Scripts GitExtension:
 Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
-table{border:1px solid black}.
-|{border:1px solid black}. Tfs(Tronc)> Fetch|{border:1px solid black}. git|{border:1px solid black}. tfs fetch|
-|{border:1px solid black}. Tfs(Tronc)> Fetch and Rebase|{border:1px solid black}. git|{border:1px solid black}. tfsrebase|
-|{border:1px solid black}. Tfs(Tronc)> Commit|{border:1px solid black}. git|{border:1px solid black}. tfscommit|
+{border:1px solid black}.
+|Tfs(Tronc)> Fetch|git|tfs fetch|
+|Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
+|Tfs(Tronc)> Commit|git|tfscommit|
 
 Pour info mais non utile:
 
-table{border:1px solid black}.
-|{border:1px solid black}. Tfs(Tronc)> Commit|{border:1px solid black}. git|{border:1px solid black}. tfs rcheckin|
-|{border:1px solid black}. Tfs(Tronc)> Commit Visuel|{border:1px solid black}. git|{border:1px solid black}. tfs ct|
+{border:1px solid black}.
+|Tfs(Tronc)> Commit|git|tfs rcheckin|
+|Tfs(Tronc)> Commit Visuel|git|tfs ct|
 
 h3. 6.Gestion d'une branche de TFS:
 
@@ -181,9 +181,9 @@ bc. sh ./git-tfs-branch.sh $/MyProject/MyTFSBranch myBranch [IdFirstCommitInTheB
 
 Notes : 
 * Pour le nom "myBranch", éviter absolument les '.' et ' ' et mettre les paramètres entre '"' si besoin.
-* Le 3ème paramètre, correspondant au 1er commit dans la branche, est facultatif et dans ce cas là le script essaye de le retrouver en utilisant la commande 'tf history $/MyProject/MyTFSBranch'.
-Cependant, cela ne marche pas tout le temps (par exemple pour les dépots Codeplex :( ). Il convient donc de le retrouver et de le passer au script.
-Pour cela, depuis l'explorateur de code source de TFS, faire "Afficher l'historique" sur la branche et prendre le n° de la serbière ligne.
+* Le 3ème paramètre, correspondant à l'identifiant TFS du dernier commit commun entre le tronc et la branche. TFS n'est pas très utile pour le trouver :(
+Pour cela, depuis l'explorateur de code source de TFS, faire "Afficher l'historique" sur la branche, le n° de la dernière ligne étant le n° du 1er commit dans la branche.
+Il faut trouver le commit parent. A vous de jouer :( Bien souvent, il suffit de prendre le commit précédent (donc soustraire 1) mais c'est à vérifier absolument!!
 
 bc. ex :
 sh ./git-tfs-branch.sh $/valtechgittfs/branche1 branche1
@@ -225,17 +225,17 @@ h3. 7.Scripts GitExtension (suite):
 
 Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
-table{border:1px solid black}.
-|{border:1px solid black}. Tfs(Branche)> Fetch|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-|{border:1px solid black}. Tfs(Branche)> Fetch and rebase|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-|{border:1px solid black}. Tfs(Branche)> Commit|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+{border:1px solid black}.
+|Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|Tfs(Branche)> Commit|sh|-c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
 
 Pour info mais non utile:
 
-table{border:1px solid black}.
-|{border:1px solid black}. Tfs(Branche)> Commit|{border:1px solid black}. sh|{border:1px solid black}. -c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+{border:1px solid black}.
+|Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 h3. 8.Travailler avec les shelvesets
 
