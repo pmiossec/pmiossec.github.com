@@ -157,7 +157,7 @@ Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessou
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
 (table)
-|_Name|_Command|Arguments|
+|_.Name|_.Command|_.Arguments|
 |Tfs(Tronc)> Fetch|git|tfs fetch|
 |Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
 |Tfs(Tronc)> Commit|git|tfscommit|
@@ -165,7 +165,7 @@ Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajo
 Pour info mais non utile:
 
 (table)
-|_Name|_Command|Arguments|
+|_.Name|_.Command|_.Arguments|
 |Tfs(Tronc)> Commit|git|tfs rcheckin|
 |Tfs(Tronc)> Commit Visuel|git|tfs ct|
 
@@ -232,7 +232,7 @@ h3. 7.Scripts GitExtension (suite):
 Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
 (table)
-|_Name|_Command|Arguments|
+|_.Name|_.Command|_.Arguments|
 |Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 |Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 |Tfs(Branche)> Commit|sh|-c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
@@ -242,7 +242,7 @@ Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit 
 Pour info mais non utile:
 
 (table)
-|_Name|_Command|Arguments|
+|_.Name|_.Command|_.Arguments|
 |Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 h3. 8.Travailler avec les shelvesets
