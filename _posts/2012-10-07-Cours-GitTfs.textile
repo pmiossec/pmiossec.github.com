@@ -156,14 +156,18 @@ h3. 5.Scripts GitExtension:
 Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
-{border:1px solid black}. |Tfs(Tronc)> Fetch|git|tfs fetch|
-{border:1px solid black}. |Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
-{border:1px solid black}. |Tfs(Tronc)> Commit|git|tfscommit|
+(table)
+|_Name|_Command|Arguments|
+|Tfs(Tronc)> Fetch|git|tfs fetch|
+|Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
+|Tfs(Tronc)> Commit|git|tfscommit|
 
 Pour info mais non utile:
 
-{border:1px solid black}. |Tfs(Tronc)> Commit|git|tfs rcheckin|
-{border:1px solid black}. |Tfs(Tronc)> Commit Visuel|git|tfs ct|
+(table)
+|_Name|_Command|Arguments|
+|Tfs(Tronc)> Commit|git|tfs rcheckin|
+|Tfs(Tronc)> Commit Visuel|git|tfs ct|
 
 h3. 6.Gestion d'une branche de TFS:
 
@@ -227,16 +231,19 @@ h3. 7.Scripts GitExtension (suite):
 
 Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
-{border:1px solid black}. |Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-{border:1px solid black}. |Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
-{border:1px solid black}. |Tfs(Branche)> Commit|sh|-c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+(table)
+|_Name|_Command|Arguments|
+|Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+|Tfs(Branche)> Commit|sh|-c "git tfscommitbranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
 
 Pour info mais non utile:
 
-
-{border:1px solid black}. |Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
+(table)
+|_Name|_Command|Arguments|
+|Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
 h3. 8.Travailler avec les shelvesets
 
