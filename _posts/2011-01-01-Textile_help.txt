@@ -24,9 +24,15 @@ that underscores in words are ignored. Textile also has a few handy character he
 trademark(TM), reserved(R), copyright(C), ellipses ..., superscripts^2, subscripts~2, 
 and so on.
 
-!/images/photo.jpeg(this is the alt text)!
+"linktext":url
+!/images/url.jpeg(this is the alt text)!
+ABC(This Is An Acronym)
+Footnote in the text[1]...
+fn1. and at the bottom of the page
 
 bq. Blockquotes are like quoted text in email replies
+
+bc. Block Code with spaces before and after
 
 * Bullet lists are easy too
 * Another one
@@ -61,27 +67,19 @@ can be used
 for things like poems  
 with the right css.
 
+{border:1px solid black}.
 |_.Col 1|_.Col 2|_.Col 3|
-|a|table|row|
-|a|table|row|
+|a|simple table|row|
+{background:#ddd}. |a|colored|row|
+|{background:#bbb}. a|colored|cell|
+|a|\2. Cell spanning|
 
 * <, >, =, and <> used for alignment
 
-ABC(Abbreviation definition here)
-
-
-=======================================
-
-
-Overview
-Textile works by allowing you to type in plain text, and have that text be converted to XHTML in a way you would expect. You can enter your own HTML tags if you wish, and these will not be affected by the Textile processing system.
-
-For instance, instead of inserting <p> tags around your paragraphs, just hit the enter key twice. Textile will enclose the blocks of text that look like paragraphs in the proper tags.
 Block Modifiers
 
 Header: hn.
 Blockquote: bq.
-Footnote: fnn.
 Numeric list: #
 Bulleted list: *
 
@@ -110,23 +108,5 @@ Align Blocks
 = center
 <> justify
 
-Insert a Table
 
-|a|table|row|
-
-To Insert a Link
-
-"linktext":url
-
-To Insert an Image
-
-!imageurl!
-
-To Define an Acronym
-
-ABC(Always Be Closing)
-
-To Reference a Footnote
-
-[n]
 
