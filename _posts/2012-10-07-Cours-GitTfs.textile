@@ -89,6 +89,7 @@ Utilisation des logins codeplex pour le cours du soir : vtccds/vtccds
 
 
 h3. 5.1. Clonage du dépôt TFS
+
 Commande de clone du dépot TFS avec historique (conseillé!):
 
 bc. git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
@@ -108,12 +109,14 @@ h3. 5.2. Récupération des commits de TFS (sans merge ni rebase dans branche ma
 bc. git tfs fetch
 
 h3. 5.3. Création des commits locaux
+
 Lors des commits locaux dans Git, l'association de Workitems se fait par l'ajout des meta-données suivantes dans la description du commit
 
 bc. git-tfs-work-item: 2198 associate //Pour associer un workitem
 git-tfs-work-item: 2198 resolve //Pour clore le workitem
 
 h3. 5.4. Report des commits locaux sur le serveur TFS
+
 Méthode facile mais déconseillée :
 
 bc. git tfs ct
