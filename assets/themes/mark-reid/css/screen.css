@@ -42,21 +42,26 @@ a.pdf:before {
 
 h1,h2,h3,h4 { 
 	line-height:1em; 
-	/*font-size:1.5em;*/ 
+	font-size:0.9em; 
 	font-weight: normal; 
 	clear: left; 	
 	font-family: 'lucida grande', sans-serif; 
 	text-shadow: 2px 2px 3px rgb(170, 170, 170);
 }
 h1 { margin-bottom: 1em;
-	color:#990000 }
+	color:#990000;
+	font-size:1.5em; 
+}
 h2 {
 	font-size: 100%;
 	line-height: 1.5em;
 	margin:1.5em 0 1.5em 0;
 	font-weight:bold;
+	color:#66FF00
 }
-
+h3 {
+	color:#7D7D7D
+}}
 hr { 
 	border-top: 1px solid silver;
 	border-bottom: none;

@@ -9,7 +9,7 @@ tags:
 published: true
 ---
 
-h2. Installation des outils nécessaires
+h2. 1.Installation des outils nécessaires
 
 * Installation de "GitExtension":http://code.google.com/p/gitextensions/ (et Git)
 	->Options par defaut de Git sauf : "Checkout as-is, commit as-is"
@@ -22,15 +22,15 @@ h2. Installation des outils nécessaires
 
 * Verifier que le répertoire 'bin' de Git est dans le path
 
-h2. Configuration de Git & GitExtension
+h2. 2.Configuration de Git & GitExtension
 
 Trois moyens...
 
-1.Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
+* Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
 Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du .gitignore_global ( ou celui de "GitHub":https://github.com/github/gitignore )
 Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos informations personnelles!)
 
-2.Par ligne de commande
+* Par ligne de commande
 Les configuration necessaires pour faire fonctionner Git: 
 
 bc. git config --global user.name "Ton Nom"
@@ -41,7 +41,7 @@ Les configuration necessaires pour faire fonctionner Git sous Windows!:
 bc. git config --global core.ignorecase true
 git config --global core.autocrlf false
 
-3.Depuis GitExtension
+* Depuis GitExtension
 Au lancement de GitExtension, verifier que le checkup est bon!
 Ou configurer en conséquence...
 Menu "Settings"->"Settings..."->Onglet "Global Settings"
@@ -68,7 +68,7 @@ Difftool command :
 bc. "C:/Program Files (x86)/p4merge/p4merge.exe" "$LOCAL" "$REMOTE"
 
 
-h2. Rappels sur Git!
+h2. 3.Rappels sur Git!
 
 Git est :
 * un gestionnaire de contenu (et non de différence!)
@@ -78,17 +78,17 @@ Git est :
 Toute manipulation de Git ne fait que manipuler ce graphe... (Ne jamais l'oublier et essayer de visualiser cela!!)
 ...en ne faisant qu'ajouter des commits!
 
-h2. Présentation de GitExtension
+h2. 4.Présentation de GitExtension
 
 ... (démo)
 
-h2. Utilisation de Git-TFS:
+h2. 5.Utilisation de Git-TFS:
 
 Utilisation des logins codeplex pour le cours du soir : vtccds/vtccds
 ==<!--Destruction comptes : https://www.codeplex.com/site/contact  vtcgitcds/cdsgitvtc & vtc_cds/vtc_cds -->==
 
 
-h3. 1. Clonage du dépôt TFS
+h3. 5.1. Clonage du dépôt TFS
 Commande de clone du dépot TFS avec historique (conseillé!):
 
 bc. git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
@@ -103,17 +103,17 @@ Utilisation du login/mdp
 login:snd\[LoginCodePlex]_cp
 mdp:celui du compte codeplex
 
-h3. 2. Récupération des commits de TFS (sans merge ni rebase dans branche master)
+h3. 5.2. Récupération des commits de TFS (sans merge ni rebase dans branche master)
 
 bc. git tfs fetch
 
-h3. 3. Création des commits locaux
+h3. 5.3. Création des commits locaux
 Lors des commits locaux dans Git, l'association de Workitems se fait par l'ajout des meta-données suivantes dans la description du commit
 
 bc. git-tfs-work-item: 2198 associate //Pour associer un workitem
 git-tfs-work-item: 2198 resolve //Pour clore le workitem
 
-h3. 4. Report des commits locaux sur le serveur TFS
+h3. 5.4. Report des commits locaux sur le serveur TFS
 Méthode facile mais déconseillée :
 
 bc. git tfs ct
@@ -153,7 +153,7 @@ bc. git config --global alias.tfscommit '!sh -c "git tfs fetch && git stash save
 
 ->Utilisation: git tfscommit
 
-h3. 5.Scripts GitExtension:
+h3. 5.5.Scripts GitExtension:
 
 Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
@@ -171,7 +171,8 @@ table(table).
 |Tfs(Tronc)> Commit|git|tfs rcheckin|
 |Tfs(Tronc)> Commit Visuel|git|tfs ct|
 
-h3. 6.Gestion d'une branche de TFS:
+
+h3. 5.6.Gestion d'une branche de TFS:
 
 Création d'une branche TFS...
 Solution Facile (qu'on ne fera pas!!):
@@ -212,7 +213,7 @@ bc. git config --global alias.tfscommitbranch '!sh -c "git tfs fetch -i $1 && gi
 
 Utilisation: git tfscommitbranch branche1
 
-h3. 7.Scripts GitExtension (suite):
+h3. 5.7.Scripts GitExtension (suite):
 
 Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
 
@@ -230,7 +231,7 @@ table(table).
 |_. Name|_. Command|_. Arguments|
 |Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
-h3. 8.Travailler avec les shelvesets
+h3. 5.8.Travailler avec les shelvesets
 
 Liste de ses commits réservés
 
@@ -253,7 +254,7 @@ Avantage de la branche Git sur le shelveset TFS :
 * on connait le commit parent et voit exactement les modifications faites (là ou TFS présente seulement un état de fichier et on ne sait pas comment il serait mergé!)
 * mergeable plus facilement (moins sensible au modifications) 
 
-h2. Utilisation de Git
+h2. 6.Utilisation de Git
 
 * Règle de Base : Ne JAMAIS modifier des commits déjà partagés!!!!!!
 
@@ -272,14 +273,14 @@ git branch MaBranche d995afd => creation d'une branche sur un commit (en indiqua
  Donc avant de faire une opération dont vous n'avez pas l'habitude, vous avez juste à créer une branche là où vous êtes qui vous servira de sauvegarde!
  Et à l'effacer quand vous avez réussi...
 
-h2. Aperçu de Git-TF
+h2. 7. Aperçu de Git-TF
 
 * C'est du Java
 * Par défaut, création d'un seul commit de merge (utiliser l'option &ndash;&ndash;deep pour réappliquer les commits locaux sur le serveur TFS)
 * Association des workitems dans la ligne de commande (donc pas de possibilité d'utiliser depuis une GUI :( )
  et même association de workitems pour TOUS les commits (si utilisation de l'option &ndash;&ndash;deep. Et apparement il y aurait un bug :( )
 
-h2. Retour d'expérience
+h2. 8. Retour d'expérience
 
 h3. Avantages:
 * Connaissance à tout instant de quelle version on utilise localement
@@ -298,7 +299,7 @@ h3. Inconvénient:
 * Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS et les récupère. Non présent sur un serveur Git...)
 * (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....
 
-h2. Conclusion
+h2. 9. Conclusion
 
 Beaucoup d'avantages, quelques petits désagréments
 TFS est une solution d'archivage, Git est un outil servant à faciliter un développement
