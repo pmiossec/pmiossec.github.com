@@ -94,6 +94,15 @@ table.table_border  td {
 	font-family: Palatino,georgia,"times new roman",serif;
 	font-size: 0.8em;
 }
+
+code {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
 sup { line-height: 1ex; }
 
 #site {
