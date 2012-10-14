@@ -85,6 +85,8 @@ h2. Présentation de GitExtension
 h2. Utilisation de Git-TFS:
 
 Utilisation des logins codeplex pour le cours du soir : vtccds/vtccds
+==<!--Destruction comptes : https://www.codeplex.com/site/contact  vtcgitcds/cdsgitvtc & vtc_cds/vtc_cds -->==
+
 
 h3. 1. Clonage du dépôt TFS
 Commande de clone du dépot TFS avec historique (conseillé!):
