@@ -33,14 +33,12 @@ Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos in
 2.Par ligne de commande
 Les configuration necessaires pour faire fonctionner Git: 
 
-bc. 
-git config --global user.name "Ton Nom"
+bc. git config --global user.name "Ton Nom"
 git config --global user.email ton_mail@valtech.fr
 
 Les configuration necessaires pour faire fonctionner Git sous Windows!: 
 
-bc. 
-git config --global core.ignorecase true
+bc. git config --global core.ignorecase true
 git config --global core.autocrlf false
 
 3.Depuis GitExtension
@@ -143,13 +141,13 @@ git stash pop => réapplication des modifications non commitées
 Ajout d'alias pour automatiser ce workflow:
 Pour synchroniser ses modifications avec la dernière version de TFS:
 
-bc. git config --global alias.tfsrebase '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git stash pop"'
+bc. git config --global alias.tfsrebase '!sh -c "git tfs fetch && git stash save && git rebase tfs/default && git stash pop"'
 
 ->Utilisation: git tfsrebase
 
 Pour commiter sur TFS:
 
-bc. git config --global alias.tfscommit '!sh -c "git tfs fetch ; git stash save ; git rebase tfs/default ; git tfs rcheckin ; git stash pop"'
+bc. git config --global alias.tfscommit '!sh -c "git tfs fetch && git stash save && git rebase tfs/default && git tfs rcheckin && git stash pop"'
 
 ->Utilisation: git tfscommit
 
