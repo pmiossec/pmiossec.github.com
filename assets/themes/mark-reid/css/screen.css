@@ -72,12 +72,12 @@ hr {
 	margin: 1.46em 0 0 0;
 }
 
-table#table_border {
+table.table_border {
 	border-width:1px; 
 	border-style:solid; 
 	border-color:black;
 	}
-table#table_border  td {
+table.table_border  td {
 	border-width:1px; 
 	border-style:solid; 
 	border-color:black;
