@@ -331,7 +331,8 @@ Ce plugin permet de détecter des chaines de caractères types (FIXME, TODO,... 
 Après l’avoir installé, allez dans la configuration du projet et activez la case à cocher “Recherche des tâches ouvertes dans le workspace”.
 
 Puis configurez les options suivantes :
-“Files to scan” = **/*.cs
+
+bc. “Files to scan” = **/*.cs
 “Tasks tags” = configuer les 3 champs de priorités avec les chaines de caractère que vous souhaitez.
 
 Le plugin est configuré et un graphe “Open Tasks Trend” devrait être disponible dans le tableau de bord du projet lors du prochain build. Un lien “Tâches ouvertes” est également disponible dans la colonne de gauche.
