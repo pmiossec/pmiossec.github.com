@@ -46,8 +46,10 @@ h1,h2,h3,h4 {
 	font-weight: normal; 
 	clear: left; 	
 	font-family: 'lucida grande', sans-serif; 
+	text-shadow: 2px 2px 3px rgb(170, 170, 170);
 }
-h1 { margin-bottom: 1em; }
+h1 { margin-bottom: 1em;
+	color:#990000 }
 h2 {
 	font-size: 100%;
 	line-height: 1.5em;
