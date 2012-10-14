@@ -74,6 +74,15 @@ with the right css.
 |{background:#bbb}. a|colored|cell|
 |a|\2. Cell spanning|
 
+==<!-- html comment -->==
+
+notextile.  <!-- test 
+test
+test
+-->
+
+
+
 * <, >, =, and <> used for alignment
 
 Block Modifiers

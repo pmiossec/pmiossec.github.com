@@ -305,9 +305,7 @@ PS :
 * Vous avez toutes les infos pour utiliser Git-tfs mais il vous reste à apprivoiser Git...
 * "Documentation":http://sixrevisions.com/resources/git-tutorials-beginners/
 
-
-
-<!--Introduction à Git par David Gageot
+.notextile <!--Introduction à Git par David Gageot
 
 Git, la gestion de configuration qui vous veut du bien
 
