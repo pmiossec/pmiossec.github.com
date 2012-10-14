@@ -180,7 +180,7 @@ Solution Plus convenable:
 Utiliser la "version perso de git-tfs":http://github.com/git-tfs/git-tfs/pull/232 contenant la commande "init-branch" :
 
 bc. git tfs init-branch $/MyProject/MyTFSBranch //Pour une branche spécifique
-git tfs all //Pour toutes les branches
+git tfs init-branch all //Pour toutes les branches
 
 bc. ex :
 git tfs init-branch $/valtechgittfs/branche1
