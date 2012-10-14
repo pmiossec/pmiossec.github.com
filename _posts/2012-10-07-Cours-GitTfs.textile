@@ -293,7 +293,6 @@ h3. Avantages:
 * Backport de commit entre branches plus facile
 
 h3. Inconvénient:
-* Creation des branches TFS un peu folklorique ;)
 * Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS et les récupère. Non présent sur un serveur Git...)
 * (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....
 
