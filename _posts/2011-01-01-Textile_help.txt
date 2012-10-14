@@ -76,13 +76,6 @@ with the right css.
 
 ==<!-- html comment -->==
 
-notextile.  <!-- test 
-test
-test
--->
-
-
-
 * <, >, =, and <> used for alignment
 
 Block Modifiers

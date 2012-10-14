@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "Cours du soir Git-Tfs"
-description: "Cours du soir Valtech sur Git-Tfs et GitExtension"
+title: "Git-tfs : Utilisation de Git avec un serveur TFS"
+description: " Git-Tfs, GitExtension et la gestion des branches (Utilisé pour un Cours du soir Valtech)"
 categories: .Net
 tags:
 - Git
 - TFS
 published: true
 ---
+
+_(ou comment utiliser Git en environnement hostile!)_
 
 h2. 1.Installation des outils nécessaires
 
