@@ -48,18 +48,21 @@ h1,h2,h3,h4 {
 	font-family: 'lucida grande', sans-serif; 
 	text-shadow: 2px 2px 3px rgb(170, 170, 170);
 }
-h1 { margin-bottom: 1em;
+h1 {
+	font-size:1.5em;
+	margin-bottom: 1em;
 	color:#990000;
 }
 h2 {
 	font-size: 100%;
 	line-height: 1.8em;
-	font-size:1.5em; 
+	font-size:1.2em; 
 	margin:1.5em 0 1.5em 0;
 	font-weight:bold;
 	color:#47B300
 }
 h3 {
+	line-height:1.3em; 
 	color:#7D7D7D
 }}
 hr { 
