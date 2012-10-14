@@ -77,8 +77,10 @@ table.table_border {
 	border-style:solid; 
 	border-color:silver;
 	padding:0;
-	margin:0;
+	margin-left:auto;
+	margin-right:auto;
 	}
+
 table.table_border  td {
 	border-left-width:1px; 
 	border-top-width:0px; 
