@@ -33,12 +33,14 @@ Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos in
 2.Par ligne de commande
 Les configuration necessaires pour faire fonctionner Git: 
 
-bc. git config --global user.name "Ton Nom"
+bc. 
+git config --global user.name "Ton Nom"
 git config --global user.email ton_mail@valtech.fr
 
 Les configuration necessaires pour faire fonctionner Git sous Windows!: 
 
-bc. git config --global core.ignorecase true
+bc. 
+git config --global core.ignorecase true
 git config --global core.autocrlf false
 
 3.Depuis GitExtension
