@@ -77,6 +77,8 @@ Git est :
 * stocké sous la forme d'un graphe acyclique d'objets
 * accessible avec des références
 
+!http://git-scm.com/figures/18333fig0315-tn.png(Exemple de graphe acyclique --hitorique du dépot--)
+
 Toute manipulation de Git ne fait que manipuler ce graphe... (Ne jamais l'oublier et essayer de visualiser cela!!)
 ...en ne faisant qu'ajouter des commits!
 
