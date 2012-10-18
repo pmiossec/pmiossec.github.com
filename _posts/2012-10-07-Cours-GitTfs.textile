@@ -20,7 +20,7 @@ h2. 1.Installation des outils nécessaires
 
 * Installation de notepad++ (si besoin) -> Note: il faut avoir un éditeur de texte multiinstance!! (notepad++ -multiInst -notabbar)
 
-* Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git
+* Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git. Pour l'instant, on utilisera plutôt une "version customisée de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip 
 
 * Verifier que le répertoire 'bin' de Git est dans le path
 
@@ -84,9 +84,15 @@ Toute manipulation de Git ne fait que manipuler ce graphe... (Ne jamais l'oublie
 
 h2. 4.Présentation de GitExtension
 
-... (démo)
-
 !={width: 509px; height: 334px;}http://gitextensions.googlecode.com/files/commitlog205.png!
+
+Démo...
+
+* Consultation du graphe de commits
+* Zone de staging , ajout de fichiers, de lignes
+* Message de commits, templates, workitems, commit local, amend
+* Stash, Merge, Rebase
+* Fetch, Fetch et Rebase, Commit 
 
 h2. 5.Utilisation de Git-TFS:
 
@@ -135,7 +141,6 @@ bc. git tfs rcheckin
 
 Cette commande réapplique les commits sur le serveur TFS. Cependant, nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux.
 Nécessite également de ne pas avoir de modifications dans l'espace de travail :(
-->
 
 bc. git stash save //pour mettre les modifications de côté
 //Commit...
@@ -165,9 +170,8 @@ bc. git config --global alias.tfscommit '!sh -c "git tfs fetch && git stash save
 h3. 5.5.Scripts GitExtension:
 
 Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
-Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
+Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs de chaque ligne :
 
-table(table_border).
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs(Tronc)> Fetch|git|tfs fetch|
 |Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
@@ -175,7 +179,6 @@ table(table_border).
 
 Pour info mais non utile:
 
-table(table_border).
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs(Tronc)> Commit|git|tfs rcheckin|
 |Tfs(Tronc)> Commit Visuel|git|tfs ct|
@@ -189,7 +192,7 @@ Solution Facile (qu'on ne fera pas!!):
 * Inconvénients : on ne peut pas backporter des corrections
 
 Solution Plus convenable:
-Utiliser la "version perso de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip contenant la commande "init-branch" :
+Utiliser la customisée de git-tfs contenant la commande "init-branch" :
 
 bc. git tfs init-branch $/MyProject/MyTFSBranch //Pour une branche spécifique
 git tfs init-branch all //Pour toutes les branches
@@ -224,9 +227,8 @@ Utilisation: git tfscommitbranch branche1
 
 h3. 5.7.Scripts GitExtension (suite):
 
-Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs séparées par le '/' :
+Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis :
 
-table(table_border).
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs(Branche)> Fetch|sh|-c "git tfs fetch -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 |Tfs(Branche)> Fetch and rebase|sh|-c "git tfsrebasebranch $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
@@ -236,7 +238,6 @@ Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit 
 
 Pour info mais non utile:
 
-table(table_border).
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs(Branche)> Commit|sh|-c "git tfs rcheckin -i $(echo {sRemoteBranch} &#124; sed 's/tfs\///')"|
 
@@ -267,6 +268,27 @@ h2. 6.Utilisation de Git
 
 * Règle de Base : Ne JAMAIS modifier des commits déjà partagés!!!!!!
 
+* Mise de coté des fichiers modifiés de l'espace de travail (fonctionne comme une pile)
+
+bc. git stash save //pour mettre de côté
+git stash pop //pour récupérer le dernier stash mis de côté
+
+* Merge / Rebase
+
+Le merge :
+# crée un commit supplémentaire pour réunir les 2 branches.
+# Il permet de matérialiser l'introduction d'une fonctionnalité dans une branche.
+# Il permet le travail avec des fichiers modifiés dans l'espace de travail.
+
+Le rebase :
+# réapplique les commit d'une branche sur un commit.
+# Il permet d'avoir un historique linéaire.
+# Il ne permet pas de travailler avec des fichiers modifiées dans l'espace de travail (stash).
+
+* J'ai commité dans le tronc alors que je voulais faire une branche
+
+* un bug à résoudre rapidement alors que je suis en plein développement
+
 * Modification des commits existants (pour par ex. rajouter l'association de workitems!)
 
 bc. git rebase -i HEAD~n (avec 'n' à remplacer par le nombre de commit qu'on veut réécrire)
@@ -284,10 +306,10 @@ git branch MaBranche d995afd => creation d'une branche sur un commit (en indiqua
 
 h2. 7. Aperçu de Git-TF
 
-* C'est du Java
 * Par défaut, création d'un seul commit de merge (utiliser l'option &ndash;&ndash;deep pour réappliquer les commits locaux sur le serveur TFS)
 * Association des workitems dans la ligne de commande (donc pas de possibilité d'utiliser depuis une GUI :( )
  et même association de workitems pour TOUS les commits (si utilisation de l'option &ndash;&ndash;deep. Et apparement il y aurait un bug :( )
+* C'est du Java
 
 h2. 8. Retour d'expérience
 
