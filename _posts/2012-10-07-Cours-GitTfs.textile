@@ -16,7 +16,7 @@ h2. 1.Installation des outils nécessaires
 * Installation de "GitExtension":http://code.google.com/p/gitextensions/ (et Git)
 	->Options par defaut de Git sauf : "Checkout as-is, commit as-is"
 
-* Installation de "p4merge":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools (si besoin... on doit avoir un outil de 3way-merge!)
+* Installation de "p4merge":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools , "Telechargement":http://www.perforce.com/downloads/complete_list (si besoin... on doit avoir un outil de 3way-merge!)
 
 * Installation de notepad++ (si besoin) -> Note: il faut avoir un éditeur de texte multiinstance!! (notepad++ -multiInst -notabbar)
 
@@ -85,6 +85,8 @@ Toute manipulation de Git ne fait que manipuler ce graphe... (Ne jamais l'oublie
 h2. 4.Présentation de GitExtension
 
 ... (démo)
+
+!http://gitextensions.googlecode.com/files/commitlog205.png!
 
 h2. 5.Utilisation de Git-TFS:
 
@@ -187,7 +189,7 @@ Solution Facile (qu'on ne fera pas!!):
 * Inconvénients : on ne peut pas backporter des corrections
 
 Solution Plus convenable:
-Utiliser la "version perso de git-tfs":http://github.com/git-tfs/git-tfs/pull/232 contenant la commande "init-branch" :
+Utiliser la "version perso de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip contenant la commande "init-branch" :
 
 bc. git tfs init-branch $/MyProject/MyTFSBranch //Pour une branche spécifique
 git tfs init-branch all //Pour toutes les branches
