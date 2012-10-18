@@ -26,6 +26,7 @@ and so on.
 
 "linktext":url
 !/images/url.jpeg(this is the alt text)!
+!{width: 509px; height: 334px;}/images/url.jpeg(this is the alt text)!
 ABC(This Is An Acronym)
 Footnote in the text[1]...
 fn1. and at the bottom of the page
