@@ -24,6 +24,12 @@ h2. 1.Installation des outils nécessaires
 
 * Verifier que le répertoire 'bin' de Git est dans le path
 
+_Aparté : Pour consulter l'aide d'une commande :_
+
+bc. git commit -h
+git help commit
+
+
 h2. 2.Configuration de Git & GitExtension
 
 Trois moyens...
