@@ -16,9 +16,9 @@ h2. 1.Installation des outils nécessaires
 * Installation de "GitExtension":http://code.google.com/p/gitextensions/ (et Git)
 	->Options par defaut de Git sauf : "Checkout as-is, commit as-is"
 
-* Installation de "p4merge":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools , "Telechargement":http://www.perforce.com/downloads/complete_list (si besoin... on doit avoir un outil de 3way-merge!)
+* Installation de "p4merge":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools , "Telechargement":http://www.perforce.com/downloads/complete_list (besoin d'un outil de 3way-merge!)
 
-* Installation de notepad++ (si besoin) -> Note: il faut avoir un éditeur de texte multiinstance!! (notepad++ -multiInst -notabbar)
+* Installation de "notepad++":http://download.tuxfamily.org/notepadplus/6.2/npp.6.2.Installer.exe (besoin d'un éditeur de texte multi-instances!!)
 
 * Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git. Pour l'instant, on utilisera plutôt une "version customisée de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip 
 
