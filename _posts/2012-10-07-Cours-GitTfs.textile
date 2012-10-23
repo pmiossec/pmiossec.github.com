@@ -37,8 +37,8 @@ h2. 2.Configuration de Git & GitExtension
 3 moyens...
 
 * Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
-_Bootstrap_ : Télécharger "l'archive":../../../../../files/article_git/git_config.zip 
--> Copier dans votre répertoire utilisateur et édition du fichier .gitconfig (mettre vos informations personnelles!)
+_Bootstrap_ : Télécharger "l'archive":../../../../../files/article_git/git_config.zip et copiez le contenu dans votre répertoire utilisateur puis...
+-> Edition du fichier .gitconfig (mettre vos informations personnelles!)
 -> Utilisation d'un .gitignore global (si vous ne voulez pas archiver un fichier .gitignore dans TFS) => Copie du .gitignore_global( ou celui de "GitHub":https://github.com/github/gitignore )
 
 * Par ligne de commande
@@ -318,6 +318,7 @@ h2. 7. Aperçu de Git-TF
 * Par défaut, création d'un seul commit de merge (utiliser l'option &ndash;&ndash;deep pour réappliquer les commits locaux sur le serveur TFS)
 * Association des workitems dans la ligne de commande (donc pas de possibilité d'utiliser depuis une GUI :( )
  et même association de workitems pour TOUS les commits (si utilisation de l'option &ndash;&ndash;deep. Et apparement il y aurait un bug :( )
+* Pas de gestion des branches (un clone, donc un dépot par branche)
 * C'est du Java
 
 h2. 8. Retour d'expérience
