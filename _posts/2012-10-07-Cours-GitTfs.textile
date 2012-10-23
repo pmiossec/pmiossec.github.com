@@ -14,7 +14,9 @@ _(ou comment utiliser Git en environnement hostile!)_
 h2. 1.Installation des outils nécessaires
 
 * Installation de "GitExtension":http://code.google.com/p/gitextensions/ (et Git)
-	->Options par defaut de Git sauf : "Checkout as-is, commit as-is"
+	-> Utilisation d'OpenSsh (facultatif)
+	-> Décocher l'option GitGUI (facultatif)
+	-> Options par defaut de Git sauf : "Checkout as-is, commit as-is"
 
 * Installation de "p4merge":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools , "Telechargement":http://www.perforce.com/downloads/complete_list (besoin d'un outil de 3way-merge!)
 
@@ -35,8 +37,9 @@ h2. 2.Configuration de Git & GitExtension
 3 moyens...
 
 * Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
-Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du ".gitignore_global":../../../../../files/article_git/.gitignore_global ( ou celui de "GitHub":https://github.com/github/gitignore )
-Copie dans votre répertoire utilisateur et Edition du ".gitconfig":../../../../../files/article_git/.gitconfig (mettre vos informations personnelles!)
+_Bootstrap_ : Télécharger l'"archive":../../../../../files/article_git/git_config.zip 
+-> Copier dans votre répertoire utilisateur et édition du fichier .gitconfig (mettre vos informations personnelles!)
+-> Utilisation d'un .gitignore global (si vous ne voulez pas archiver un fichier .gitignore dans TFS) => Copie du .gitignore_global( ou celui de "GitHub":https://github.com/github/gitignore )
 
 * Par ligne de commande
 Les configuration necessaires pour faire fonctionner Git: 
