@@ -37,7 +37,7 @@ h2. 2.Configuration de Git & GitExtension
 3 moyens...
 
 * Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
-_Bootstrap_ : Télécharger l'"archive":../../../../../files/article_git/git_config.zip 
+_Bootstrap_ : Télécharger "l'archive":../../../../../files/article_git/git_config.zip 
 -> Copier dans votre répertoire utilisateur et édition du fichier .gitconfig (mettre vos informations personnelles!)
 -> Utilisation d'un .gitignore global (si vous ne voulez pas archiver un fichier .gitignore dans TFS) => Copie du .gitignore_global( ou celui de "GitHub":https://github.com/github/gitignore )
 
