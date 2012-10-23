@@ -19,6 +19,7 @@ h2. 1.Installation des outils nécessaires
 	-> Options par defaut de Git sauf : "Checkout as-is, commit as-is"
 
 * Installation de "p4merge":http://www.perforce.com/product/components/perforce_visual_merge_and_diff_tools , "Telechargement":http://www.perforce.com/downloads/complete_list (besoin d'un outil de 3way-merge!)
+	-> Lors de la sélection des composants à installer, TOUT décocher sauf "Visual Merge Tool (P4Merge)".
 
 * Installation de "notepad++":http://download.tuxfamily.org/notepadplus/6.2/npp.6.2.Installer.exe (besoin d'un éditeur de texte multi-instances!!)
 
