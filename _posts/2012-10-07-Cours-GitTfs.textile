@@ -24,19 +24,19 @@ h2. 1.Installation des outils nécessaires
 
 * Verifier que le répertoire 'bin' de Git est dans le path
 
-_Aparté : Pour consulter l'aide d'une commande :_
+_Avant-propos : Pour consulter l'aide d'une commande :_
 
-bc. git commit -h
-git help commit
+bc. git commit -h //aide de la ligne de commande
+git help commit //aide html complete de la commande (page man)
 
 
 h2. 2.Configuration de Git & GitExtension
 
-Trois moyens...
+3 moyens...
 
 * Edition directement du fichier .gitconfig (situé dans le répertoire utilisateur)
-Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du .gitignore_global ( ou celui de "GitHub":https://github.com/github/gitignore )
-Copie dans votre répertoire utilisateur et Edition du .gitconfig (mettre vos informations personnelles!)
+Utilisation d'un .gitignore global (si vous ne voulez pas archiver le fichier .gitignore dans TFS) => Copie du ".gitignore_global":../../../../../files/article_git/.gitignore_global ( ou celui de "GitHub":https://github.com/github/gitignore )
+Copie dans votre répertoire utilisateur et Edition du ".gitconfig":../../../../../files/article_git/.gitconfig (mettre vos informations personnelles!)
 
 * Par ligne de commande
 Les configuration necessaires pour faire fonctionner Git: 
@@ -44,7 +44,7 @@ Les configuration necessaires pour faire fonctionner Git:
 bc. git config --global user.name "Ton Nom"
 git config --global user.email ton_mail@valtech.fr
 
-Les configuration necessaires pour faire fonctionner Git sous Windows!: 
+Les configuration nécessaires pour faire fonctionner Git sous Windows!: 
 
 bc. git config --global core.ignorecase true
 git config --global core.autocrlf false
@@ -333,6 +333,7 @@ h3. Avantages:
 * Backport de commit entre branches plus facile
 
 h3. Inconvénient:
+* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulation du DAG)
 * Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS et les récupère. Non présent sur un serveur Git...)
 * (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....
 
