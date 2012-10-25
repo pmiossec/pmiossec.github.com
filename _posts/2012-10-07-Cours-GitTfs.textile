@@ -189,6 +189,7 @@ h3. 5.5.Scripts GitExtension:
 Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs de chaque ligne :
 
+table{width:100%}.
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs(Tronc)> Fetch|git|tfs fetch|
 |Tfs(Tronc)> Fetch and Rebase|git|tfsrebase|
@@ -196,6 +197,7 @@ Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajo
 
 Pour info mais non utile:
 
+table{width:100%}.
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs(Tronc)> Commit|git|tfs rcheckin|
 |Tfs(Tronc)> Commit Visuel|git|tfs ct|
@@ -354,8 +356,8 @@ h3. Avantages:
 * Backport de commit entre branches plus facile
 
 h3. Inconvénient:
-* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulation du DAG)
-* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS et les récupère. Non présent sur un serveur Git...)
+* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG)
+* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un serveur Git qui ne fait qu'envoyer les commits sur le dépot distant...)
 * (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....
 
 h2. 9. Conclusion
