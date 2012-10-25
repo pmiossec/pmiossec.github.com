@@ -297,7 +297,7 @@ git stash pop //pour récupérer le dernier stash mis de côté
 *Le merge :*
 # crée un commit supplémentaire pour réunir les 2 branches.
 # Il permet de matérialiser l'introduction d'une fonctionnalité dans une branche.
-# Il permet le travail avec des fichiers modifiés dans l'espace de travail.
+# Cette opération peut être réalisée avec des fichiers modifiés dans l'espace de travail.
 
 table{width:100%}.
 |=. !http://git-scm.com/figures/18333fig0317-tn.png! |
@@ -307,7 +307,7 @@ table{width:100%}.
 *Le rebase :*
 # réapplique les commit d'une branche sur un commit.
 # Il permet d'avoir un historique linéaire.
-# Il ne permet pas de travailler avec des fichiers modifiées dans l'espace de travail (stash).
+# Cette opération ne peut être réalisée avec des fichiers modifiés dans l'espace de travail (nécessité de faire un stash auparavant).
 
 table{width:100%}.
 |=. !http://git-scm.com/figures/18333fig0329-tn.png! |
