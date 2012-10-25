@@ -293,10 +293,14 @@ Le merge :
 # Il permet de matérialiser l'introduction d'une fonctionnalité dans une branche.
 # Il permet le travail avec des fichiers modifiés dans l'espace de travail.
 
+!={width: 220px; height: 117px;}http://git-scm.com/figures/18333fig0317-tn.png!
+
 Le rebase :
 # réapplique les commit d'une branche sur un commit.
 # Il permet d'avoir un historique linéaire.
 # Il ne permet pas de travailler avec des fichiers modifiées dans l'espace de travail (stash).
+
+!={width: 195px; height: 93px;}http://git-scm.com/figures/18333fig0329-tn.png!
 
 * J'ai commité dans le tronc alors que je voulais faire une branche
 
