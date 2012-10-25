@@ -119,12 +119,12 @@ Utilisation des logins codeplex pour le cours du soir : vtccds/vtccds
 
 h3. 5.1. Clonage du dépôt TFS
 
-Commande de clone du dépot TFS avec historique (conseillé!):
+Commande de clone (dans le répertoire courant) du dépot TFS avec historique (conseillé!):
 
 bc. git tfs clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
 ex: git tfs clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/trunk . --username=vtccds_cp@snd --password=vtccds
 
-Commande de clone du dépot TFS sans historique:
+Commande de clone (dans le répertoire courant) du dépot TFS sans historique (dernier changeset):
 
 bc. git tfs quick-clone http://monServeurTfs:8080/tfs/DepotTfs $/MonProjet/NomDuTronc .
 ex: git tfs quick-clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/trunk . --username=vtccds_cp@snd --password=vtccds
