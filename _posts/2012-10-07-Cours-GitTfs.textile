@@ -141,6 +141,8 @@ Utilisation du login/mdp
 login:snd\[LoginCodePlex]_cp
 mdp:celui du compte codeplex
 
+Note : le clone ne doit pas être fait dans un répertoire mappé avec TFS (workspace).
+
 h3. 5.2. Récupération des commits de TFS (sans merge ni rebase dans branche master)
 
 bc. git tfs fetch
