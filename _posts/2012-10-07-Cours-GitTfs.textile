@@ -12,7 +12,7 @@ published: true
 _(ou comment utiliser Git en environnement hostile!)_
 
 Parmis les contrôleur de code source, "TFS est celui le plus détesté par les développeurs :( et Git celui le plus apprécié":http://www.infoq.com/news/2010/03/Review-Version-Control-Systems .
-Nous allons essayer de contourner les problèmes du 1er grâce au second...
+Nous allons essayer de contourner les problèmes du 1er grâce au 2ond...
 
 h2. 1.Installation des outils nécessaires
 
@@ -28,7 +28,7 @@ h2. 1.Installation des outils nécessaires
 
 * Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git. Pour l'instant, on utilisera plutôt une "version customisée de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip 
 
-* Verifier que le répertoire 'bin' de Git est dans le path
+* Verifier que le répertoire 'bin' de Git est dans le path ainsi que les outils p4merge et notepad++.
 
 _Avant-propos : Pour consulter l'aide d'une commande :_
 
@@ -357,7 +357,7 @@ h3. Avantages:
 
 h3. Inconvénient:
 * Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG)
-* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un serveur Git qui ne fait qu'envoyer les commits sur le dépot distant...)
+* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un dépot distant Git qui ne fait qu'envoyer les commits sur le dépot distant...)
 * (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....
 
 h2. 9. Conclusion
