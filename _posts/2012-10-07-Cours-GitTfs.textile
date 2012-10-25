@@ -90,6 +90,7 @@ Git est :
 * stocké sous la forme d'un graphe acyclique d'objets ou DAG(Directed Acyclic Graph)
 * accessible avec des références
 
+table{width:100%}.
 |=. !http://git-scm.com/figures/18333fig0315-tn.png(Exemple de graphe acyclique --historique du dépot--)! |
 |=. _Exemple de graphe acyclique représentant l'historique du dépot_ |
 
@@ -291,19 +292,22 @@ git stash pop //pour récupérer le dernier stash mis de côté
 
 * Merge / Rebase
 
-Le merge :
+*Le merge :*
 # crée un commit supplémentaire pour réunir les 2 branches.
 # Il permet de matérialiser l'introduction d'une fonctionnalité dans une branche.
 # Il permet le travail avec des fichiers modifiés dans l'espace de travail.
 
+table{width:100%}.
 |=. !http://git-scm.com/figures/18333fig0317-tn.png! |
 |=. _le DAG après un merge : le commit C6 est un commit de merge_ |
 
-Le rebase :
+
+*Le rebase :*
 # réapplique les commit d'une branche sur un commit.
 # Il permet d'avoir un historique linéaire.
 # Il ne permet pas de travailler avec des fichiers modifiées dans l'espace de travail (stash).
 
+table{width:100%}.
 |=. !http://git-scm.com/figures/18333fig0329-tn.png! |
 |=. _le DAG après un rebase : le commit C3 est réappliqué sur la branche master..._ |
 
