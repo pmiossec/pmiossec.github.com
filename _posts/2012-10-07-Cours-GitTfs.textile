@@ -11,7 +11,7 @@ published: true
 
 _(ou comment utiliser Git en environnement hostile!)_
 
-Parmis les contrôleur de code source, "TFS est celui le plus détesté par les développeurs :( et Git celui le plus apprécié":http://www.infoq.com/news/2010/03/Review-Version-Control-Systems .
+Parmis les contrôleurs de code source, "TFS est celui le plus détesté par les développeurs :( et Git celui le plus apprécié":http://www.infoq.com/news/2010/03/Review-Version-Control-Systems .
 Nous allons essayer de contourner les problèmes du 1er grâce au 2ond...
 
 h2. 1.Installation des outils nécessaires
@@ -28,7 +28,7 @@ h2. 1.Installation des outils nécessaires
 
 * Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git. Pour l'instant, on utilisera plutôt une "version customisée de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip 
 
-* Verifier que le répertoire 'bin' de Git est dans le path ainsi que les outils p4merge et notepad++.
+* Verifier que le répertoire 'bin' de Git est dans le path ainsi que celui des outils p4merge et notepad++.
 
 _Avant-propos : Pour consulter l'aide d'une commande :_
 
