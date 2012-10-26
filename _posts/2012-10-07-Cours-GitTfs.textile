@@ -387,7 +387,7 @@ TFS est une solution d'archivage, Git est un outil servant à faciliter un déve
 PS :
 * Vous avez toutes les infos pour utiliser Git-tfs mais il vous reste à apprivoiser Git...
 * "Documentation":http://sixrevisions.com/resources/git-tutorials-beginners/
-* Un petit tutoriel assez marrant pour apprendre les commandes de base de git (et voir comment elles sont mieux pensées que celles de TFS ;) ) : http://try.github.com/
+* Un "petit tutoriel":http://try.github.com/ assez marrant pour apprendre les commandes de base de git (et voir comment elles sont mieux pensées que celles de TFS ;) )
 
 ==<!--Introduction à Git par David Gageot : Git, la gestion de configuration qui vous veut du bien -->==
 ==<!--Code freeze, merges douloureux, installation et administration d'un serveur, sauvegardes fastidieuses, perte de données, branches coûteuses, obstacle au refactoring, cycles de build trop longs… Ces mots sont-ils pour vous synonymes de Gestion de Configuration ? Vous avez appris à vivre en couple avec un outil en ignorant volontairement ses défauts, mais ils se rappellent régulièrement à vous ? Découvrez à travers des cas d'utilisation quotidiens comment Git sait se faire oublier et vous faire gagner beaucoup de temps. Vous allez aimer cet outil avec une administration proche de zéro, ne nécessitant pas de backup, utilisable en moins de cinq minutes sur une clef usb, un simple disque partagé, en serveur ou en mode SAAS. Les équipes agiles, seront « accros » de l'outil sachant se faire oublier lors de refactoring de code massifs et permettant l'intégration continue sans serveur. Les équipes distribuées apprécieront les branches locales, le cherry-picking et les performances de git. Vous êtes build 
