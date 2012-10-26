@@ -213,7 +213,7 @@ Pour info mais non utile:
 
 table{width:100%}.
 |_. Name|_. Cmd.|_. Arguments|
-|Tfs(Tronc)> Commit|@git|@tfs rcheckin@|
+|Tfs(Tronc)> Commit|@git@|@tfs rcheckin@|
 |Tfs(Tronc)> Commit Visuel|@git@|@tfs ct@|
 
 
