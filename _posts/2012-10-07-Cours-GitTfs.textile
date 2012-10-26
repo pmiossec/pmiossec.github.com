@@ -264,7 +264,7 @@ Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remp
 
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs(Branche)> Fetch|@sh@|<code>-c "git tfs fetch -i $(echo {sRemoteBranch} </code>&#124;<code> sed 's/tfs\///')"</code> |
-|Tfs(Branche)> Fetch and rebase|@sh@|<code>-c "git tfsrebasebranch $(echo {sRemoteBranch} </code>&#124;<code>sed 's/tfs\///')"</code> |
+|Tfs(Branche)> Fetch and rebase|@sh@|<code>-c "git tfsrebasebranch $(echo {sRemoteBranch} </code>&#124;<code> sed 's/tfs\///')"</code> |
 |Tfs(Branche)> Commit|@sh@|<code>-c "git tfscommitbranch $(echo {sRemoteBranch} </code>&#124;<code> sed 's/tfs\///')"</code> |
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
