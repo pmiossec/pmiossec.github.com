@@ -372,7 +372,7 @@ h3. Avantages:
 * Meilleur Historique
 * Plus de mode connecté/déconnecté de TFS :D
 * Backport de commit entre branches plus facile
-* Visual Studio est plus rapide car il n'a pas à contacter le serveur TFS pour extraire les fichiers en modifications
+* Visual Studio est plus rapide car il n'a pas à contacter le serveur TFS pour extraire les fichiers en modifications (ainsi que beaucoup d'autres actions qui sont faites maintenant localement : blame, diff, ...)
 
 h3. Inconvénient:
 * Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG)
