@@ -36,7 +36,7 @@ Pour le moment, la gestion des branches par git-tfs que j'ai développée n'éta
 
 * Verifier que le répertoire 'bin' de Git est dans le path ainsi que celui des outils p4merge et notepad++.
 
-_Avant-propos : Pour consulter l'aide d'une commande :_
+_Avant-propos : Pour consulter l'aide d'une commande git :_
 
 bc. git commit -h //aide de la ligne de commande
 git help commit //aide html complete de la commande (page man)
@@ -127,8 +127,12 @@ Démo...
 
 h2. 5.Utilisation de Git-TFS:
 
-Note : On pourra tester toutes les commandes git-tfs indiquées en utilisant le projet "valtechgittfs" disponible sur "Codeplex":http://valtechgittfs.codeplex.com/
-Pour cela, on pourra utiliser le compte utilisateur 'vtccds' (mot de passe:vtccds)
+_Note :
+* On pourra tester toutes les commandes git-tfs indiquées en utilisant le projet "valtechgittfs" disponible sur "Codeplex":http://valtechgittfs.codeplex.com/
+Pour cela, on pourra utiliser le compte utilisateur 'vtccds' (mot de passe:vtccds)_
+* Attention : Lors de l'intéraction avec le serveur TFS de Codeplex, le login à fournir est de la forme (sans les crochets!): [LoginCodePlex]_cp@snd 
+Le mot de passe reste celui du compte Codeplex.
+
 ==<!--Destruction comptes : https://www.codeplex.com/site/contact  vtcgitcds/cdsgitvtc & vtc_cds/vtc_cds -->==
 
 
@@ -142,7 +146,7 @@ exemple:
 
 bc. git tfs clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/trunk . --username=vtccds_cp@snd --password=vtccds
 
-Note : Attention à ne cloner que le répertoire correspondant à la branche principale du projet (le tronc) et non pas tout le dépot entier!
+_Note : Attention à ne cloner que le répertoire correspondant à la branche principale du projet (le tronc) et non pas tout le dépot entier!_
 
 Commande de clone (dans le répertoire courant) du dépot TFS sans historique (dernier changeset):
 
@@ -154,13 +158,10 @@ bc. git tfs quick-clone https://tfs.codeplex.com:443/tfs/TFS16 $/valtechgittfs/t
 
 Convient pour un développement ponctuel ou lorsqu'on n'a pas besoin de l'historique...
 
-Utilisation du login/mdp
-login:snd\[LoginCodePlex]_cp
-mdp:celui du compte codeplex
 
-Note :
+_Note :_
 * le clone ne doit pas être fait dans un répertoire mappé avec TFS (workspace).
-* on peut refiler le dépot cloné par copie (ou par clonage git!) à quelqu'un
+* on peut partager le dépot cloné juste par copie (ou par clonage git!) à un autre développeur.
 
 h3. 5.2. Récupération des commits de TFS (sans merge ni rebase dans branche master)
 
