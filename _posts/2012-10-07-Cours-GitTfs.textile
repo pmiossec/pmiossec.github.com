@@ -395,9 +395,9 @@ h3. Avantages:
 * Visual Studio est plus rapide car il n'a pas à contacter le serveur TFS pour extraire les fichiers en modifications (ainsi que beaucoup d'autres actions qui sont faites maintenant localement : blame, diff, ...)
 
 h3. Inconvénient:
-* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG) mais ouvre de nombreuses possibilités!
-* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un dépot distant Git qui ne fait qu'envoyer les commits sur le dépot distant...). Ce problème n'est plus présent avec VisualStudio 2012!
-* (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....  Ce problème n'est plus présent avec VisualStudio 2012!
+* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG) *mais ouvre de nombreuses possibilités!*
+* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un dépot distant Git qui ne fait qu'envoyer les commits sur le dépot distant...). _Ce problème n'est plus présent avec VisualStudio 2012!_
+* (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....  _Ce problème n'est plus présent avec VisualStudio 2012!_
 
 h2. 9. Conclusion
 
