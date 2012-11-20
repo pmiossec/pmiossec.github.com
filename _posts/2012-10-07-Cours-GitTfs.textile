@@ -32,7 +32,7 @@ h2. 1.Installation des outils nécessaires
 * Installation de "notepad++":http://download.tuxfamily.org/notepadplus/6.2/npp.6.2.Installer.exe (besoin d'un éditeur de texte multi-instances!!)
 
 * Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git.
-Pour le moment, la gestion des branches par git-tfs que j'ai développée n'étant pas dans encore dans la version officielle 0.15 de git-tfs (pull request en attente de validation sur GitHub), on utilisera plutôt une "version personnelle de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip 
+Pour le moment, la gestion des branches par git-tfs que j'ai développée n'étant pas encore dans la version officielle 0.15 de git-tfs (pull request en attente de validation sur GitHub), on utilisera plutôt une "version personnelle de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip 
 
 * Verifier que le répertoire 'bin' de Git est dans le path ainsi que celui des outils p4merge et notepad++.
 
@@ -52,12 +52,12 @@ _Bootstrap_ : Télécharger "l'archive":../../../../../files/article_git/git_con
 -> Utilisation d'un .gitignore global (si vous ne voulez pas archiver un fichier .gitignore dans TFS) => Copie du .gitignore_global( ou celui de "GitHub":https://github.com/github/gitignore )
 
 * Par ligne de commande
-Les configuration necessaires pour faire fonctionner Git: 
+Les configurations nécessaires pour faire fonctionner Git: 
 
 bc. git config --global user.name "Ton Nom"
 git config --global user.email ton_mail@valtech.fr
 
-Les configuration nécessaires pour faire fonctionner Git sous Windows!: 
+Les configurations nécessaires pour faire fonctionner Git sous Windows!: 
 
 bc. git config --global core.ignorecase true
 git config --global core.autocrlf false
@@ -395,9 +395,9 @@ h3. Avantages:
 * Visual Studio est plus rapide car il n'a pas à contacter le serveur TFS pour extraire les fichiers en modifications (ainsi que beaucoup d'autres actions qui sont faites maintenant localement : blame, diff, ...)
 
 h3. Inconvénient:
-* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG)
-* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un dépot distant Git qui ne fait qu'envoyer les commits sur le dépot distant...)
-* (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....
+* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG) mais ouvre de nombreuses possibilités!
+* Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un dépot distant Git qui ne fait qu'envoyer les commits sur le dépot distant...). Ce problème n'est plus présent avec VisualStudio 2012!
+* (?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution....  Ce problème n'est plus présent avec VisualStudio 2012!
 
 h2. 9. Conclusion
 
