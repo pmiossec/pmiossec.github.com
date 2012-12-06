@@ -32,7 +32,7 @@ h2. 1.Installation des outils nécessaires
 * Installation de "notepad++":http://download.tuxfamily.org/notepadplus/6.2/npp.6.2.Installer.exe (besoin d'un éditeur de texte multi-instances!!)
 
 * Copie des fichiers de "Git-tfs":http://github.com/git-tfs/git-tfs/downloads dans le répertoire de Git.
-Pour le moment, la gestion des branches par git-tfs que j'ai développée n'étant pas encore dans la version officielle 0.15 de git-tfs (pull request en attente de validation sur GitHub), on utilisera plutôt une "version personnelle de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip 
+-Pour le moment, la gestion des branches par git-tfs que j'ai développée n'étant pas encore dans la version officielle 0.15 de git-tfs (pull request en attente de validation sur GitHub), on utilisera plutôt une "version personnelle de git-tfs":https://github.com/downloads/pmiossec/git-tfs/git-tfs-with-branches.zip- La version officielle 0.16 gère maintenant les branches!
 
 * Verifier que le répertoire 'bin' de Git est dans le path ainsi que celui des outils p4merge et notepad++.
 
@@ -314,7 +314,7 @@ bc. git tfs shelve MonShelveset
 
 Avantage de la branche Git sur le shelveset TFS :
 * on peut faire plusieurs commits
-* on connait le commit parent et voit exactement les modifications faites (là ou TFS présente seulement un état de fichier et on ne sait pas comment il serait mergé!)
+* on connait le commit parent et voit exactement les modifications faites (là où TFS présente seulement un état de fichier et on ne sait pas comment il serait mergé!)
 * mergeable plus facilement (moins sensible au modifications) 
 
 h2. 6.Utilisation de Git
