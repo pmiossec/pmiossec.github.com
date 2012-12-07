@@ -376,7 +376,7 @@ h2. 7. Aperçu de Git-TF
 * Association des workitems dans la ligne de commande (donc pas de possibilité d'utiliser depuis une GUI :( )
  et même association de workitems pour TOUS les commits (si utilisation de l'option &ndash;&ndash;deep. Et apparement il y aurait un bug :( )
 * Pas de gestion des branches (un clone, donc un dépot par branche)
-* C'est du Java
+* C'est du Java (portabilité mais dépendance java à installer)
 
 h2. 8. Retour d'expérience
 
@@ -386,8 +386,8 @@ h3. Avantages:
 * Meilleur connaissance des modifications des autres utilisateurs (visualisation de l'historique + diffs)
 * BEAUCOUP plus grande souplesse de développement et de commit (commit de parties de fichiers!)
 * Remplacement du shelving par les branches ( et on peut faire plusieurs commits)
-* Commit de Revert
-* Bisect : trouver une régression facilement en testant les commits successivement par dichotomie
+* Possibilité d'annuler des commits (revert)
+* Trouver une régression facilement en testant les commits successivement par dichotomie (bisect)
 * Cherry Picking (prendre un commit intérressant d'une branche et l'appliquer sur la branche actuelle)
 * Meilleur Historique (plus de facilité à retrouver l'introduction d'un bug)
 * Plus de mode connecté/déconnecté de TFS :D
@@ -395,7 +395,7 @@ h3. Avantages:
 * Visual Studio est plus rapide car il n'a pas à contacter le serveur TFS pour extraire les fichiers en modifications (ainsi que beaucoup d'autres actions qui sont faites maintenant localement : blame, diff, ...)
 
 h3. Inconvénients:
-* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG) *mais ouvre de nombreuses possibilités!*
+* Ticket d'entrée légèrement plus important (il faut comprendre/visualiser les manipulations du DAG, la gestion des branches) *mais qui ouvre de nombreuses possibilités!*
 * -Rechargement des fichiers et projets plus souvent que sous TFS (à cause de la glue Git-tfs qui créé les commits sur TFS, les récupère et fait un rebase dessus. Non présent sur un dépot distant Git qui ne fait qu'envoyer les commits sur le dépot distant...)-. _Ce problème n'est plus présent avec VisualStudio 2012!_
 * -(?) Visual Studio exclue régulièrement des fichiers App.config & Dev.config de la Solution...-.  _Ce problème n'est plus présent avec VisualStudio 2012!_
 
