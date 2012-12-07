@@ -389,7 +389,7 @@ h3. Avantages:
 * Commit de Revert
 * Bisect : trouver une régression facilement en testant les commits successivement par dichotomie
 * Cherry Picking (prendre un commit intérressant d'une branche et l'appliquer sur la branche actuelle)
-* Meilleur Historique
+* Meilleur Historique (plus de facilité à retrouver l'introduction d'un bug)
 * Plus de mode connecté/déconnecté de TFS :D
 * Backport de commit entre branches plus facile
 * Visual Studio est plus rapide car il n'a pas à contacter le serveur TFS pour extraire les fichiers en modifications (ainsi que beaucoup d'autres actions qui sont faites maintenant localement : blame, diff, ...)
@@ -401,8 +401,8 @@ h3. Inconvénients:
 
 h2. 9. Conclusion
 
-Beaucoup d'avantages, quelques petits désagréments
-TFS est une solution d'archivage, Git est un outil servant à faciliter un développement
+Beaucoup d'avantages avec cependant quelques petits désagréments (si on ne possède pas la version 2012 de VisualStudio)
+Le meilleur résumé serait celui ci : "TFS est une solution d'archivage de code source, là où Git est un outil facilitant le développement"
 
 PS :
 * Vous avez toutes les infos pour utiliser Git-tfs mais il vous reste à apprivoiser Git...
