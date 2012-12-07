@@ -270,7 +270,7 @@ bc. git config --global alias.tfsrebasebranch '!sh -c "git tfs fetch -i $1 && gi
 
 Utilisation:  git tfsrebasebranch branche1
 
-Pour commiter sur la brance sur TFS:
+Pour commiter sur la branche sur TFS:
 
 Création de l'alias git :
 
@@ -326,7 +326,7 @@ h2. 6.Utilisation de Git
 bc. git stash save //pour mettre de côté
 git stash pop //pour récupérer le dernier stash mis de côté
 
-* Reset d'une branche à un certain commit (Mixed/Hard)
+* Reset d'une branche à un certain commit => Mixed : Reset de la branche mais pas du répertoire de travail / Hard : Reset de la branche ET du répertoire (faire un stash ou un commit de sauvegarde si vous voulez garder du contenu)
 
 * Merge / Rebase
 
