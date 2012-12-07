@@ -127,7 +127,7 @@ Démo...
 
 h2. 5.Utilisation de Git-TFS:
 
-_Note :
+_Note :_
 * On pourra tester toutes les commandes git-tfs indiquées en utilisant le projet "valtechgittfs" disponible sur "Codeplex":http://valtechgittfs.codeplex.com/
 Pour cela, on pourra utiliser le compte utilisateur 'vtccds' (mot de passe:vtccds)_
 * Attention : Lors de l'intéraction avec le serveur TFS de Codeplex, le login à fournir est de la forme (sans les crochets!): [LoginCodePlex]_cp@snd 
