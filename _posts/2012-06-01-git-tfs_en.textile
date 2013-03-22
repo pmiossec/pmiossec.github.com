@@ -45,35 +45,9 @@ h3. 3. Manage a Tfs branch
 
 h4. 3.1. Fetch the Tfs branch
 
-Actually, there is no straight forward and easy solution :( 
-But, that's not impossible...
+Since the version 0.16 of git-tfs where my work was merged, you could easily fetch a TFS branch with the command :
 
-The following steps are :
-	1. Modify "config" file in the directory ".git" to add the lines (Attention! : don't use '.' in the name of the remote branch) :
-bc.
-[tfs-remote "myTfsBranch"]
-url = http://myTfsServer:8080/tfs/TfsRepository
-repository = $/MyProject/BrancheName
-fetch = refs/remotes/tfs/myTfsBranch
-
-	2. Find the commit number of the first commit on the Tfs branch
-    This number is displayed, even in the properties of the branch using the "Team Explorer", even with the command line :
-	@tf branches $/MyProject/BrancheName@
-
-	3. Find in the Git historic the sha1 of the father commit of the previously found commit.
-	In the Git historic, find the sha1, not of the previously found commit but the one od his father ( in fact number of the previously found commit -1).
-	This is in fact the last common commit between the trunc and the branch!
-	
-	4. Extract this commit with creating a local branch using the command line :
-	@git checkout -b myTfsBranch [SHA1_PREVIOUSLY_FOUND]@
-	"myTfsBranch" is the name of the local branch corresponding to the tfs branch.
-
-	5. Manualy create the reference on the local branch (otherwise the branch won't be connected to the trunc :( )
-    "myTfsBranch" is the name of the remote Tfs branch defined in the step 1.
-    @git rev-parse myTfsBranch >> ./.git/refs/remotes/tfs/myTfsBranch@
-
-	6. Fetch commit historic of the Tfs branch!!! This command should be run each time you want to retrieve the commits from the Tfs branch (and thus synchronise your local branch with the server).
-    @git tfs fetch -i myTfsBranch@
+@git tfs init-branch $/MyProject/BrancheName
 
 h4. 3.2. Fetch new commits from the Tfs branch
 
