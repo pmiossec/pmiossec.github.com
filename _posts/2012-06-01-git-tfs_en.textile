@@ -47,7 +47,7 @@ h4. 3.1. Fetch the Tfs branch
 
 Since the version 0.16 of git-tfs where my work was merged, you could easily fetch a TFS branch with the command :
 
-@git tfs init-branch $/MyProject/BrancheName
+@git tfs init-branch $/MyProject/BrancheName@
 
 h4. 3.2. Fetch new commits from the Tfs branch
 
