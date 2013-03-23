@@ -214,13 +214,11 @@ bc. git s tfs pull --rebase
 
 Pour commiter sur TFS:
 
-bc. git s rcheckin --quick --autorebase
+bc. git s tfs rcheckin --quick --autorebase
 
 ou, en version courte :
 
-bc. git s rcheckin --quick -a
-
-->Utilisation: git tfscommit
+bc. git s tfs rcheckin --quick -a
 
 h3. 5.5.Scripts GitExtension:
 
@@ -231,7 +229,7 @@ table{width:100%}.
 |_. Name|_. Cmd.|_. Arguments|
 |Tfs.Fetch> |@git@|@tfs fetch@|
 |Tfs.Rebase|@git@|@s tfs pull --rebase@|
-|Tfs.Commit|@git@|@s rcheckin --quick --autorebase@|
+|Tfs.Commit|@git@|@s tfs rcheckin --quick --autorebase@|
 
 h3. 5.6.Gestion d'une branche de TFS:
 
