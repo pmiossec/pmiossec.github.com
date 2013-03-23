@@ -176,7 +176,30 @@ Lors des commits locaux dans Git, l'association de Workitems se fait par l'ajout
 bc. git-tfs-work-item: 2198 associate //Pour associer un workitem
 git-tfs-work-item: 2198 resolve //Pour clore le workitem
 
-h3. 5.4. Report des commits locaux sur le serveur TFS
+h3. 5.4. Synchroniser ses modifications avec TFS
+
+Cette commande (comme certaines commande de git) nécessite de n'avoir aucune modification non commité dans son espace de travail. 
+Pour cela, git fourni une commande 'stash' pour mettre de côté les modifications si on ne veut pas les commiter. Elle s'utilise comme cela :
+
+bc. git stash save //pour mettre les modifications de côté
+//Execution d'une commande git...
+git stash pop //pour récupérer les modifications mises de côté
+
+Pour nous faciliter grandement la tâche, nous allons donc rajouter un alias 's' qui stash avant la commande et stash pop après la commande, si besoin.
+
+Ajouter donc cette ligne d'alias dans votre fichier .gitconfig (après la ligne [alias])
+
+bc. 	s = !sh -c \"git stash save | grep 'No local changes to save' && git $* || (git $* && git stash pop) \"
+
+Cet alias s'utilise, avec n'importe quelle commande git, en intercalant la lettre 's' (comme stash) juste après le nom de la commande 'git' de la façon suivante :
+
+bc. git s rebase maBranche
+
+La commande pour synchroniser ses modifications avec la dernière version de TFS est donc la suivante (en utilisant l'alias 's' défini ci-dessus) :
+
+bc. git s tfs pull --rebase
+
+h3. 5.5. Report des commits locaux sur le serveur TFS
 
 Méthode facile mais déconseillée :
 
@@ -188,31 +211,11 @@ Méthode conseillée :
 
 bc. git tfs rcheckin
 
-Cette commande réapplique les commits sur le serveur TFS. Cependant, nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux.
-Nécessite également de ne pas avoir de modifications dans l'espace de travail :(
+Cette commande réapplique les commits sur le serveur TFS. Cependant, nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux. Cependant, une option --quick et --autorebase permet de faire tout cela.
 
-bc. git stash save //pour mettre les modifications de côté
-//Commit...
-git stash pop //pour récupérer les modifications mises de côté
+Cette commande nécessite également de ne pas avoir de modifications dans l'espace de travail donc nous allons également utiliser notre alias 's'.
 
-Nous allons donc rajouter un alias pour nous faciliter grandement la vie lorsqu'une commande git ou git-tfs nécessite un espace de travail sans modification.
-Ajouter donc cette ligne d'alias dans votre fichier .gitconfig (après la ligne [alias])
-
-bc. 	s = !sh -c \"git stash save | grep 'No local changes to save' && git $* || (git $* && git stash pop) \"
-
-Worklow utilisé en découlant :
-
-bc. git tfs fetch ==>récupération de derniers commits du serveur
-git stash save ==>mise de côté des modifications non commitées
-git rebase tfs/default =>réapplication des commits locaux sur la dernière version de TFS (merges possibles!)
-git tfs rcheckin => réapplication des commits sur TFS
-git stash pop => réapplication des modifications non commitées
-
-Pour synchroniser ses modifications avec la dernière version de TFS (en utilisant l'alias 's' défini ci-dessus) :
-
-bc. git s tfs pull --rebase
-
-Pour commiter sur TFS:
+Pour commiter sur TFS, la commande est donc :
 
 bc. git s tfs rcheckin --quick --autorebase
 
@@ -220,7 +223,7 @@ ou, en version courte :
 
 bc. git s tfs rcheckin --quick -a
 
-h3. 5.5.Scripts GitExtension:
+h3. 5.6.Scripts GitExtension:
 
 Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
 Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez une ligne où on remplira les 3 champs requis par les valeurs de chaque ligne :
@@ -231,7 +234,7 @@ table{width:100%}.
 |Tfs.Rebase|@git@|@s tfs pull --rebase@|
 |Tfs.Commit|@git@|@s tfs rcheckin --quick --autorebase@|
 
-h3. 5.6.Gestion d'une branche de TFS:
+h3. 5.7.Gestion d'une branche de TFS:
 
 Deux options se dessinent:
 - créer une branche avec git-tfs
@@ -263,7 +266,7 @@ Commiter sur la branche sur TFS:
 
 bc. git s tfs rcheckin --quick -a -i branche1
 
-h3. 5.7.Scripts GitExtension (suite):
+h3. 5.8.Scripts GitExtension (suite):
 
 Note (pour information) : les commandes que l'on doit indiquer à GitExtension sont un peu plus complexe que celle fournies lors du travail sur la branche principale car il faut extraire le nom de la branche requis par la commande git-tfs d'une variable {sRemoteBranch} fournie par GitExtension et qu'il n'y a pas de manière simple de le faire :(
 
@@ -276,7 +279,7 @@ Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remp
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
 
-h3. 5.8.Travailler avec les shelvesets
+h3. 5.9.Travailler avec les shelvesets
 
 Liste de ses commits réservés
 
