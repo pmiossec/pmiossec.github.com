@@ -211,7 +211,7 @@ Méthode conseillée :
 
 bc. git tfs rcheckin
 
-Cette commande réapplique les commits sur le serveur TFS. Cependant, nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux. Cependant, une option --quick et --autorebase permet de faire tout cela.
+Cette commande réapplique les commits sur le serveur TFS. Cependant, nécessite d'être à jour par rapport aux commits sur TFS et d'avoir "rebasé" ses commits locaux. Cependant, une option <code>--quick</code> et <code>--autorebase</code> permet de faire tout cela.
 
 Cette commande nécessite également de ne pas avoir de modifications dans l'espace de travail donc nous allons également utiliser notre alias 's'.
 
