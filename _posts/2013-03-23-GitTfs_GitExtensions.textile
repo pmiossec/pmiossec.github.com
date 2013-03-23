@@ -223,11 +223,11 @@ bc. git s tfs rcheckin --quick -a
 h3. 5.5.Scripts GitExtension:
 
 Il peut être pratique de créer dans GitExtension les scripts décrit ci-dessous; ensuite disponibles par un clic droit dans le Browser de GitExtension.
-Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis par les valeurs de chaque ligne :
+Pour cela, allez dans le menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez une ligne où on remplira les 3 champs requis par les valeurs de chaque ligne :
 
 table{width:100%}.
 |_. Name|_. Cmd.|_. Arguments|
-|Tfs.Fetch> |@git@|@tfs fetch@|
+|Tfs.Fetch|@git@|@tfs fetch@|
 |Tfs.Rebase|@git@|@s tfs pull --rebase@|
 |Tfs.Commit|@git@|@s tfs rcheckin --quick --autorebase@|
 
@@ -239,7 +239,7 @@ Deux options se dessinent:
 
 La création d'une branche à partir de n'importe lequel des commits existant (il suffit de faire un checkout sur le bon commit avant de créer la branche) se fait en utilisant la commande:
 
-bc. git tfs branch $/MonProjet/BrancheACréer <nomOptionnelLocalDeMaBranche> --comment="Commentaire de création de branche"
+bc. git tfs branch $/MonProjet/BrancheACréer <nomOptionnelLocalDeMaBranche> --comment="Commentaire de création de la branche"
 
 La récupération d'une branche TFS exitante grâce à la commande "init-branch" :
 
@@ -249,25 +249,23 @@ git tfs init-branch --all //Pour récupérer toutes les branches existantes
 bc. ex :
 git tfs init-branch $/valtechgittfs/branche1
 
+A l'identique des commandes utilisées pour travailler sur la branche principale, on utilisera les commandes suivantes ( avec l'option -i qui permet d'indiquer sur quelle branche tfs on va travailler)...
+
 Récupération des commits d’une branche:
 
 bc. git tfs fetch -i branche1
 
-Commiter sur une branche TFS:
-
-bc. git tfs rcheckin -i branche1
-
-Pour synchroniser ses modifications avec la dernière version de la branche sur TFS:
+Synchroniser ses modifications avec la dernière version de la branche sur TFS:
 
 bc. git s tfs pull --rebase -i branche1
 
-Pour commiter sur la branche sur TFS:
+Commiter sur la branche sur TFS:
 
 bc. git s tfs rcheckin --quick -a -i branche1
 
-Utilisation: git tfscommitbranch branche1
-
 h3. 5.7.Scripts GitExtension (suite):
+
+Note (pour information) : les commandes que l'on doit indiquer à GitExtension sont un peu plus complexe que celle fournies lors du travail sur la branche principale car il faut extraire le nom de la branche requis par la commande git-tfs d'une variable {sRemoteBranch} fournie par GitExtension et qu'il n'y a pas de manière simple de le faire :(
 
 Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remplira les 3 champs requis :
 
