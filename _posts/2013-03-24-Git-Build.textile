@@ -1,0 +1,47 @@
+---
+layout: post
+title: "Git Build : The script that make obsolete your Continuous Integration!"
+description: ""
+categories: git
+tags:
+- Git
+published: true
+---
+
+_(or the unbreakable build!_
+
+The goal of 'git build' script is to run a command which determine if a commit is good before pushing your commits on the remote.
+It could easily configured to build your project and run the unit tests automaticaly in a private build and then assure you that your git history contains only good commits.
+
+h2. Principle
+
+The different steps of the script are the following :
+
+1. clone the current git repository in a temporary folder
+2. run a custom command (build, unit tests,...)
+3. Push commits only if the custom command succeed
+
+
+h2. Installation
+
+1. Copy the "git-build":https://raw.github.com/pmiossec/git-build/master/git-build script in a directory that is in your path (or add the directory to your path) keeping the file name 'git-build'.
+2. Copy the 2 files !https://raw.github.com/pmiossec/git-build/master/git-build_success.png and !https://raw.github.com/pmiossec/git-build/master/git-build_fail.png in the same directory keeping the names "git-build_success.png" and "git-build_fail.png".
+3. If you are under windows, install "Growl":http://www.growlforwindows.com/gfw/ and add growl folder to the path.
+
+h2. Configuration
+
+For each new git repository you use and only one time, set the command that will be run before pushing
+
+Example using maven :
+
+git config private-build.command "mvn clean install"
+
+Example using msbuild :
+
+git config private-build.command "msbuild mybuild.build /t:UnitTests /p:Configuration:Debug"
+
+h2. Use
+
+call 'git build' each time you want to push!
+
+
