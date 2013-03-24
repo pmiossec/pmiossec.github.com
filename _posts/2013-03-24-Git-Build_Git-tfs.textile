@@ -1,17 +1,18 @@
 ---
 layout: post
-title: "Git Build and git-tfs: The script that make obsolete your Continuous Integration!"
+title: "Make 'Git Build' work with git-tfs..."
 description: "How to use 'git build' with git-tfs"
 categories: git
 tags:
 - Git
 - TFS
+- Continuous Integration
 published: true
 ---
 
-_(or the unbreakable build!_
+_(or the unbreakable build even wih TFS...)_
 
-In a previous post, we saw the 'git build' script to push commits only when the commits satisfy some conditions ( after the run of a custom command).
+In a "previous post":Git-Build, we saw the 'git build' script to push commits only when the commits satisfy some conditions ( after the run of a custom command).
 
 If you use git-tfs to checkin in a TFS repository, the original script is not useable :(
 
