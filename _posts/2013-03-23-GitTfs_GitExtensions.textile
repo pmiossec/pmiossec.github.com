@@ -246,11 +246,11 @@ bc. git tfs branch $/MonProjet/BrancheACréer <nomOptionnelLocalDeMaBranche> --c
 
 La récupération d'une branche TFS exitante grâce à la commande "init-branch" :
 
-bc. git tfs init-branch $/MyProject/MyTFSBranch //Pour récupérer une branche spécifique
-git tfs init-branch --all //Pour récupérer toutes les branches existantes
+bc. git tfs branch --init $/MyProject/MyTFSBranch //Pour récupérer une branche spécifique
+git tfs branch --init --all //Pour récupérer toutes les branches existantes
 
 bc. ex :
-git tfs init-branch $/valtechgittfs/branche1
+git tfs branch --init $/valtechgittfs/branche1
 
 A l'identique des commandes utilisées pour travailler sur la branche principale, on utilisera les commandes suivantes ( avec l'option -i qui permet d'indiquer sur quelle branche tfs on va travailler)...
 
@@ -279,7 +279,29 @@ Menu "Settings"->"Settings..."->Onglet "Scripts" et ajoutez un ligne où on remp
 
 Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit où se trouve la branche distante 'tfs/maBranche' (en vert, dans GitExtension)
 
-h3. 5.9.Travailler avec les shelvesets
+
+h3. 5.9.Nouvelle commandes de gestion des branches
+
+Depuis la version 0.17 de git-tfs, on peut maintenant gérer un peu mieux les branches.
+Outre la nouvelle commande de création des branches, nous pouvonc maintenant...
+
+- afficher les branches gérées localement
+
+bc. git tfs branch
+
+- afficher toutes les branches TFS
+
+bc. git tfs branch -r
+
+- renomer un branche locale
+
+bc. git tfs branch --move oldName newName
+
+- effacer une branche locale
+
+bc. git tfs branch --delete myBranch
+
+h3. 5.10.Travailler avec les shelvesets
 
 Liste de ses commits réservés
 
