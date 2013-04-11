@@ -283,7 +283,7 @@ Note: Pour les utiliser, bien faire attention à cliquer sur la ligne du commit 
 h3. 5.9.Nouvelle commandes de gestion des branches
 
 Depuis la version 0.17 de git-tfs, on peut maintenant gérer un peu mieux les branches.
-Outre la nouvelle commande de création des branches, nous pouvonc maintenant...
+Outre la nouvelle commande de création des branches présentée précédement, nous pouvonc maintenant...
 
 - afficher les branches gérées localement
 
@@ -300,6 +300,8 @@ bc. git tfs branch --move oldName newName
 - effacer une branche locale
 
 bc. git tfs branch --delete myBranch
+
+Note : vous pouvez toujours consulter l'aide avec la commande : `git tfs branch --help`.
 
 h3. 5.10.Travailler avec les shelvesets
 
