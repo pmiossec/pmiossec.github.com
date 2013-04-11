@@ -301,7 +301,9 @@ bc. git tfs branch --move oldName newName
 
 bc. git tfs branch --delete myBranch
 
-Note : vous pouvez toujours consulter l'aide avec la commande : `git tfs branch --help`.
+Note : Pour plus d'informations, vous pouvez toujours consulter l'aide avec la commande : 
+
+bc. git tfs branch --help
 
 h3. 5.10.Travailler avec les shelvesets
 
