@@ -50,7 +50,7 @@ h3. 3. Gestion d'une branche
 
 h4. 3.1. Récupération de la branche
 
-    @git tfs branch --init $/MonProjet/NomDeMaBrancheTfs
+bc. git tfs branch --init $/MonProjet/NomDeMaBrancheTfs
 
 h4. 3.2. Récupération des commits d'une branche
 
