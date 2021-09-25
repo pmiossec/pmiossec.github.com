@@ -1,0 +1,10 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'My blog is dead'
+theme = "hyde"
+[taxonomies]
+   tag = "tags"
+   category = "categories"
+
+[Params]
+   Description = 'Ceci est à moi!'
